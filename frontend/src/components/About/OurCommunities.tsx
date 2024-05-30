@@ -3,7 +3,6 @@ import { Container, Box, Link, Grid, useMediaQuery } from '@mui/material';
 import { aboutStyles } from './styles';
 import innovate from '../../images/ourCommunitiesImages/cses_innovate.png';
 import opensource from '../../images/ourCommunitiesImages/cses_opensource.png';
-import webdev from '../../images/ourCommunitiesImages/cses_webdev.png';
 import dev from '../../images/ourCommunitiesImages/cses_dev.png';
 import { motion } from "framer-motion";
 import { styled } from '@mui/system';
@@ -75,34 +74,6 @@ const Communities = () => {
         <Grid container spacing={2} sx={{ justifyContent: 'center', alignItems: 'center'}}>
         <Grid item xs={12} sm={6}>
         <MotionGrid whileHover={{ scale: 1.1 }}
-      transition={{ type: 'spring', stiffness: 300 }}>
-          <Grid item 
-            sx={{
-              ...styles.communityCard,
-              width: verySmallScreen ? '250px' : { xs: '350px', sm: '500px', md: '500px' },
-              height: verySmallScreen ? '84px' : { xs: '100px', sm: '160px', md: '160px' },
-              margin: verySmallScreen ? '10% 0% 0% 0%' : { xs: '10% 2% 2% 2%', sm: '5% 3%', md: '3% 2%' }
-            }}>
-            <img
-              src={innovate}
-              alt="Innovate"
-              style={{ ...styles.communityCardImg, backgroundColor: 'black'}}
-            />
-              
-            <Box sx={{ height: 'auto', padding: verySmallScreen ? '2%' : '4%', alignSelf: 'center' }}>
-              <Box sx={{ ...styles.subheadingTop }} >
-                CSES Innovate
-              </Box>
-              <p style={{ color: 'black', fontSize: 'clamp(8px, 2vw, 16px)', marginTop: verySmallScreen ? '2px' :'6px'}}>
-                Learn about tech entrepreneurship! Form teams and build your own start-ups from ideation to pitch.
-              </p>
-            </Box>
-            
-          </Grid>
-          </MotionGrid>
-          </Grid>
-          <Grid item xs={12} sm={6}>
-          <MotionGrid whileHover={{ scale: 1.1 }}
       transition={{ type: 'spring', stiffness: 300 }}>
           <Grid item 
             sx={{

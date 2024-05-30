@@ -157,7 +157,9 @@ const Home = () => {
             <Grid item xs={11} sm={2.5} md={1.8} lg={1.8}>
               <Box sx={{ ...styles.statisticContainer }}>
                 <Box sx={styles.statisticWrapper}>
-                  <Box sx={styles.statisticTitle}><CountUp delay={6} end={totalUsers} duration={6} scrollSpyOnce={true}/>+</Box>
+                  <Box sx={styles.statisticTitle}>
+                    <CountUp end={totalUsers} duration={6} scrollSpyOnce={true} scrollSpyDelay={10000000} suffix="+"/>
+                    </Box>
                   <Box sx={styles.statisticSubtitle}>Members & counting.</Box>
                 </Box>
               </Box>
@@ -165,7 +167,9 @@ const Home = () => {
             <Grid item xs={11} sm={2.5} md={1.8} lg={1.8}>
               <Box sx={styles.statisticContainer}>
                 <Box sx={styles.statisticWrapper}>
-                  <Box sx={styles.statisticTitle}><CountUp delay={0} end={totalEvents} duration={6}/>+</Box>
+                  <Box sx={styles.statisticTitle}>
+                    <CountUp end={totalEvents} duration={6} scrollSpyDelay={10000000} scrollSpyOnce={true}  suffix="+"/>
+                    </Box>
                   <Box sx={styles.statisticSubtitle}>Events & counting.</Box>
                 </Box>
               </Box>
