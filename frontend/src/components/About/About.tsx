@@ -1,6 +1,4 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import Button from '../Button/Button';
 import { Container, Box, Grid, createTheme, useMediaQuery } from '@mui/material';
 import bgTop from '../../images/shape2.svg';
 import bgBtm from '../../images/shape2.svg';
@@ -11,7 +9,6 @@ import MeetTheTeam from './MeetTheTeam';
 import Communities from './OurCommunities';
 import HowtoJoin from './HowToJoin';
 import about1 from '../../images/aboutpage/about_1.jpg';
-import about3 from '../../images/aboutpage/about_3.jpg';
 import { ImageWithBoxShadow } from '../Opportunities/Opportunities';
 import Typewriter from './TypeWriter';
 import { motion } from "framer-motion"
@@ -25,6 +22,8 @@ const About = () => {
   const ref = useRef(null);
 
   useEffect(() => {
+    const currentRef = ref.current; // Copy ref to a local variable
+  
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -36,17 +35,17 @@ const About = () => {
         threshold: 0.1, // Adjust this value as needed
       }
     );
-
-    if (ref.current) {
-      observer.observe(ref.current);
+  
+    if (currentRef) {
+      observer.observe(currentRef);
     }
-
+  
     return () => {
-      if (ref.current) {
-        observer.unobserve(ref.current);
+      if (currentRef) {
+        observer.unobserve(currentRef); // Use the local variable for cleanup
       }
     };
-  }, []);
+  }, [ref]);
 
   return (
     <Box sx={{ position: 'relative', overflow: 'hidden' }}>
@@ -82,7 +81,7 @@ const About = () => {
                   <p style={{ color: 'white', fontSize: 'clamp(15px, 3vw, 20px)' }}>
                     CSE Society was the first CSE organization at UCSD starting over twenty years
                     ago, and we have innovated over the years to stay relevant in serving the CSE
-                    community. We are open to all majors and indivduals who are interested in
+                    community. We are open to all majors and individuals who are interested in
                     computing!
                   </p>
                 </Box>

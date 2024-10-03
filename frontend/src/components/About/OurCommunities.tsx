@@ -22,6 +22,8 @@ const Communities = () => {
   const ref = useRef(null);
 
   useEffect(() => {
+    const currentRef = ref.current; // Copy ref to a local variable
+  
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -33,17 +35,17 @@ const Communities = () => {
         threshold: 0.1, // Adjust this value as needed
       }
     );
-
-    if (ref.current) {
-      observer.observe(ref.current);
+  
+    if (currentRef) {
+      observer.observe(currentRef);
     }
-
+  
     return () => {
-      if (ref.current) {
-        observer.unobserve(ref.current);
+      if (currentRef) {
+        observer.unobserve(currentRef); // Use the local variable for cleanup
       }
     };
-  }, []);
+  }, [ref]);
 
   return (
     <Container disableGutters sx={{ width: '100%', backgroundColor: 'rgba(0,0,0,0.8)', marginTop: { xs: '15%', sm: '10%', md: '5%' }}}>

@@ -16,28 +16,30 @@ const HowtoJoin = () => {
     const ref1 = useRef(null);
 
     useEffect(() => {
-        const observer = new IntersectionObserver(
-          ([entry]) => {
-            if (entry.isIntersecting) {
-              setIsInView1(true);
-              observer.disconnect(); // Disconnect after first trigger
-            }
-          },
-          {
-            threshold: 0.1, // Adjust this value as needed
-          }
-        );
+      const currentRef = ref1.current; // Copy ref1 to a local variable
     
-        if (ref1.current) {
-          observer.observe(ref1.current);
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            setIsInView1(true);
+            observer.disconnect(); // Disconnect after first trigger
+          }
+        },
+        {
+          threshold: 0.1, // Adjust this value as needed
         }
+      );
     
-        return () => {
-          if (ref1.current) {
-            observer.unobserve(ref1.current);
-          }
-        };
-      }, []);
+      if (currentRef) {
+        observer.observe(currentRef);
+      }
+    
+      return () => {
+        if (currentRef) {
+          observer.unobserve(currentRef); // Use the local variable for cleanup
+        }
+      };
+    }, [ref1]);
 
     return (
         <motion.div
