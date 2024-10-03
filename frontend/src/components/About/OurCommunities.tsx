@@ -139,16 +139,16 @@ const Communities = () => {
               margin: verySmallScreen ? '10% 0% 0% 0%' : { xs: '10% 2% 2% 2%', sm: '5% 3%', md: '3% 2%' }
             }}>
             <img
-              src={webdev}
-              alt="WebDev"
-              style={{ ...styles.communityCardImg}}
+              src={innovate}
+              alt="Innovate"
+              style={{ ...styles.communityCardImg, backgroundColor: 'black'}}
             />
             <Box sx={{ height: 'auto', padding: verySmallScreen ? '2%' : '4%', alignSelf: 'center' }}>
               <Box sx={{ ...styles.subheadingTop }} >
-                CSES WebDev
+                CSES Innovate
               </Box>
-              <p style={{ color: 'black', fontSize: 'clamp(8px, 2vw, 16px)', marginTop: verySmallScreen ? '2px' : '6px'}}>
-                Gain hands-on experience in web design and development for real clients, from UCSD clubs to non-profits!
+              <p style={{ color: 'black', fontSize: 'clamp(8px, 2vw, 16px)', marginTop: verySmallScreen ? '2px' :'6px'}}>
+                Learn about tech entrepreneurship! Form teams and build your own start-ups from ideation to pitch.
               </p>
             </Box>
           </Grid>
