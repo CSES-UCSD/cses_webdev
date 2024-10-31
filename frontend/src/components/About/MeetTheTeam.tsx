@@ -52,6 +52,7 @@ const categories = [
       { name: 'Varun Parekh', title: 'Technical Workshop Director', photo: Varun_Parekh },
       { name: 'Angelina Yee', title: 'Marketing Chair', photo: Angelina },
       { name: 'Jose Martinez', title: 'External Director - Alumni and Professor', photo: Jose },
+      { name: 'Hillary Chang', title: 'Corporate Connections Director', photo: Hillary_Chang },
     ],
   },
   {
@@ -90,12 +91,10 @@ const categories = [
     id: 6,
     name: 'CSES E/Acc',
     members: [
+      { name: 'Pranav Soma', title: 'President', photo: Pranav_Soma },
       { name: 'Aryamun Das', title: 'Founder', photo: Aryamun_Das },
-      { name: 'Yashil Vora', title: 'President', photo: Yashil },
       { name: 'Nikitha Maderamitla', title: 'Internal Director', photo: Nikitha_Maderamitla },
-      { name: 'Hillary Chang', title: 'Corporate Connections Director', photo: Hillary_Chang },
       { name: 'Aditya Kakarla', title: 'External Director', photo: Aditya_Kakarla },
-      { name: 'Pranav Soma', title: 'Project Lead', photo: Pranav_Soma },
       { name: 'Bhavik Chandna', title: 'Project Lead', photo: Bhavik_Chandna },
     ],
   },
