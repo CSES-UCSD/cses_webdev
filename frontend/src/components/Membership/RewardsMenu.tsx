@@ -94,7 +94,7 @@ const RewardsMenu = (userData: RewardsProp) => {
         style={{
           display: 'flex',
           flexDirection: isMobile ? 'column' : 'row',
-          marginLeft: '-40px'
+          marginLeft: isMobile || isiPad ? '0px' : '-40px'
         }}
       >
         <Button
