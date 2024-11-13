@@ -4,6 +4,20 @@
 2. Clone the repository on the `main` branch and open the project in VSCode.
 3. Install VSCode extensions Eslint and Prettier (for linting and formatting).
 
+## Add .env files
+In the `frontend` folder, add a file called `.env` with the following contents:
+```
+REACT_APP_GOOGLE_CLIENT_ID=445338196940-24djrtja7p5irng9e6tljm3hjg9skkpj.apps.googleusercontent.com
+REACT_APP_BACKEND_URL=http://localhost:5000
+```
+
+In the `backend` folder, add a file called `.env` with the following contents:
+```
+PORT = 5000
+CONNECTION_URL = "mongodb+srv://backend:EMIDWRzH8IYNby9s@cseswebdev.pxpwggu.mongodb.net/?retryWrites=true&w=majority"
+MAILCHIMP_API_KEY = d743a41acafa02a4ef4b35e35a54b180-us13
+```
+
 ## FrontEnd
 
 3. Go to the `project/frontend` directory.
