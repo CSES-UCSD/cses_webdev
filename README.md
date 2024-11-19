@@ -18,7 +18,6 @@ Ask Nikhil or Sithu for the contents of these files, which you will add to your 
 6. Go to the `project/backend` directory.
 7. Run `npm install` to install all the node packages.
 8. Run `npm start` to start the backend server and check there is no error in the terminal.
-9. Make a copy of the `.env.example` file and rename it `.env`.
 
 ## Development
 
