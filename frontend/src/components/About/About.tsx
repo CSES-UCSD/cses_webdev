@@ -105,15 +105,20 @@ const About = () => {
               item
               sm={4}
               lg={3}
-              sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+              sx={{width: '100%', display: 'flex', alignItems: 'center', justifyContent: { xs: 'center', sm: 'flex-start' }}}
             >
               <motion.div
       ref={ref}
       initial={{ x: -100, opacity: 0 }}
       animate={isInView ? { x: 0, opacity: 1 } : {}}
       transition={{ type: 'spring', stiffness: 50, damping: 20, mass: 1, delay: 0.2 }}
+      style={{ 
+        width: '100%',
+        display: 'flex',
+        justifyContent: 'center'
+      }}
     >
-              <img src={books} alt="img" style={{ width: '80%' }} />
+              <img src={books} alt="img" style={{ width: '80%'}} />
               </motion.div>
             </Grid>
             <Grid item sm={5} lg={5}>
@@ -175,6 +180,11 @@ const About = () => {
       initial={{ x: 100, opacity: 0 }}
       animate={isInView ? { x: 0, opacity: 1 } : {}}
       transition={{ type: 'spring', stiffness: 50, damping: 20, mass: 1, delay: 0.6 }}
+      style={{ 
+        width: '100%',
+        display: 'flex',
+        justifyContent: 'center'
+      }}
     >
               <img src={lightBulb} alt="img" />
               </motion.div>
