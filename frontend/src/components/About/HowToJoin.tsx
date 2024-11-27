@@ -16,110 +16,82 @@ const HowtoJoin = () => {
     const ref1 = useRef(null);
 
     useEffect(() => {
-        const currentRef = ref1.current;
-        
-        const observer = new IntersectionObserver(
-            ([entry]) => {
-                if (entry.isIntersecting) {
-                    setIsInView1(true);
-                    observer.disconnect();
-                }
-            },
-            {
-                threshold: 0.1,
-            }
-        );
-        
-        if (currentRef) {
-            observer.observe(currentRef);
+      const currentRef = ref1.current; // Copy ref1 to a local variable
+    
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            setIsInView1(true);
+            observer.disconnect(); // Disconnect after first trigger
+          }
+        },
+        {
+          threshold: 0.1, // Adjust this value as needed
         }
-        
-        return () => {
-            if (currentRef) {
-                observer.unobserve(currentRef);
-            }
-        };
+      );
+    
+      if (currentRef) {
+        observer.observe(currentRef);
+      }
+    
+      return () => {
+        if (currentRef) {
+          observer.unobserve(currentRef); // Use the local variable for cleanup
+        }
+      };
     }, [ref1]);
 
     return (
-        <Container disableGutters sx={{ width: '100%', backgroundColor: 'rgba(0,0,0,0.8)', marginTop: { xs: '15%', sm: '10%', md: '5%' }}}>
-            <Grid 
-                container 
-                spacing={2} 
-                sx={{
-                    padding: { xs: '6% 4%', sm: '4% 6%', md: '5% 5%' },
-                    justifyContent: 'center',
-                    alignItems: 'center'
-                }}
-            >
-                <Grid item xs={12} sm={7} order={{ xs: 1, sm: 2 }}>
-                    <motion.div
-                        ref={ref1}
-                        initial={{ opacity: 0 }}
-                        animate={isInView1 ? { opacity: 1 } : {}}
-                        transition={{ duration: 1 }}
-                    >
-                        <Box
-                            sx={{
-                                ...styles.mainTitleTop,
-                                textAlign: 'center',
-                                fontSize: 'clamp(32px, 8vw, 65px)',
-                                marginBottom: '3%'
-                            }}
-                        >
-                            How do I join?
-                        </Box>
-                        <p style={{ 
-                            color: 'white', 
-                            fontSize: 'clamp(15px, 3vw, 20px)',
-                            margin: '0 auto',
-                            maxWidth: '800px'
-                        }}>
-                            To become a general member, simply sign up with your UCSD email!
-                        </p>
-                        <p style={{ 
-                            color: 'white', 
-                            fontSize: 'clamp(15px, 3vw, 20px)',
-                            margin: '20px auto',
-                            maxWidth: '800px'
-                        }}>
-                            Do you want to be a part of the internal team? Become a member and follow us on our socials to be notified of when board applications open on a rolling basis.
-                        </p>
-                        <Box sx={{ display: 'flex', justifyContent: 'center', marginTop: '30px' }}>
-                            <Button 
-                                text="Become a Member ->" 
-                                onClick={() => navigate('/membership')}
-                            />
-                        </Box>
-                    </motion.div>
-                </Grid>
-                <Grid item xs={12} sm={5} sx={{ textAlign: 'center' }}>
-                    <Box sx={{ 
+        <motion.div
+      ref={ref1}
+      initial={{ x: 100, opacity: 0 }}
+      animate={isInView1 ? { x: 0, opacity: 1 } : {}}
+      transition={{ type: 'spring', stiffness: 50, damping: 20, mass: 1, delay: 0.6 }}
+    >
+        <Container maxWidth="xl" sx={styles.body}>
+            <Box sx={{ maxWidth: '90%', margin: '0 auto' }}>
+              <Grid
+                container
+                justifyContent="center"
+                mt={12}
+                mb={12}
+                direction={isSmallScreen ? 'column-reverse' : 'row'}
+              >
+                <Grid item sm={7} pl={{ lg: '8%' }}>
+                  <Box sx={{ color: 'white', textAlign: { md: 'left', sm: 'left', xs: 'center' } }}>
+                    <h1>How do I join?</h1>
+                  </Box>
+                  <Box sx={{ color: 'white', textAlign: { lg: 'left', sm: 'left', xs: 'center' } }}>
+                    <p style={{ color: 'white', fontSize: 'clamp(15px, 3vw, 20px)' }}>
+                      To become a general member, simply sign up with your UCSD email!
+                    </p>
+                    <p style={{ color: 'white', fontSize: 'clamp(15px, 3vw, 20px)' }}>
+                      Do you want to be a part of the internal team? Become a member and follow us
+                      on our socials to be notified of when board applications open on a rolling
+                      basis.
+                    </p>
+                    <Box
+                      sx={{
+                        marginLeft: '-2%',
                         display: 'flex',
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                        height: '100%',
-                        width: '100%',
-                        maxWidth: { xs: '100%', sm: '400px' }, // Added maxWidth constraint
-                        margin: '0 auto'
-                    }}>
-                        <Box sx={{
-                            width: '100%',
-                            height: 'auto',
-                            position: 'relative',
-                            '& > *': { // This targets the ImageWithBoxShadow component
-                                width: '100% !important',
-                                height: 'auto !important',
-                                maxWidth: '100%',
-                                objectFit: 'contain'
-                            }
-                        }}>
-                            <ImageWithBoxShadow src={about3} alt="img" />
-                        </Box>
+                        justifyContent: { xs: 'center', sm: 'left' },
+                      }}
+                    >
+                      <Button
+                        size="large"
+                        text="Become a Member ->"
+                        onClick={() => navigate('/membership')}
+                      />
                     </Box>
+                  </Box>
                 </Grid>
-            </Grid>
-        </Container>
+                <Grid item sm={5} pl={{ lg: '2%' }} pr={{ lg: '8%' }}>
+                  <ImageWithBoxShadow src={about3} alt="img" />
+                </Grid>
+              </Grid>
+            </Box>
+          </Container>
+          </motion.div>
     );
 };
 
