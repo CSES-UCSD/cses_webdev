@@ -100,7 +100,7 @@ const About = () => {
           >
             WHAT DO WE DO?
           </h1>
-          <Grid container sx={{ marginTop: '10%', display: 'flex', justifyContent: 'center' }}>
+          <Grid container sx={{ marginTop: '10%', display: 'flex', justifyContent: { xs: 'center', sm: 'flex-start' } }}>
             <Grid
               item
               sm={4}
@@ -112,6 +112,11 @@ const About = () => {
       initial={{ x: -100, opacity: 0 }}
       animate={isInView ? { x: 0, opacity: 1 } : {}}
       transition={{ type: 'spring', stiffness: 50, damping: 20, mass: 1, delay: 0.2 }}
+      style={{ 
+        width: '100%',
+        display: 'flex',
+        justifyContent: 'center'
+      }}
     >
               <img src={books} alt="img" style={{ width: '80%' }} />
               </motion.div>
