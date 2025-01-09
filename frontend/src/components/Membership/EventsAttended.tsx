@@ -1,6 +1,6 @@
 import useMediaQuery from '../../hooks/useMediaQuery';
 import { Link, Container, Typography } from '@mui/material';
-import EventBox from '../Event/Event';
+import EventRating from '../Event/EventRating';
 import { membershipStyles } from './styles';
 import alertLogo from '../../images/events-attended-alert.svg';
 import MobileEventBox from '../Event/MobileEvent';
@@ -54,7 +54,7 @@ const EventsAttended = ({ eventsAttended }: EventsAttendedProps) => {
       {!isMobile && (
         <div style={{ display: 'flex', flexDirection: 'row', gap: '40px', overflow: 'scroll' }}>
           {eventsAttended.map((event) => (
-            <EventBox
+            <EventRating
               title={event.title}
               targetDate={new Date(event.start_time)}
               location={event.location}
