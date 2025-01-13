@@ -1,13 +1,16 @@
 import React from 'react';
-import { Container, Box, Grid, Button } from '@mui/material';
+import { Container, Box, Grid } from '@mui/material';
 import { tempStyles } from './styles';
+import { useNavigate } from 'react-router-dom';
 import template1 from '../../images/templatepage/template1.png';
 import { ImageWithBoxShadow } from '../Opportunities/Opportunities';
 import Projects from './Projects';
 import MeetTheTeam from './MeetTheTeam';
+import Button from '../Button/Button'
 
 const TemplateWebsite = () => {
   const styles = tempStyles();
+  const navigate = useNavigate();
   return (
     <Box sx={{ position: 'relative', overflow: 'hidden' }}>
       <Box sx={styles.root}>
@@ -64,9 +67,11 @@ const TemplateWebsite = () => {
                     we have innovated over the years to stay relevant in serving the CSE community. We are
                     open to all majors and individuals who are interested in computing!
                   </p>
-                  <Button sx={styles.joinbtn}>
-                    Join Us!
-                  </Button>
+                  <Button
+                        size="large"
+                        text="Become a Member ->"
+                        onClick={() => navigate('/membership')}
+                  />
                 </Box>
               </Grid>
             </Grid>
