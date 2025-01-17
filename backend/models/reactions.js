@@ -2,9 +2,8 @@ import mongoose from 'mongoose';
 import { Schema, model } from 'mongoose';
 
 const reactionsSchema = new Schema({
-    userId: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User',
+    userEmail: {
+        type: String,
         required: true
     },
     eventId: {

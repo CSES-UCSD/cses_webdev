@@ -2,13 +2,13 @@ import Reactions from '../models/reactions.js';
 import asyncHandler from 'express-async-handler';
 
 export const getReaction = asyncHandler(async (req, res) => {
-    const { userId, eventId } = req.params;
+    const { userEmail, eventId } = req.params;
 
-    if (!userId || !eventId) {
+    if (!userEmail || !eventId) {
         res.status(400);
     }
 
-    const reaction = await Reactions.findOne({ userId, eventId });
+    const reaction = await Reactions.findOne({ userEmail, eventId });
 
     if (reaction) {
         res.status(200).json(reaction); // Return the found reaction
@@ -19,15 +19,15 @@ export const getReaction = asyncHandler(async (req, res) => {
 })
 
 export const createReaction = asyncHandler(async (req, res) => {
-    const { userId, eventId, reactionType } = req.body;
+    const { userEmail, eventId, reactionType } = req.body;
 
     // Validate input
-    if (!userId || !eventId || ![1, -1].includes(reactionType)) {
+    if (!userEmail || !eventId || ![1, -1].includes(reactionType)) {
         res.status(400);
     }
 
     // Check if a reaction already exists
-    const existingReaction = await Reactions.findOne({ userId, eventId });
+    const existingReaction = await Reactions.findOne({ userEmail, eventId });
 
     if (existingReaction) {
         // Update the existing reaction
@@ -40,7 +40,7 @@ export const createReaction = asyncHandler(async (req, res) => {
     } else {
         // Create a new reaction
         const newReaction = await Reactions.create({
-            userId,
+            userEmail,
             eventId,
             reactionType
         });

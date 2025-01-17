@@ -7,7 +7,7 @@ const router = express.Router();
 router.post('/create', reactionsController.createReaction);
 
 //GET request for user reaction
-router.get('/:userId/:eventId', reactionsController.getReaction);
+router.get('/:userEmail/:eventId', reactionsController.getReaction);
 
 // Export router.
 export default router;
