@@ -3,8 +3,14 @@ import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import ThumbDownIcon from "@mui/icons-material/ThumbDown";
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
+import axios from "axios";
 
-const ThumbButtons = () => {
+interface ThumbButtonProps {
+  userEmail: string;
+  eventId: string;
+}
+
+const ThumbButtons = ({ userEmail, eventId } : ThumbButtonProps) => {
   const [selected, setSelected] = useState<1 | -1 | null>(null);
 
   const handleThumbUp = () => {

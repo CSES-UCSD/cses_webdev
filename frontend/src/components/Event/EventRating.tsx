@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { event_style } from './styles';
 import { Box } from '@mui/material';
 import calendarIcon from '../../images/calendarIcon.svg';
 import instagramIcon from '../../images/instaLogo.svg';
 import ThumbButtons from '../Button/ThumbButtons'
+import { AuthContext } from '../../context/AuthContext';
 
 interface EventBoxProps {
   title: string;
@@ -46,6 +47,8 @@ const EventRating = ({
   pastEvent,
 }: EventBoxProps) => {
   const styles = event_style();
+  const { user } = useContext(AuthContext)
+  const eventId = String(_id)
 
   /**
    * Calculates the time in days, hours, mins, and secs by subtracting the target date, minus the curent date.
@@ -181,7 +184,10 @@ const EventRating = ({
                 paddingBottom: "50px"
                 }}
               >
-                <ThumbButtons />
+                <ThumbButtons 
+                  userEmail={user.email}
+                  eventId={eventId}
+                />
               </div>
             </>
           )}
