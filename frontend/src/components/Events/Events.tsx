@@ -8,6 +8,7 @@ import MobileEventBox from '../Event/MobileEvent';
 import Button from '../Button/Button';
 import useMediaQuery from '../../hooks/useMediaQuery';
 import { CircularProgress } from '@mui/material';
+import GCalEmbed from '../GCalEmbed/GCalEmbed';
 
 interface EventData {
   calendar_link: string;
@@ -305,7 +306,7 @@ const Events = () => {
         <Grid item mt={6} mb={2} ml={5} 
         sx={{ color: 'white', fontFamily: 'Chakra Petch', fontSize: 'clamp(32px, 8vw, 65px)', fontWeight: '700' }}>
         EVENTS
-      </Grid>
+        </Grid>
 
         {isLoading && (
           <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
@@ -512,6 +513,9 @@ const Events = () => {
             ></Button>
           </div>
         )}
+        <div style={{ width: '100%', marginTop: '300px', display: 'flex', justifyContent: 'center' }}>
+          <GCalEmbed />
+        </div>
       </Container>
     </div>
   );
