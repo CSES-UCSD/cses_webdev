@@ -20,7 +20,7 @@ import MemberProfile from '../MemberProfile/MemberProfile';
 import EventsDashboard from './EventsDashboard';
 import RewardsMenu from './RewardsMenu';
 import axios from 'axios';
-import { userInfoAPI, topMembersAPI, addEvent, userRank } from '../../api';
+import { userInfoAPI, topMembersAPI, addEvent, userRank, beforeUserPoints } from '../../api';
 import { membershipStyles } from './styles';
 
 interface Event {
@@ -47,6 +47,7 @@ const Membership = () => {
   const { user, isLoggedIn, isAdmin } = useContext(AuthContext);
   const [userData, setUserData] = useState<User | null>(null);
   const [currentUserRank, setCurrentUserRank] = useState<number | 0>(0);
+  const [aboveUserPoints, setAboveUserPoints] = useState<number | 0>(0);
   const [eventsAttended, setEventsAttended] = useState<Array<Event>>([]);
   const [rankings, setRankings] = useState<Array<Ranking>>([]);
   const navigate = useNavigate();
@@ -106,6 +107,7 @@ const Membership = () => {
           );
           setUserData(response.data);
           await userRank(user.email).then((data) => setCurrentUserRank(data));
+          await beforeUserPoints(user.email).then((data) => setAboveUserPoints(data));
           await topMembersAPI().then((data) => setRankings(data));
         } else if (!localStorage.getItem('token')) {
           navigate('/login');
@@ -235,6 +237,7 @@ const Membership = () => {
             myName={userData.name}
             myProfilePicture={userData.profilePicture}
             currentUserRank={currentUserRank}
+            aboveUserPoints={aboveUserPoints}
           />
         )}
       </div>
