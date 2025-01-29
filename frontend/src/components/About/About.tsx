@@ -100,7 +100,7 @@ const About = () => {
           >
             WHAT DO WE DO?
           </h1>
-          <Grid container sx={{ marginTop: '10%', display: 'flex', justifyContent: { xs: 'center', sm: 'flex-start' } }}>
+          <Grid container sx={{ marginTop: '10%', display: 'flex', justifyContent: { xs: 'center', sm: 'center' } }}>
             <Grid
               item
               sm={4}
