@@ -187,14 +187,13 @@ export const getBeforeUserPoints = asyncHandler(async (req, res) => {
       .sort({ points: -1 })
       .select('name email profilePicture points')
       .exec();
-
     // Get the index of the current user in the sorted list
     const currentUserIndex = allUsers.findIndex(user => user.email === email);
-    var aboveUserIndex = currentUserIndex - 1;
-    while(allUsers[currentUserIndex].points == allUsers[aboveUserIndex].points){
-      aboveUserIndex--;
+    var beforeUserIndex = currentUserIndex - 1;
+    while(allUsers[currentUserIndex].points == allUsers[beforeUserIndex].points){
+      beforeUserIndex--;
     }
-    const beforeUsersPoints = allUsers[aboveUserIndex].points;
+    const beforeUsersPoints = allUsers[beforeUserIndex].points;
 
     res.status(200).json(beforeUsersPoints);
   } catch (error) {
