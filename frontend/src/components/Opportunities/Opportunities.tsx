@@ -175,10 +175,11 @@ const Opportunities = () => {
                     backgroundColor: 'rgba(255, 255, 255, 0.2)',
                   },
                 }}
-                onClick={() => navigate('/')}
+                onClick={() => {window.location.href = "https://csesucsd.com/login";}}
               >
                 Become a Member
               </MuiButton>
+
             </Box>
             </FadeInSection>
           </Grid>
@@ -211,27 +212,6 @@ const Opportunities = () => {
                 padding: '8px, 16px, 8px, 16px',
               }}
             >
-              <MuiButton
-                size="large"
-                variant="outlined"
-                sx={{
-                  fontSize: '21px',
-                  fontFamily: 'Chakra Petch, sans-serif',
-                  fontWeight: '400',
-                  textTransform: 'none',
-                  borderColor: 'white',
-                  color: 'white',
-                  padding: 'auto',
-                  borderRadius: '10px',
-                  '&:hover': {
-                    borderColor: 'white',
-                    backgroundColor: 'rgba(255, 255, 255, 0.2)',
-                  },
-                }}
-                onClick={() => navigate('/membership')}
-              >
-                See Opportunities -&gt;
-              </MuiButton>
             </Box>
             </FadeInSection>
           </Grid>
