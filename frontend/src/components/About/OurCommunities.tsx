@@ -101,6 +101,7 @@ const Communities = () => {
           </MotionGrid>
           </Grid>
           <Grid item xs={12} sm={6}>
+          <Link href="/opensource" underline="none">
           <MotionGrid
       whileHover={{ scale: 1.1 }}
       transition={{ type: 'spring', stiffness: 300 }}
@@ -127,6 +128,7 @@ const Communities = () => {
             </Box>
           </Grid>
           </MotionGrid>
+          </Link>
           </Grid>
           <Grid item xs={12} sm={6}>
           <MotionGrid
