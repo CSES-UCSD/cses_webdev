@@ -75,7 +75,7 @@ const About = () => {
                       fontWeight: '700',
                     }}
                   >
-                    <Typewriter text="WHHAT IS CSES?" speed={200} />
+                    <Typewriter text="WHAT IS CSES?" speed={200} />
                   </h1>
 
                   <p style={{ color: 'white', fontSize: 'clamp(15px, 3vw, 20px)' }}>
@@ -137,7 +137,7 @@ const About = () => {
                 <h1>Our History</h1>
             
                 <p style={{ color: 'white', fontSize: 'clamp(15px, 3vw, 20px)' }}>
-                  CSES was the first CSE organization at UCSD starting over twenty years ago, and we have innovated over the years to stay relevant in serving the CSE community. We are open to all majors and indivduals who are interested in computing!
+                  CSES was the first CSE organization at UCSD starting over twenty years ago, and we have innovated over the years to stay relevant in serving the CSE community. We are open to all majors and individuals who are interested in computing!
                 </p>
                 
               </Box>

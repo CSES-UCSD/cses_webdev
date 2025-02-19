@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 
 interface TypewriterProps {
@@ -8,11 +8,14 @@ interface TypewriterProps {
 
 const Typewriter: React.FC<TypewriterProps> = ({ text, speed = 100 }) => {
   const [displayedText, setDisplayedText] = useState('');
+  const displayedTextRef = useRef('');
 
   useEffect(() => {
     let currentIndex = 0;
+    displayedTextRef.current = '';
     const interval = setInterval(() => {
-      setDisplayedText((prev) => prev + (text[currentIndex] || ''));
+      displayedTextRef.current += text[currentIndex]
+      setDisplayedText(displayedTextRef.current);
       currentIndex++;
       if (currentIndex >= text.length) {
         clearInterval(interval);
