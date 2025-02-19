@@ -136,7 +136,7 @@ const Events = () => {
           .sort((a, b) => (b as number) - (a as number)); // Explicit type casting for 'a' and 'b'
         setPastEventYears(years as number[]);
         
-  
+        
         paginate(data, 1, totalPagesPast, 'past');
       } catch (error) {
         console.error('Error fetching past events:', error);
@@ -406,7 +406,7 @@ const Events = () => {
           </div>
         )}
         {/* Buttons for filtering past events */}
-        {displayedPastEvents.length > 0 && (
+        {(
           <Grid item container mb={4} ml={4} justifyContent="flex-start">
             {/* <Button size="medium" text="2023" infocus={is2023Clicked} onClick={handle2023}></Button> */}
             
