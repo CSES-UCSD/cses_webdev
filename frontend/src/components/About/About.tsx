@@ -75,7 +75,7 @@ const About = () => {
                       fontWeight: '700',
                     }}
                   >
-                    <Typewriter text="WHHAT IS CSES?" speed={200} />
+                    <Typewriter text="WHAT IS CSES?" speed={200} />
                   </h1>
 
                   <p style={{ color: 'white', fontSize: 'clamp(15px, 3vw, 20px)' }}>
