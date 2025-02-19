@@ -300,6 +300,27 @@ const DashBoard = () => {
         <Button onClick={handleOpen} variant="contained">
           Add Event
         </Button>
+        <TableContainer
+        sx={{
+          border: "3px solid black", // Adds a border around the table
+          borderRadius: "8px", // Rounded corners
+          padding: "10px", // Padding inside the border
+          width: "70%", // Adjusts the table width (shrink it)
+          margin: "20px auto", // Centers the table on the page
+          maxHeight: "500px", // Optional: Limits the table height
+          overflow: "auto", // Enables scrolling if needed
+        }}
+        >
+          <Table>
+            <TableHead>
+              <TableRow>
+                <TableCell>New Events</TableCell>
+              </TableRow>
+            </TableHead>
+          </Table>
+
+
+        </TableContainer>
         <Modal open={openCreate} onClose={handleClose}>
           <Box sx={style} component="form">
             <TextField
@@ -399,10 +420,22 @@ const DashBoard = () => {
         <Button variant="outlined">Logout</Button>
       </div>
 
-      <TableContainer>
+      <TableContainer
+      sx={{
+        border: "3px solid black", // Adds a border around the table
+        borderRadius: "8px", // Rounded corners
+        padding: "10px", // Padding inside the border
+        width: "70%", // Adjusts the table width (shrink it)
+        margin: "20px auto", // Centers the table on the page
+        maxHeight: "500px", // Optional: Limits the table height
+        overflow: "auto", // Enables scrolling if needed
+      }}
+      
+      >
         <Table>
           <TableHead>
             <TableRow>
+             
               <TableCell>6-Digit</TableCell>
               <TableCell>Title</TableCell>
               <TableCell>Start Time</TableCell>
