@@ -138,13 +138,13 @@ const Opportunities = () => {
               <Link href="https://discord.gg/vd9aFu4V" color="inherit">
                 Discord
               </Link>{' '}
-              for to learn about opportunities to get involved in the CSE Society and to stay
+              to learn about opportunities to get involved in the CSE Society and to stay
               updated on the events we will have! <br />
               <br />
               In the past, we have hosted successful career fairs with start-ups at UCSD, panels
               with alumni from Google and OpenAI, and hands-on workshops. We also have various
               leadership and project opportunities in all areas of tech, from web development
-              entrepreneurship. <br />
+              to entrepreneurship. <br />
               <br />
               Kickstart your career with CSES today!
               <br />
