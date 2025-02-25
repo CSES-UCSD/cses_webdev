@@ -2,47 +2,113 @@ import React, { useState } from 'react';
 import { Box, Grid, ToggleButton, createTheme, useMediaQuery } from '@mui/material';
 import previous from '../../images/previous.png';
 import next from '../../images/next.png';
+import { buttonStyles } from '../Button/styles';
 import { tempStyles } from './styles';
-import Sithu from '../../images/meettheteamImages/sithu.jpg';
-import Rahul from '../../images/meettheteamImages/rahul.png';
-import Jose from '../../images/meettheteamImages/josue martinez.jpeg';
-import Angelina from '../../images/meettheteamImages/angelina yee.jpg';
-import Maanasa from '../../images/meettheteamImages/maanasa prasad.png';
-import Michael from '../../images/meettheteamImages/michael he.png';
-import Hillary_Chang from '../../images/meettheteamImages/Hillary_Chang.webp';
-import Lucas_Hlaing from '../../images/meettheteamImages/Lucas_Hiaing.jpeg';
-import Varun_Parekh from '../../images/meettheteamImages/Varun_Parekh.jpg';
+import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 
-const team = 
+import Sithu from '../../images/meettheteamImages/sithu.jpg';
+import Maanasa from '../../images/meettheteamImages/maanasa prasad.png';
+import Aditi_Bansal from '../../images/opensourceteam/Aditi Bansal.jpg';
+import Alexis_Vega from '../../images/opensourceteam/Alexis Vega.jpg';
+import Anika_Dontu from '../../images/opensourceteam/Anika Dontu.jpg';
+import Arjun_Singh from '../../images/opensourceteam/Arjun Singh.jpeg';
+import Aryen_Singhal from '../../images/opensourceteam/Aryen Singhal.jpg';
+import Chase_Peterson from '../../images/opensourceteam/Chase Peterson.jpg';
+import Dhruv_Agarwal from '../../images/opensourceteam/Dhruv Agarwal.jpg';
+import Mishka_Jethwani from '../../images/opensourceteam/Mishka Jethwani.jpg';
+import Nishitha_Selvakumar from '../../images/opensourceteam/Nishitha Selvakumar.jpg';
+import Parth_Trivedi from '../../images/opensourceteam/Parth Trivedi.jpg';
+import Ritvik_Chand from '../../images/opensourceteam/Ritvik Chand.jpg';
+import Shree_Venkatesh from '../../images/opensourceteam/Shree Venkatesh.jpg';
+import Thanh_Trinh from '../../images/opensourceteam/Thanh Trinh.jpeg';
+import Ulises_Salinas from '../../images/opensourceteam/Ulises Salinas.jpg';
+import Vedant_Vardhaan from '../../images/opensourceteam/Vedant Vardhaan.jpeg';
+import Victoria_Tran from '../../images/opensourceteam/Victoria Tran.jpeg';
+import Vinod_Vairavaraj from '../../images/opensourceteam/Vinod Vairavaraj.jpeg';
+import William_Widjaja from '../../images/opensourceteam/William Widjaja.png';
+import Yashil_Vora from '../../images/opensourceteam/Yashil Vora.jpg';
+import Yixuan_Li from '../../images/opensourceteam/Yixuan Li.jpg';
+
+const categories = [
   {
     id: 1,
-    name: 'Project 1',
+    name: 'Exec',
     members: [
-      { name: 'Rahul Mistry', title: 'VP Internal', photo: Rahul },
-      { name: 'Michael He', title: 'VP External', photo: Michael },
-      { name: 'Sithu Soe', title: 'VP Operations', photo: Sithu },
-      { name: 'Maanasa Prasad', title: 'VP Events', photo: Maanasa },
-      { name: 'Lucas Hlaing', title: 'Finance Director', photo: Lucas_Hlaing },
-      { name: 'Varun Parekh', title: 'Technical Workshop Director', photo: Varun_Parekh },
-      { name: 'Angelina Yee', title: 'Marketing Chair', photo: Angelina },
-      { name: 'Jose Martinez', title: 'External Director - Alumni and Professor', photo: Jose },
-      { name: 'Hillary Chang', title: 'Corporate Connections Director', photo: Hillary_Chang },
+      { name: 'Yashil Vora', title: 'President', photo: Yashil_Vora },
+      { name: 'Yash Ravipati', title: 'VP Technical', photo: Sithu },
+      { name: 'Mishka Jethwani', title: 'VP Operations', photo: Mishka_Jethwani },
     ],
-  }
+  },
+  {
+    id: 2,
+    name: 'TritonScript',
+    members: [
+      { name: 'Aryen Singhal', title: 'Engineering Manager', photo: Aryen_Singhal },
+      { name: 'Dhruv Agarwal', title: 'Developer', photo: Dhruv_Agarwal },
+      { name: 'Victoria Tran', title: 'Developer', photo: Victoria_Tran },
+      { name: 'Riyana Dutta', title: 'Developer', photo: Sithu },
+      { name: 'Thanh Trinh', title: 'Developer', photo: Thanh_Trinh },
+    ],
+  },
+  {
+    id: 3,
+    name: 'TritonSpend',
+    members: [
+      { name: 'Shree Venkatesh', title: 'Engineering Manager', photo: Shree_Venkatesh },
+      { name: 'Vinod Vairavaraj ', title: 'Designer', photo: Vinod_Vairavaraj },
+      { name: 'Aditi Bansal', title: 'Designer', photo: Aditi_Bansal },
+      { name: 'Vedant Vardhaan', title: 'Developer', photo: Vedant_Vardhaan },
+      { name: 'Kiruthika Marikumaran', title: 'Developer', photo: Sithu },
+      { name: 'Chris Park', title: 'Developer', photo: Sithu },
+      { name: 'Ritvik Chand', title: 'Developer', photo: Ritvik_Chand },
+      { name: 'Anika Dontu', title: 'Developer', photo: Anika_Dontu },
+    ],
+  },
+  {
+    id: 4,
+    name: 'Low Price Center',
+    members: [
+      { name: 'Chase Peterson', title: 'Engineering Manager', photo: Chase_Peterson },
+      { name: 'Vinod Vairavaraj ', title: 'Designer', photo: Vinod_Vairavaraj },
+      { name: 'Tia Irani', title: 'Designer', photo: Sithu },
+      { name: 'Navyaa Gupta', title: 'Developer', photo: Sithu },
+      { name: 'Nishitha Selvakumar', title: 'Developer', photo: Nishitha_Selvakumar },
+      { name: 'Kyla Ma', title: 'Developer', photo: Sithu },
+      { name: 'Nicholas Nguyen', title: 'Developer', photo: Sithu },
+      { name: 'Weston Zong', title: 'Developer', photo: Sithu },
+    ],
+  },
+  {
+    id: 5,
+    name: 'Oppurtune',
+    members: [
+      { name: 'Kevin Sun', title: 'Engineering Manager', photo: Sithu },
+      { name: 'Aditi Bansal ', title: 'Designer', photo: Aditi_Bansal },
+      { name: 'Tia Irani', title: 'Designer', photo: Sithu },
+      { name: 'Parth Trivedi', title: 'Developer', photo: Parth_Trivedi },
+      { name: 'Yixuan Li', title: 'Developer', photo: Yixuan_Li },
+      { name: 'Alexis Vega', title: 'Developer', photo: Alexis_Vega },
+      { name: 'Maanasa Prasad', title: 'Developer', photo: Maanasa },
+      { name: 'William Widjaja', title: 'Developer', photo: William_Widjaja },
+      { name: 'Ulises Salinas', title: 'Developer', photo: Ulises_Salinas },
+    ],
+  },
+];
 
 const MeetTheTeam = () => {
   const styles = tempStyles();
   const theme = createTheme();
   const [currentPage, setCurrentPage] = useState(1);
+    const [currentCategory, setCurrentCategory] = useState(categories[0]);
   const isMiddleScreen = useMediaQuery(theme.breakpoints.between('sm', 'md'));
   const isSmallScreen = useMediaQuery(theme.breakpoints.between('xs', 'sm'));
   const verySmallScreen = useMediaQuery('(max-width:350px');
 
   const membersPerPage = 6;
-  const remainingSpots = membersPerPage - (team.members.length % membersPerPage);
+  const remainingSpots = membersPerPage - (currentCategory.members.length % membersPerPage);
 
   // Calculate the number of members displayed on the current page
-  const membersDisplayed = team.members.slice((currentPage - 1) * 6, currentPage * 6);
+  const membersDisplayed = currentCategory.members.slice((currentPage - 1) * 6, currentPage * 6);
 
   // Define the threshold for different margin values
   const marginThreshold = 3;
@@ -59,13 +125,17 @@ const MeetTheTeam = () => {
     photo: 'blankSquare',
   }));
 
+  const handleCategoryChange = (category: (typeof categories)[number]) => {
+    setCurrentCategory(category);
+    setCurrentPage(1);
+  };
 
   const handlePreviousPage = () => {
     setCurrentPage((prevPage) => Math.max(prevPage - 1, 1));
   };
 
   const handleNextPage = () => {
-    const maxPages = Math.ceil(team.members.length / 6);
+    const maxPages = Math.ceil(currentCategory.members.length / 6);
     setCurrentPage((prevPage) => Math.min(prevPage + 1, maxPages));
   };
 
@@ -84,6 +154,34 @@ const MeetTheTeam = () => {
       </Grid>
       <Grid
         container
+        sx={{ marginTop: '5%', display: 'flex', justifyContent: 'center', alignItems: 'center' }}
+      >
+        <ToggleButtonGroup value={currentCategory.name} exclusive aria-label="Category Selection">
+          {categories.map((category) => (
+            <ToggleButton
+              key={category.name}
+              value={category.name}
+              sx={{
+                ...buttonStyles(false, false, false),
+                marginRight: '0px',
+                marginLeft: '0px',
+                '&.MuiToggleButton-root.Mui-selected, &.MuiToggleButton-root.Mui-selected:hover': {
+                  backgroundColor: 'grey',
+                  color: 'white',
+                },
+                fontSize: 'clamp(10px, 2vw, 15px)',
+              }}
+              onClick={() => {
+                handleCategoryChange(category);
+              }}
+            >
+              {category.name}
+            </ToggleButton>
+          ))}
+        </ToggleButtonGroup>
+      </Grid>
+      <Grid
+        container
         sx={{
           marginTop: '4%',
           display: 'flex',
@@ -92,7 +190,7 @@ const MeetTheTeam = () => {
         }}
       >
         <Grid container item xs={12} sm={9} md={9} lg={9} justifyContent="center">
-          {team.members
+          {currentCategory.members
             .slice((currentPage - 1) * 6, currentPage * 6)
             .map((member, index) => (
               <Grid
@@ -164,7 +262,7 @@ const MeetTheTeam = () => {
             ))}
 
           {emptyMembers.map((member, index) => (
-            <Grid item xs={6} sm={4} md={4} lg={4} key={index + team.members.length}>
+            <Grid item xs={6} sm={4} md={4} lg={4} key={index + currentCategory.members.length}>
               {/* Empty placeholder, no visible content */}
             </Grid>
           ))}
@@ -240,14 +338,14 @@ const MeetTheTeam = () => {
                   border: 'none',
                   background: 'none',
                   cursor:
-                    currentPage === Math.ceil(team.members.length / 6)
+                    currentPage === Math.ceil(currentCategory.members.length / 6)
                       ? 'auto'
                       : 'pointer',
                   opacity:
-                    currentPage === Math.ceil(team.members.length / 6) ? '20%' : '100%',
+                    currentPage === Math.ceil(currentCategory.members.length / 6) ? '20%' : '100%',
                 }}
                 onClick={handleNextPage}
-                disabled={currentPage === Math.ceil(team.members.length / 6)}
+                disabled={currentPage === Math.ceil(currentCategory.members.length / 6)}
               >
                 <img src={next} alt="img" style={{ width: 30, height: 30 }} />
               </button>

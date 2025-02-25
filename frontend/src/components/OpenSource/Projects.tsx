@@ -6,7 +6,7 @@ import {projects, Project} from './ProjectsInfo';
 
 const ProjectCard: React.FC<Project> = ({ name, description, image }) => {
   return (
-    <Grid item xs={12} sm={4} sx={{justifyContent: 'center'}}>
+    <Grid item xs={12} sm={3} sx={{justifyContent: 'center'}}>
       <img 
         src = {image}
         style={{width: '100%'}}
