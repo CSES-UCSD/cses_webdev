@@ -75,7 +75,7 @@ const About = () => {
                       fontWeight: '700',
                     }}
                   >
-                    <Typewriter text="WHHAT IS CSES?" speed={200} />
+                    <Typewriter text="WHAT IS CSES?" speed={200} />
                   </h1>
 
                   <p style={{ color: 'white', fontSize: 'clamp(15px, 3vw, 20px)' }}>
@@ -100,7 +100,7 @@ const About = () => {
           >
             WHAT DO WE DO?
           </h1>
-          <Grid container sx={{ marginTop: '10%', display: 'flex', justifyContent: 'center' }}>
+          <Grid container sx={{ marginTop: '10%', display: 'flex', justifyContent: { xs: 'center', sm: 'center' } }}>
             <Grid
               item
               sm={4}
@@ -112,6 +112,11 @@ const About = () => {
       initial={{ x: -100, opacity: 0 }}
       animate={isInView ? { x: 0, opacity: 1 } : {}}
       transition={{ type: 'spring', stiffness: 50, damping: 20, mass: 1, delay: 0.2 }}
+      style={{ 
+        width: '100%',
+        display: 'flex',
+        justifyContent: 'center'
+      }}
     >
               <img src={books} alt="img" style={{ width: '80%' }} />
               </motion.div>
@@ -132,7 +137,7 @@ const About = () => {
                 <h1>Our History</h1>
             
                 <p style={{ color: 'white', fontSize: 'clamp(15px, 3vw, 20px)' }}>
-                  CSES was the first CSE organization at UCSD starting over twenty years ago, and we have innovated over the years to stay relevant in serving the CSE community. We are open to all majors and indivduals who are interested in computing!
+                  CSES was the first CSE organization at UCSD starting over twenty years ago, and we have innovated over the years to stay relevant in serving the CSE community. We are open to all majors and individuals who are interested in computing!
                 </p>
                 
               </Box>
