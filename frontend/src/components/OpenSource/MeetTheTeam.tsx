@@ -6,7 +6,6 @@ import { buttonStyles } from '../Button/styles';
 import { tempStyles } from './styles';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 
-import Sithu from '../../images/meettheteamImages/sithu.jpg';
 import Maanasa from '../../images/meettheteamImages/maanasa prasad.png';
 import Aditi_Bansal from '../../images/opensourceteam/Aditi Bansal.jpg';
 import Alexis_Vega from '../../images/opensourceteam/Alexis Vega.jpg';
@@ -28,6 +27,7 @@ import Vinod_Vairavaraj from '../../images/opensourceteam/Vinod Vairavaraj.jpeg'
 import William_Widjaja from '../../images/opensourceteam/William Widjaja.png';
 import Yashil_Vora from '../../images/opensourceteam/Yashil Vora.jpg';
 import Yixuan_Li from '../../images/opensourceteam/Yixuan Li.jpg';
+import placeholder from '../../images/opensourceteam/Placeholder.jpg'
 
 const categories = [
   {
@@ -35,7 +35,7 @@ const categories = [
     name: 'Exec',
     members: [
       { name: 'Yashil Vora', title: 'President', photo: Yashil_Vora },
-      { name: 'Yash Ravipati', title: 'VP Technical', photo: Sithu },
+      { name: 'Yash Ravipati', title: 'VP Technical', photo: placeholder },
       { name: 'Mishka Jethwani', title: 'VP Operations', photo: Mishka_Jethwani },
     ],
   },
@@ -46,7 +46,7 @@ const categories = [
       { name: 'Aryen Singhal', title: 'Engineering Manager', photo: Aryen_Singhal },
       { name: 'Dhruv Agarwal', title: 'Developer', photo: Dhruv_Agarwal },
       { name: 'Victoria Tran', title: 'Developer', photo: Victoria_Tran },
-      { name: 'Riyana Dutta', title: 'Developer', photo: Sithu },
+      { name: 'Riyana Dutta', title: 'Developer', photo: placeholder },
       { name: 'Thanh Trinh', title: 'Developer', photo: Thanh_Trinh },
     ],
   },
@@ -58,8 +58,8 @@ const categories = [
       { name: 'Vinod Vairavaraj ', title: 'Designer', photo: Vinod_Vairavaraj },
       { name: 'Aditi Bansal', title: 'Designer', photo: Aditi_Bansal },
       { name: 'Vedant Vardhaan', title: 'Developer', photo: Vedant_Vardhaan },
-      { name: 'Kiruthika Marikumaran', title: 'Developer', photo: Sithu },
-      { name: 'Chris Park', title: 'Developer', photo: Sithu },
+      { name: 'Kiruthika Marikumaran', title: 'Developer', photo: placeholder },
+      { name: 'Chris Park', title: 'Developer', photo: placeholder },
       { name: 'Ritvik Chand', title: 'Developer', photo: Ritvik_Chand },
       { name: 'Anika Dontu', title: 'Developer', photo: Anika_Dontu },
     ],
@@ -70,21 +70,21 @@ const categories = [
     members: [
       { name: 'Chase Peterson', title: 'Engineering Manager', photo: Chase_Peterson },
       { name: 'Vinod Vairavaraj ', title: 'Designer', photo: Vinod_Vairavaraj },
-      { name: 'Tia Irani', title: 'Designer', photo: Sithu },
-      { name: 'Navyaa Gupta', title: 'Developer', photo: Sithu },
+      { name: 'Tia Irani', title: 'Designer', photo: placeholder },
+      { name: 'Navyaa Gupta', title: 'Developer', photo: placeholder },
       { name: 'Nishitha Selvakumar', title: 'Developer', photo: Nishitha_Selvakumar },
-      { name: 'Kyla Ma', title: 'Developer', photo: Sithu },
-      { name: 'Nicholas Nguyen', title: 'Developer', photo: Sithu },
-      { name: 'Weston Zong', title: 'Developer', photo: Sithu },
+      { name: 'Kyla Ma', title: 'Developer', photo: placeholder },
+      { name: 'Nicholas Nguyen', title: 'Developer', photo: placeholder },
+      { name: 'Weston Zong', title: 'Developer', photo: placeholder },
     ],
   },
   {
     id: 5,
     name: 'Oppurtune',
     members: [
-      { name: 'Kevin Sun', title: 'Engineering Manager', photo: Sithu },
+      { name: 'Kevin Sun', title: 'Engineering Manager', photo: placeholder },
       { name: 'Aditi Bansal ', title: 'Designer', photo: Aditi_Bansal },
-      { name: 'Tia Irani', title: 'Designer', photo: Sithu },
+      { name: 'Tia Irani', title: 'Designer', photo: placeholder },
       { name: 'Parth Trivedi', title: 'Developer', photo: Parth_Trivedi },
       { name: 'Yixuan Li', title: 'Developer', photo: Yixuan_Li },
       { name: 'Alexis Vega', title: 'Developer', photo: Alexis_Vega },

@@ -2,7 +2,8 @@ import React from 'react';
 import { Container, Box, Grid } from '@mui/material';
 import { tempStyles } from './styles';
 import { useNavigate } from 'react-router-dom';
-import template1 from '../../images/templatepage/template1.png';
+import about from '../../images/opensourceteam/about_2.jpg';
+import meetteam from '../../images/opensourceteam/about_1.png'
 import { ImageWithBoxShadow } from '../Opportunities/Opportunities';
 import Projects from './Projects';
 import MeetTheTeam from './MeetTheTeam';
@@ -40,8 +41,8 @@ const OpenSource = () => {
               </Box>
             </Grid>
             {/* Right Column: Image */}
-            <Grid item sm={5} pl={{ lg: '2%' }} pr={{ lg: '8%' }}>
-              <ImageWithBoxShadow src={template1} alt="img" />
+            <Grid item sm={5} pl={{ lg: '2%' }} pr={{ lg: '2%' }}>
+              <ImageWithBoxShadow src={about} alt="img" />
             </Grid>
           </Grid>
           {/*Box for the Opportunities Page*/}
@@ -49,7 +50,7 @@ const OpenSource = () => {
             <Grid container pt={4} pb={8} justifyContent="center" alignItems="center" >
               {/* Left Column: Image */}
               <Grid item sm={5} pl={{ lg: '2%' }} pr={{ lg: '2%' }}>
-                <ImageWithBoxShadow src={template1} alt="img" />
+                <ImageWithBoxShadow src={meetteam} alt="img" />
               </Grid>
               {/* Right Column: Text*/}
               <Grid item sm={7} pl={{ lg: '2%' }} pr={{ lg: '4%' }}>
