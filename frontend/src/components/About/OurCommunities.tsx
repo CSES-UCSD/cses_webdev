@@ -3,6 +3,7 @@ import { Container, Box, Link, Grid, useMediaQuery } from '@mui/material';
 import { aboutStyles } from './styles';
 import innovate from '../../images/ourCommunitiesImages/cses_innovate.png';
 import opensource from '../../images/ourCommunitiesImages/cses_opensource.png';
+import eacc from '../../images/ourCommunitiesImages/cses_eacc.png';
 import dev from '../../images/ourCommunitiesImages/cses_dev.png';
 import { motion } from "framer-motion";
 import { styled } from '@mui/system';
@@ -126,6 +127,34 @@ const Communities = () => {
               </p>
             </Box>
           </Grid>
+          
+          </MotionGrid>
+          <MotionGrid
+      whileHover={{ scale: 1.1 }}
+      transition={{ type: 'spring', stiffness: 300 }}
+    >
+          <Grid item 
+            sx={{
+              ...styles.communityCard,
+              width: verySmallScreen ? '250px' : { xs: '350px', sm: '500px', md: '500px' },
+              height: verySmallScreen ? '84px' : { xs: '100px', sm: '160px', md: '160px' },
+              margin: verySmallScreen ? '10% 0% 0% 0%' : { xs: '10% 2% 2% 2%', sm: '5% 3%', md: '3% 2%' }
+            }}>
+            <img
+              src={eacc}
+              alt="eacc"
+              style={{ ...styles.communityCardImg, backgroundColor: 'black'}}
+            />
+            <Box sx={{ height: 'auto', padding: verySmallScreen ? '2%' : '4%', alignSelf: 'center' }}>
+              <Box sx={{ ...styles.subheadingTop }} >
+                CSES E/Acc
+              </Box>
+              <p style={{ color: 'black', fontSize: 'clamp(8px, 2vw, 16px)', marginTop: verySmallScreen ? '2px' : '6px'}}>
+                E/Acc is focusing on effective acceleration—speeding up tech progress to achieve meaningful, positive outcomes.
+              </p>
+            </Box>
+          </Grid>
+          
           </MotionGrid>
           </Grid>
           <Grid item xs={12} sm={6}>
