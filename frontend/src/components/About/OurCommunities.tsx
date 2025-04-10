@@ -148,7 +148,7 @@ const Communities = () => {
             />
             <Box sx={{ height: 'auto', padding: verySmallScreen ? '2%' : '4%', alignSelf: 'center' }}>
               <Box sx={{ ...styles.subheadingTop }} >
-                CSES E/acc
+                CSES E/Acc
               </Box>
               <p style={{ color: 'black', fontSize: 'clamp(8px, 2vw, 16px)', marginTop: verySmallScreen ? '2px' : '6px'}}>
                Drive innovation in AI and technology with us, creating solutions that enhance human life and strengthen communities!
