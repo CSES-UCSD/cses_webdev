@@ -282,14 +282,15 @@ const MeetTheTeam = () => {
           justifyContent="center"
           sx={{
             marginTop: {
-              xs: '8%',
-              sm: areFewMembers ? marginTopValue : '-90%',
-              md: marginTopValue,
+              xs: '8%', // Default margin for extra small screens
+              sm: membersDisplayed.length <= 3 ? '-30%' : '-70%', // Adjusted for small screens
+              md: membersDisplayed.length <= 3 ? '-30%' : '-60%', // Adjusted for medium screens
+              lg: membersDisplayed.length <= 3 ? '-15%' : '-45%', // Adjusted for large screens
             },
             marginBottom: {
-              xs: areFewMembers ? '10%' : '0%',
-              sm: areFewMembers ? '10%' : '0%',
-              md: areFewMembers ? '10%' : '0%',
+              xs: membersDisplayed.length <= 3 ? '10%' : '0%',
+              sm: membersDisplayed.length <= 3 ? '10%' : '0%',
+              md: membersDisplayed.length <= 3 ? '10%' : '0%',
             },
           }}
         >
@@ -300,7 +301,20 @@ const MeetTheTeam = () => {
             sm={20}
             md={15}
             justifyContent="space-between"
-            sx={{ alignItems: 'center' }}
+            sx={{ 
+              alignItems: 'center',
+              marginLeft:{
+                sm: '4%',
+                md: '6%',
+                lg: '10%'
+              },
+              marginRight:{
+                sm: '4%',
+                md: '6%',
+                lg: '10%'
+              }
+             }}
+             
           >
             <Grid item>
               <button
