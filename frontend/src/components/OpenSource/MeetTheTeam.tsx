@@ -27,6 +27,7 @@ import Vinod_Vairavaraj from '../../images/opensourceteam/Vinod Vairavaraj.jpeg'
 import William_Widjaja from '../../images/opensourceteam/William Widjaja.png';
 import Yashil_Vora from '../../images/opensourceteam/Yashil Vora.jpg';
 import Yixuan_Li from '../../images/opensourceteam/Yixuan Li.jpg';
+import Yash_Ravipati from '../../images/meettheteamImages/Yash_Ravipati.jpg'
 import placeholder from '../../images/opensourceteam/Placeholder.jpg'
 
 const categories = [
@@ -35,7 +36,7 @@ const categories = [
     name: 'Exec',
     members: [
       { name: 'Yashil Vora', title: 'President', photo: Yashil_Vora },
-      { name: 'Yash Ravipati', title: 'VP Technical', photo: placeholder },
+      { name: 'Yash Ravipati', title: 'VP Technical', photo: Yash_Ravipati },
       { name: 'Mishka Jethwani', title: 'VP Operations', photo: Mishka_Jethwani },
     ],
   },
