@@ -38,6 +38,7 @@ import Aryamun_Das from '../../images/meettheteamImages/Ryan_Das.jpeg';
 import Aditi_Bansal from '../../images/meettheteamImages/Aditi_Bansal.jpg';
 import Lucas_Hlaing from '../../images/meettheteamImages/Lucas_Hiaing.jpeg';
 import Varun_Parekh from '../../images/meettheteamImages/Varun_Parekh.jpg';
+import Yash_Ravipati from '../../images/meettheteamImages/Yash_Ravipati.jpg'
 
 const categories = [
   {
@@ -76,6 +77,7 @@ const categories = [
     members: [
       { name: 'Yashil Vora', title: 'President', photo: Yashil },
       { name: 'Mishka Jethwani', title: 'VP Operations', photo: Mishka },
+      { name: 'Yash Ravipati', title: 'VP Tech', photo: Yash_Ravipati},
       { name: 'Aryen Singhal', title: 'Engineering Manager', photo: Aryen_Singhal },
       { name: 'Chase Peterson', title: 'Engineering Manager', photo: Chase_Peterson },
       { name: 'Shree Venkatesh', title: 'Engineering Manager', photo: Shree_Venkatesh },
