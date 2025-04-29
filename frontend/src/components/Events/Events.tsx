@@ -130,13 +130,23 @@ const Events = () => {
         const data = await response.json();
         setTotalPagesPast(Math.ceil(data.length / 6));
         setPastEvents(data);
-  
-        // Extract years from past events and sort in descending order
-        const years = Array.from(new Set(data.map((event: EventData) => new Date(event.end_time).getFullYear())))
-          .sort((a, b) => (b as number) - (a as number)); // Explicit type casting for 'a' and 'b'
+
+        // Get the current year
+        const currentYear = new Date().getFullYear();
+
+        // Extract years from past events
+        const eventYears = new Set(data.map((event: EventData) => new Date(event.end_time).getFullYear()));
+
+        // Add the current year only if it's not already in the event years
+        if (!eventYears.has(currentYear)) {
+          eventYears.add(currentYear);
+        }
+
+        // Convert Set to an array and sort in descending order
+        const years = Array.from(eventYears).sort((a, b) => (b as number) - (a as number));
         setPastEventYears(years as number[]);
         
-  
+        
         paginate(data, 1, totalPagesPast, 'past');
       } catch (error) {
         console.error('Error fetching past events:', error);
@@ -406,7 +416,7 @@ const Events = () => {
           </div>
         )}
         {/* Buttons for filtering past events */}
-        {displayedPastEvents.length > 0 && (
+        {(
           <Grid item container mb={4} ml={4} justifyContent="flex-start">
             {/* <Button size="medium" text="2023" infocus={is2023Clicked} onClick={handle2023}></Button> */}
             
