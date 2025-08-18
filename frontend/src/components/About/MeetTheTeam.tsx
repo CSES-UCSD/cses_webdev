@@ -5,6 +5,8 @@ import next from '../../images/next.png';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import { buttonStyles } from '../Button/styles';
 import { aboutStyles } from './styles';
+import Linkedin_Icon from '../../images/linkedin-icon.svg';
+import Gmail_Icon from '../../images/gmail-icon.svg';
 import Sithu from '../../images/meettheteamImages/sithu.jpg';
 import Rahul from '../../images/meettheteamImages/rahul.png';
 import Yashil from '../../images/meettheteamImages/yashil vora.jpg';

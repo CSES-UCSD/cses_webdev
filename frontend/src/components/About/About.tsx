@@ -79,10 +79,11 @@ const About = () => {
                   </h1>
 
                   <p style={{ color: 'white', fontSize: 'clamp(15px, 3vw, 20px)' }}>
-                    CSE Society was the first CSE organization at UCSD starting over twenty years
-                    ago, and we have innovated over the years to stay relevant in serving the CSE
-                    community. We are open to all majors and individuals who are interested in
-                    computing!
+                  CSES is growing the largest student‑led tech community on campus. 
+                  Through our Dev, OpenSource, and Innovate divisions, we give students 
+                  the chance to build real‑world software, contribute to open‑source projects, 
+                  and explore cutting‑edge research. We celebrate curiosity, foster innovation, 
+                  and empower the next generation of tech leaders. 
                   </p>
                 </Box>
               </Grid>
