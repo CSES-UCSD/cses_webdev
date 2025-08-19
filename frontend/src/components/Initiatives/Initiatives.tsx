@@ -133,7 +133,22 @@ const Initiatives = () => {
                 alignItems: "center",
                 }}
             >
-                <Typography variant="body1" sx={{ lineHeight: 1.6, fontSize: 30}}>
+                <Typography 
+                  variant="body1" 
+                  sx={{ 
+                    lineHeight: 1.6, 
+                    fontSize: {
+                      xs: 20,
+                      sm: 24,
+                      md: 28,
+                      lg: 30,
+                    },
+                    textAlign: {
+                      xs: "center",
+                      sm: "left",
+                    },
+                  }}
+                >
                 {item.description}
                 </Typography>
             </Grid>
