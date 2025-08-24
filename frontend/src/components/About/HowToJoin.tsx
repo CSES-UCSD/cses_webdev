@@ -13,7 +13,7 @@ const HowtoJoin = () => {
       disableGutters
       sx={{
         width: '100%',
-        backgroundColor: 'rgba(0,0,0,0.8)',
+        backgroundColor: 'transparent',
         paddingY: '5%',
         textAlign: 'center',
       }}
@@ -93,10 +93,10 @@ const HowtoJoin = () => {
             border: '2px solid',
             borderImage: 'linear-gradient(to right, #FFCE00, #00F0FF) 1',
             borderRadius: '30px',
-            paddingX: '24px',
-            paddingY: '10px',
+            paddingX: '34px',
+            paddingY: '20px',
             color: 'white',
-            fontSize: '16px',
+            fontSize: '18px',
             textTransform: 'none',
             '&:hover': {
               backgroundColor: 'rgba(255, 255, 255, 0.05)',

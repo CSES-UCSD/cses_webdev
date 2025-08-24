@@ -13,7 +13,7 @@ const Communities = () => {
       disableGutters
       sx={{
         width: '100%',
-        backgroundColor: 'rgba(0,0,0,0.8)',
+        backgroundColor: 'transparent',
         paddingY: '5%',
         textAlign: 'center',
       }}

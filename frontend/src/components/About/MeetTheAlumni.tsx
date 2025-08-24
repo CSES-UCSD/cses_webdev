@@ -1,11 +1,10 @@
-import React, { useMemo, useState, useEffect } from "react";
+// MeetTheAlumni.tsx
+import React, { useMemo, useState } from "react";
 import {
   Box,
   Container,
   Grid,
   IconButton,
-  Tabs,
-  Tab,
   Typography,
 } from "@mui/material";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
@@ -13,48 +12,32 @@ import EmailIcon from "@mui/icons-material/Email";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 
-type Division = "general" | "dev" | "open-source" | "innovate";
 type Member = {
   name: string;
   company: string;
-  division: Division;
   linkedin?: string;
   email?: string;
   photo?: string;
 };
 
+type Props = {
+  title?: string;
+  items?: Member[];
+};
+
 const PLACEHOLDER_PHOTO = "https://placehold.co/400x400?text=Photo";
+const PAGE_SIZE = 6;
 
-// Mock data (all placeholders).
-const TEAM: Member[] = [
-  { name: "[name]", company: "[company]", division: "general" },
-  { name: "[name]", company: "[company]", division: "general" },
-  { name: "[name]", company: "[company]", division: "general" },
-  { name: "[name]", company: "[company]", division: "general" },
-  { name: "[name]", company: "[company]", division: "general" },
-  { name: "[name]", company: "[company]", division: "general" },
-  { name: "[name]", company: "[company]", division: "dev" },
-  { name: "[name]", company: "[company]", division: "dev" },
-  { name: "[name]", company: "[company]", division: "dev" },
-  { name: "[name]", company: "[company]", division: "open-source" },
-  { name: "[name]", company: "[company]", division: "open-source" },
-  { name: "[name]", company: "[company]", division: "innovate" },
-  { name: "[name]", company: "[company]", division: "innovate" },
-];
+// minimal placeholder data
+const DEFAULT_ALUMNI: Member[] = Array.from({ length: 12 }).map((_, i) => ({
+  name: "[name]",
+  company: "[company]",
+  photo: PLACEHOLDER_PHOTO,
+}));
 
-const DIVISIONS: { label: string; value: Division }[] = [
-  { label: "General", value: "general" },
-  { label: "Dev", value: "dev" },
-  { label: "Open Source", value: "open-source" },
-  { label: "Innovate", value: "innovate" },
-];
-
-const PAGE_SIZE = 6; // 3 x 2 grid like your mock
-
-function TeamCard({ m }: { m: Member }) {
+function Card({ m }: { m: Member }) {
   return (
     <Box sx={{ width: 260 }}>
-      {/* Photo + overlay */}
       <Box
         sx={{
           position: "relative",
@@ -73,7 +56,7 @@ function TeamCard({ m }: { m: Member }) {
           sx={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
         />
 
-        {/* Bottom-left: LinkedIn */}
+        {/* overlay icons */}
         <IconButton
           size="small"
           component="a"
@@ -93,7 +76,6 @@ function TeamCard({ m }: { m: Member }) {
           <LinkedInIcon fontSize="small" />
         </IconButton>
 
-        {/* Bottom-right: Email */}
         <IconButton
           size="small"
           component="a"
@@ -118,30 +100,18 @@ function TeamCard({ m }: { m: Member }) {
       >
         {m.name}
       </Typography>
-      <Typography
-        variant="body2"
-        sx={{ color: "white", textAlign: "center", opacity: 0.9 }}
-      >
+      <Typography variant="body2" sx={{ color: "white", textAlign: "center", opacity: 0.9 }}>
         {m.company}
       </Typography>
     </Box>
   );
 }
 
-export default function MeetTheTeam() {
-  const [tab, setTab] = useState<Division>("general");
+export default function MeetTheAlumni({ title = "Meet the Alumni", items = DEFAULT_ALUMNI }: Props) {
   const [page, setPage] = useState(0);
-
-  // Reset page when switching tabs
-  useEffect(() => setPage(0), [tab]);
-
-  const filtered = useMemo(
-    () => TEAM.filter((t) => t.division === tab),
-    [tab]
-  );
-  const pageCount = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
+  const pageCount = Math.max(1, Math.ceil(items.length / PAGE_SIZE));
   const start = page * PAGE_SIZE;
-  const visible = filtered.slice(start, start + PAGE_SIZE);
+  const visible = useMemo(() => items.slice(start, start + PAGE_SIZE), [items, start]);
 
   const canPrev = page > 0;
   const canNext = page < pageCount - 1;
@@ -159,55 +129,9 @@ export default function MeetTheTeam() {
           mb: 3,
         }}
       >
-        Meet the Team
+        {title}
       </Typography>
 
-      {/* Pill tabs */}
-      <Box
-        sx={{
-          display: "flex",
-          justifyContent: "center",
-          mb: 5,
-        }}
-      >
-        <Box
-          sx={{
-            border: "2px solid rgba(82,229,231,0.8)",
-            borderRadius: 9999,
-            px: 1,
-            overflow: "hidden",
-            maxWidth: 760,
-            width: "100%",
-          }}
-        >
-          <Tabs
-            value={tab}
-            onChange={(_, v) => setTab(v)}
-            variant="fullWidth"
-            textColor="inherit"
-            TabIndicatorProps={{ style: { display: "none" } }}
-            sx={{
-              "& .MuiTab-root": {
-                color: "white",
-                textTransform: "none",
-                fontWeight: 600,
-                minHeight: 44,
-                borderRight: "1px solid rgba(82,229,231,0.35)",
-              },
-              "& .MuiTab-root:last-of-type": { borderRight: "none" },
-              "& .Mui-selected": {
-                background: "rgba(82,229,231,0.18)",
-              },
-            }}
-          >
-            {DIVISIONS.map((d) => (
-              <Tab key={d.value} label={d.label} value={d.value} />
-            ))}
-          </Tabs>
-        </Box>
-      </Box>
-
-      {/* Pager with arrows */}
       <Box sx={{ position: "relative", px: { xs: 0, md: 6 } }}>
         <IconButton
           onClick={() => setPage((p) => Math.max(0, p - 1))}
@@ -220,7 +144,7 @@ export default function MeetTheTeam() {
             bgcolor: "rgba(0,0,0,0.4)",
             "&:hover": { bgcolor: "rgba(0,0,0,0.6)" },
           }}
-          aria-label="Previous"
+          aria-label="Previous alumni"
         >
           <ChevronLeftIcon />
         </IconButton>
@@ -236,28 +160,28 @@ export default function MeetTheTeam() {
             bgcolor: "rgba(0,0,0,0.4)",
             "&:hover": { bgcolor: "rgba(0,0,0,0.6)" },
           }}
-          aria-label="Next"
+          aria-label="Next alumni"
         >
           <ChevronRightIcon />
         </IconButton>
 
-        <Grid
-          container
-          spacing={4}
-          justifyContent="center"
-          alignItems="flex-start"
-        >
+        <Grid container spacing={4} justifyContent="center" alignItems="flex-start">
           {visible.map((m, i) => (
-            <Grid item key={`${m.division}-${i}`}>
-              <TeamCard m={m} />
-            </Grid>
+            <Grid item key={`${start + i}`}><Card m={m} /></Grid>
           ))}
-          {/* Fillers so layout stays even when last page has < 6 items */}
           {visible.length < PAGE_SIZE &&
             Array.from({ length: PAGE_SIZE - visible.length }).map((_, i) => (
               <Grid item key={`spacer-${i}`} sx={{ width: 260 }} />
             ))}
         </Grid>
+
+        {/* Optional tiny page indicator */}
+        <Typography
+          variant="caption"
+          sx={{ display: "block", textAlign: "center", color: "white", mt: 2, opacity: 0.8 }}
+        >
+          Page {page + 1} of {pageCount}
+        </Typography>
       </Box>
     </Container>
   );
