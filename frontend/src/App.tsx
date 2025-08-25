@@ -6,7 +6,7 @@ import Home from './components/Home/Home';
 import NavBar from './components/NavBar/NavBar';
 import Footer from './components/Footer/Footer';
 import About from './components/About/About';
-import Events from './components/Events/Events';
+import Events from './components/NewEvents/Events';
 import Opportunities from './components/Opportunities/Opportunities';
 import Membership from './components/Membership/Membership';
 import Login from './components/Login/Login';
