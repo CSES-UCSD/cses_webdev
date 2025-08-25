@@ -18,9 +18,8 @@ const Footer = () => {
     <Box
       sx={{
         backgroundColor: '#203A7E',
-        padding: { xs: '4px 40px 64px', md: '20px 40px 20px' },
+        padding: { xs: '0.5rem 2.5rem 1.25rem', md: '1.25rem 2.5rem 1.25rem' },
         color: 'white',
-        paddingBottom: { xs: '64px', md: '20px' },
       }}
     >
       {/* Desktop Layout */}
@@ -33,19 +32,26 @@ const Footer = () => {
       >
         {/* Logo */}
         <Box sx={{ display: 'flex', alignItems: 'center' }}>
-          <img
+          <Box
+            component="img"
             src={csesLogo}
             alt="logo"
-            style={{ height: '60px', marginRight: '10px' }}
+            sx={{
+              height: '3.75rem', // 60px equivalent
+              maxWidth: '100%',
+              mr: 1.25, // 10px
+              objectFit: 'contain',
+            }}
           />
         </Box>
 
         {/* Center Contact Info */}
-        <Typography sx={{ fontSize: '18px', fontStyle: 'italic' }}>
+        <Typography sx={{ fontSize: '1.125rem', fontStyle: 'italic' }}>
           For all inquiries, contact{' '}
           <Link href="mailto:cses@ucsd.edu" color="inherit">
             cses@ucsd.edu
-          </Link>.
+          </Link>
+          .
         </Typography>
 
         {/* Social Icons */}
@@ -56,12 +62,16 @@ const Footer = () => {
               href={link}
               target="_blank"
               rel="noopener noreferrer"
+              sx={{
+                display: 'inline-block',
+                '& img': {
+                  width: '2rem', // 32px
+                  height: '2rem',
+                  objectFit: 'contain',
+                },
+              }}
             >
-              <img
-                src={logo}
-                alt="social"
-                style={{ width: '32px', height: '32px' }}
-              />
+              <img src={logo} alt="social" />
             </Link>
           ))}
         </Box>
@@ -73,17 +83,22 @@ const Footer = () => {
           display: { xs: 'flex', md: 'none' },
           alignItems: 'center',
           justifyContent: 'space-between',
-          flexDirection: 'row',
           flexWrap: 'nowrap',
-          paddingTop: 2,
+          pt: 2,
         }}
       >
         {/* Logo */}
         <Box sx={{ display: 'flex', alignItems: 'center' }}>
-          <img
+          <Box
+            component="img"
             src={csesLogo}
             alt="logo"
-            style={{ height: '50px', marginRight: '10px' }}
+            sx={{
+              height: '3.125rem', // 50px equivalent
+              maxWidth: '100%',
+              mr: 1.25, // 10px
+              objectFit: 'contain',
+            }}
           />
         </Box>
 
@@ -95,12 +110,16 @@ const Footer = () => {
               href={link}
               target="_blank"
               rel="noopener noreferrer"
+              sx={{
+                display: 'inline-block',
+                '& img': {
+                  width: '1.75rem', // 28px
+                  height: '1.75rem',
+                  objectFit: 'contain',
+                },
+              }}
             >
-              <img
-                src={logo}
-                alt="social"
-                style={{ width: '28px', height: '28px' }}
-              />
+              <img src={logo} alt="social" />
             </Link>
           ))}
         </Box>
