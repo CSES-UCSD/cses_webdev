@@ -12,6 +12,8 @@ import Membership from './components/Membership/Membership';
 import Login from './components/Login/Login';
 import EditForm from './components/Login/EditProfile';
 import Initiatives from './components/Initiatives/Initiatives';
+import TemplateWebsite from './components/TemplateWebsite/TemplateWebsite';
+import OpenSource from './components/OpenSource/OpenSource';
 
 function App() {
   return (
@@ -28,6 +30,8 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/editprofile" element={<EditForm />} />
           <Route path="/initiatives" element={<Initiatives />} />
+          <Route path="/templatewebsite" element={<TemplateWebsite />} />
+          <Route path="/opensource" element={<OpenSource />} />
         </Routes>
         <Footer />
       </Container>
