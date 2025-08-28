@@ -38,8 +38,11 @@ const EventsPage = () => {
                     axios.get<Event[]>(upcomingEventsEndpoint),
                     axios.get<Event[]>(pastEventsEndpoint),
                 ]);
-            setUpcomingEvents(upcomingRes.data);
-            setPastEvents(pastRes.data);
+                const sortedPastEvents = pastRes.data.sort((a, b) => 
+                    new Date(b.start_time).getTime() - new Date(a.start_time).getTime()
+                );
+                setUpcomingEvents(upcomingRes.data);
+                setPastEvents(sortedPastEvents);
             } catch (error) {
                 console.error("Error fetching events:", error);
             }
@@ -48,113 +51,102 @@ const EventsPage = () => {
         fetchEvents();
     }, []);
 
-    const toPST = (iso: string) =>
-        new Date(new Date(iso).toLocaleString("en-US", { timeZone: "America/Los_Angeles" })
-    );
-
     return (
-        <Box sx={{ p: 4, mt: 12 }}>
-        <Typography
-        variant="h3"
-        align="center"
-        fontWeight="bold"
-        sx={{ mb: 2, color: "white" }}
-        >
-            Events
-        </Typography>
-
-        {/* Categories */}
-        <Box
-            sx={{
-            textAlign: "center",
-            mb: 3,
-            mt: 4,
-            display: "flex",
-            justifyContent: "center",
-            gap: 4,
-            flexWrap: "wrap",
-            }}
-        >
-        {categories.map((cat) => {
-            const isSelected = selectedCategory === cat;
-            const color = categoryColors[cat];
-            return (
-                <Button
-                    key={cat}
-                    onClick={() =>
-                    setSelectedCategory(isSelected ? null : cat)
-                    }
-                    variant={isSelected ? "contained" : "outlined"}
-                    sx={{
-                    minWidth: 200,
-                    borderRadius: 3,
-                    textTransform: "none",
-                    fontWeight: "bold",
-                    fontSize: 24,
-                    borderColor: color,
-                    color: isSelected ? "white" : color,
-                    bgcolor: isSelected ? color : "transparent",
-                    "&:hover": {
-                    bgcolor: isSelected ? color : "rgba(255,255,255,0.3)",
-                    },
-                    }}
-                >
-                    {cat}
-                </Button>
-            );
-        })}
-        </Box>
-        {/* Past Events */}
-        <Box sx={{ px: { xs: 2, sm: 4, md: 8 } }}>
+        <Box sx={{ p: { xs: 2, sm: 4 }, mt: 12, maxWidth: "1600px", mx: "auto" }}>
             <Typography
                 variant="h3"
                 align="center"
                 fontWeight="bold"
-                sx={{ mb: 4, color: "white" }}
+                sx={{ mb: 2, color: "white" }}
             >
-                Past Events
+                Events
             </Typography>
 
+            {/* Categories */}
             <Box
                 sx={{
-                display: "flex",
-                flexWrap: "wrap",
-                justifyContent: "center",
-                gap: 3, // spacing between cards
+                    textAlign: "center",
+                    mb: 3,
+                    mt: 4,
+                    display: "flex",
+                    justifyContent: "center",
+                    gap: 3,
+                    flexWrap: "wrap",
                 }}
             >
-                {pastEvents.length > 0 ? (
-                pastEvents.map((event) => (
-                    <Box
-                    key={event._id}
-                    sx={{
-                        width: 320, // fixed card width
-                        flex: "0 0 auto", // prevents stretching
-                    }}
-                    >
-                    <EventCard
-                        title={event.title}
-                        startDate={event.start_time}
-                        endDate={event.end_time}
-                        location={event.location}
-                        calendar_link={event.calendar_link}
-                        description={event.description}
-                        instagram_link={event.instagram_link}
-                        _id={event._id}
-                    />
-                    </Box>
-                ))
-                ) : (
-                <Typography sx={{ color: "white", mt: 2 }} align="center">
-                    No past events yet.
+                {categories.map((cat) => {
+                    const isSelected = selectedCategory === cat;
+                    const color = categoryColors[cat];
+                    return (
+                        <Button
+                            key={cat}
+                            onClick={() =>
+                                setSelectedCategory(isSelected ? null : cat)
+                            }
+                            variant={isSelected ? "contained" : "outlined"}
+                            sx={{
+                                minWidth: {
+                                    xs: "120px",
+                                    sm: "160px",
+                                    m: "200px",
+                                    lg: "240px"
+                                },
+                                borderRadius: 3,
+                                textTransform: "none",
+                                fontWeight: "bold",
+                                fontSize: { xs: "0.8rem", sm: "1rem", lg: "1.5rem"},
+                                borderColor: color,
+                                color: isSelected ? "white" : color,
+                                bgcolor: isSelected ? color : "transparent",
+                                "&:hover": {
+                                    bgcolor: isSelected ? color : "rgba(255,255,255,0.3)",
+                                },
+                            }}
+                        >
+                            {cat}
+                        </Button>
+                    );
+                })}
+            </Box>
+
+            {/* Past Events */}
+            <Box sx={{ textAlign: "center", px: 0 }}>
+                <Typography
+                    variant="h3"
+                    align="center"
+                    fontWeight="bold"
+                    sx={{ mb: 4, color: "white" }}
+                >
+                    Past Events
                 </Typography>
-                )}
+
+                <Grid container spacing={3} justifyContent="center">
+                    {pastEvents.length > 0 ? (
+                        pastEvents.map((event) => (
+                            <Grid item key={event._id}>
+                                <Box sx={{ width: 350, mr: 4 }}>
+                                    <EventCard
+                                        title={event.title}
+                                        startDate={event.start_time}
+                                        endDate={event.end_time}
+                                        location={event.location}
+                                        calendar_link={event.calendar_link}
+                                        description={event.description}
+                                        instagram_link={event.instagram_link}
+                                        _id={event._id}
+                                    />
+                                </Box>
+                            </Grid>
+                        ))
+                    ) : (
+                        <Typography sx={{ color: "white", mt: 2 }} align="center">
+                            No past events yet.
+                        </Typography>
+                    )}
+                </Grid>
             </Box>
         </Box>
-    </Box>
-  );
+    );
 };
 
 export default EventsPage;
-
-
