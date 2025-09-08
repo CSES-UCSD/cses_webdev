@@ -63,7 +63,7 @@ const NavBar = () => {
 
   return (
     <div>
-      <AppBar sx={{ backgroundColor: '#030E5D' }} position="static" elevation={0}>
+      <AppBar sx={{ backgroundColor: '#030E5D' }} position="fixed" elevation={0}>
         <Toolbar>
           <Link to="/">
             <img
