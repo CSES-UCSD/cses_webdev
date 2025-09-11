@@ -22,7 +22,7 @@ const HowtoJoin = () => {
         variant="h3"
         sx={{
           ...styles.mainTitleTop,
-          fontSize: 'clamp(32px, 8vw, 65px)',
+          fontSize: 'clamp(40px, 9vw, 80px)',
           color: 'white',
           marginBottom: '3%',
         }}
@@ -36,7 +36,7 @@ const HowtoJoin = () => {
         justifyContent="center"
         alignItems="center"
         direction={isMobile ? 'column' : 'row'}
-        sx={{ paddingX: { xs: '4%', sm: '6%' } }}
+        sx={{ paddingX: { xs: '2%', sm: '3%' } }}
       >
         {/* Image */}
         <Grid item xs={12} sm={5}>
@@ -46,7 +46,7 @@ const HowtoJoin = () => {
             alt="How to Join"
             sx={{
               width: '100%',
-              maxWidth: '350px',
+              maxWidth: '460px',
               borderRadius: '8px',
               border: '3px solid',
               borderImage: 'linear-gradient(45deg, #FFCE00, #00F0FF) 1',
@@ -62,7 +62,7 @@ const HowtoJoin = () => {
             variant="body1"
             sx={{
               color: 'white',
-              fontSize: 'clamp(15px, 3vw, 20px)',
+              fontSize: 'clamp(18px, 2.4vw, 22px)',
               maxWidth: '500px',
               margin: '0 auto',
             }}
@@ -73,7 +73,7 @@ const HowtoJoin = () => {
             variant="body1"
             sx={{
               color: 'white',
-              fontSize: 'clamp(15px, 3vw, 20px)',
+              fontSize: 'clamp(18px, 2.4vw, 22px)',
               marginTop: '20px',
               maxWidth: '500px',
               marginX: 'auto',
@@ -93,10 +93,10 @@ const HowtoJoin = () => {
             border: '2px solid',
             borderImage: 'linear-gradient(to right, #FFCE00, #00F0FF) 1',
             borderRadius: '30px',
-            paddingX: '34px',
-            paddingY: '20px',
+            paddingX: '40px',
+            paddingY: '22px',
             color: 'white',
-            fontSize: '18px',
+            fontSize: '20px',
             textTransform: 'none',
             '&:hover': {
               backgroundColor: 'rgba(255, 255, 255, 0.05)',

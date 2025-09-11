@@ -12,6 +12,7 @@ import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import EmailIcon from "@mui/icons-material/Email";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
+import { gradientImgWrapper, gradientImg } from "./styles";
 
 type Division = "general" | "dev" | "open-source" | "innovate";
 type Member = {
@@ -49,67 +50,74 @@ const DIVISIONS: { label: string; value: Division }[] = [
   { label: "Innovate", value: "innovate" },
 ];
 
-const PAGE_SIZE = 6; // 3 x 2 grid like your mock
+const PAGE_SIZE = 6; // 3 x 2 grid
 
 function TeamCard({ m }: { m: Member }) {
   return (
     <Box sx={{ width: 260 }}>
-      {/* Photo + overlay */}
-      <Box
-        sx={{
-          position: "relative",
-          width: "100%",
-          aspectRatio: "1 / 1",
-          borderRadius: 2,
-          overflow: "hidden",
-          border: "2px solid rgba(255,255,255,0.25)",
-          bgcolor: "rgba(255,255,255,0.04)",
-        }}
-      >
+      {/* Gradient border wrapper */}
+      <Box sx={gradientImgWrapper}>
+        {/* Surface keeps square ratio and lets us overlay icons */}
         <Box
-          component="img"
-          src={m.photo || PLACEHOLDER_PHOTO}
-          alt={m.name}
-          sx={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
-        />
-
-        {/* Bottom-left: LinkedIn */}
-        <IconButton
-          size="small"
-          component="a"
-          href={m.linkedin || "#"}
-          target={m.linkedin ? "_blank" : undefined}
-          rel={m.linkedin ? "noopener noreferrer" : undefined}
-          disabled={!m.linkedin}
           sx={{
-            position: "absolute",
-            left: 8,
-            bottom: 8,
-            bgcolor: "rgba(0,0,0,0.55)",
-            "&:hover": { bgcolor: "rgba(0,0,0,0.75)" },
+            position: "relative",
+            width: "100%",
+            aspectRatio: "1 / 1",
+            overflow: "hidden",
+            bgcolor: "rgba(255,255,255,0.04)",
+            borderRadius: 0, // flat corners
           }}
-          aria-label={`LinkedIn ${m.name}`}
         >
-          <LinkedInIcon fontSize="small" />
-        </IconButton>
+          <Box
+            component="img"
+            src={m.photo || PLACEHOLDER_PHOTO}
+            alt={m.name}
+            sx={{
+              ...gradientImg,
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+            }}
+          />
 
-        {/* Bottom-right: Email */}
-        <IconButton
-          size="small"
-          component="a"
-          href={m.email ? `mailto:${m.email}` : "#"}
-          disabled={!m.email}
-          sx={{
-            position: "absolute",
-            right: 8,
-            bottom: 8,
-            bgcolor: "rgba(0,0,0,0.55)",
-            "&:hover": { bgcolor: "rgba(0,0,0,0.75)" },
-          }}
-          aria-label={`Email ${m.name}`}
-        >
-          <EmailIcon fontSize="small" />
-        </IconButton>
+          {/* Bottom-left: LinkedIn */}
+          <IconButton
+            size="small"
+            component="a"
+            href={m.linkedin || "#"}
+            target={m.linkedin ? "_blank" : undefined}
+            rel={m.linkedin ? "noopener noreferrer" : undefined}
+            disabled={!m.linkedin}
+            sx={{
+              position: "absolute",
+              left: 8,
+              bottom: 8,
+              bgcolor: "rgba(0,0,0,0.55)",
+              "&:hover": { bgcolor: "rgba(0,0,0,0.75)" },
+            }}
+            aria-label={`LinkedIn ${m.name}`}
+          >
+            <LinkedInIcon fontSize="small" />
+          </IconButton>
+
+          {/* Bottom-right: Email */}
+          <IconButton
+            size="small"
+            component="a"
+            href={m.email ? `mailto:${m.email}` : "#"}
+            disabled={!m.email}
+            sx={{
+              position: "absolute",
+              right: 8,
+              bottom: 8,
+              bgcolor: "rgba(0,0,0,0.55)",
+              "&:hover": { bgcolor: "rgba(0,0,0,0.75)" },
+            }}
+            aria-label={`Email ${m.name}`}
+          >
+            <EmailIcon fontSize="small" />
+          </IconButton>
+        </Box>
       </Box>
 
       <Typography
@@ -132,13 +140,9 @@ export default function MeetTheTeam() {
   const [tab, setTab] = useState<Division>("general");
   const [page, setPage] = useState(0);
 
-  // Reset page when switching tabs
   useEffect(() => setPage(0), [tab]);
 
-  const filtered = useMemo(
-    () => TEAM.filter((t) => t.division === tab),
-    [tab]
-  );
+  const filtered = useMemo(() => TEAM.filter((t) => t.division === tab), [tab]);
   const pageCount = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
   const start = page * PAGE_SIZE;
   const visible = filtered.slice(start, start + PAGE_SIZE);
@@ -163,13 +167,7 @@ export default function MeetTheTeam() {
       </Typography>
 
       {/* Pill tabs */}
-      <Box
-        sx={{
-          display: "flex",
-          justifyContent: "center",
-          mb: 5,
-        }}
-      >
+      <Box sx={{ display: "flex", justifyContent: "center", mb: 5 }}>
         <Box
           sx={{
             border: "2px solid rgba(82,229,231,0.8)",
@@ -195,9 +193,7 @@ export default function MeetTheTeam() {
                 borderRight: "1px solid rgba(82,229,231,0.35)",
               },
               "& .MuiTab-root:last-of-type": { borderRight: "none" },
-              "& .Mui-selected": {
-                background: "rgba(82,229,231,0.18)",
-              },
+              "& .Mui-selected": { background: "rgba(82,229,231,0.18)" },
             }}
           >
             {DIVISIONS.map((d) => (
@@ -218,6 +214,7 @@ export default function MeetTheTeam() {
             top: "40%",
             transform: "translateY(-50%)",
             bgcolor: "rgba(0,0,0,0.4)",
+            color: 'white',
             "&:hover": { bgcolor: "rgba(0,0,0,0.6)" },
           }}
           aria-label="Previous"
@@ -234,6 +231,7 @@ export default function MeetTheTeam() {
             top: "40%",
             transform: "translateY(-50%)",
             bgcolor: "rgba(0,0,0,0.4)",
+            color: 'white',
             "&:hover": { bgcolor: "rgba(0,0,0,0.6)" },
           }}
           aria-label="Next"
@@ -241,18 +239,12 @@ export default function MeetTheTeam() {
           <ChevronRightIcon />
         </IconButton>
 
-        <Grid
-          container
-          spacing={4}
-          justifyContent="center"
-          alignItems="flex-start"
-        >
+        <Grid container spacing={4} justifyContent="center" alignItems="flex-start">
           {visible.map((m, i) => (
             <Grid item key={`${m.division}-${i}`}>
               <TeamCard m={m} />
             </Grid>
           ))}
-          {/* Fillers so layout stays even when last page has < 6 items */}
           {visible.length < PAGE_SIZE &&
             Array.from({ length: PAGE_SIZE - visible.length }).map((_, i) => (
               <Grid item key={`spacer-${i}`} sx={{ width: 260 }} />

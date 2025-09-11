@@ -1,16 +1,10 @@
-// MeetTheAlumni.tsx
 import React, { useMemo, useState } from "react";
-import {
-  Box,
-  Container,
-  Grid,
-  IconButton,
-  Typography,
-} from "@mui/material";
+import { Box, Container, Grid, IconButton, Typography } from "@mui/material";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import EmailIcon from "@mui/icons-material/Email";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
+import { gradientImgWrapper, gradientImg } from "./styles";
 
 type Member = {
   name: string;
@@ -28,8 +22,7 @@ type Props = {
 const PLACEHOLDER_PHOTO = "https://placehold.co/400x400?text=Photo";
 const PAGE_SIZE = 6;
 
-// minimal placeholder data
-const DEFAULT_ALUMNI: Member[] = Array.from({ length: 12 }).map((_, i) => ({
+const DEFAULT_ALUMNI: Member[] = Array.from({ length: 12 }).map(() => ({
   name: "[name]",
   company: "[company]",
   photo: PLACEHOLDER_PHOTO,
@@ -38,60 +31,67 @@ const DEFAULT_ALUMNI: Member[] = Array.from({ length: 12 }).map((_, i) => ({
 function Card({ m }: { m: Member }) {
   return (
     <Box sx={{ width: 260 }}>
-      <Box
-        sx={{
-          position: "relative",
-          width: "100%",
-          aspectRatio: "1 / 1",
-          borderRadius: 2,
-          overflow: "hidden",
-          border: "2px solid rgba(255,255,255,0.25)",
-          bgcolor: "rgba(255,255,255,0.04)",
-        }}
-      >
+      {/* Gradient border wrapper */}
+      <Box sx={gradientImgWrapper}>
         <Box
-          component="img"
-          src={m.photo || PLACEHOLDER_PHOTO}
-          alt={m.name}
-          sx={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }}
-        />
-
-        {/* overlay icons */}
-        <IconButton
-          size="small"
-          component="a"
-          href={m.linkedin || "#"}
-          target={m.linkedin ? "_blank" : undefined}
-          rel={m.linkedin ? "noopener noreferrer" : undefined}
-          disabled={!m.linkedin}
           sx={{
-            position: "absolute",
-            left: 8,
-            bottom: 8,
-            bgcolor: "rgba(0,0,0,0.55)",
-            "&:hover": { bgcolor: "rgba(0,0,0,0.75)" },
+            position: "relative",
+            width: "100%",
+            aspectRatio: "1 / 1",
+            overflow: "hidden",
+            bgcolor: "rgba(255,255,255,0.04)",
+            borderRadius: 0,
           }}
-          aria-label={`LinkedIn ${m.name}`}
         >
-          <LinkedInIcon fontSize="small" />
-        </IconButton>
+          <Box
+            component="img"
+            src={m.photo || PLACEHOLDER_PHOTO}
+            alt={m.name}
+            sx={{
+              ...gradientImg,
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+            }}
+          />
 
-        <IconButton
-          size="small"
-          component="a"
-          href={m.email ? `mailto:${m.email}` : "#"}
-          disabled={!m.email}
-          sx={{
-            position: "absolute",
-            right: 8,
-            bottom: 8,
-            bgcolor: "rgba(0,0,0,0.55)",
-            "&:hover": { bgcolor: "rgba(0,0,0,0.75)" },
-          }}
-          aria-label={`Email ${m.name}`}
-        >
-          <EmailIcon fontSize="small" />
-        </IconButton>
+          {/* overlay icons */}
+          <IconButton
+            size="small"
+            component="a"
+            href={m.linkedin || "#"}
+            target={m.linkedin ? "_blank" : undefined}
+            rel={m.linkedin ? "noopener noreferrer" : undefined}
+            disabled={!m.linkedin}
+            sx={{
+              position: "absolute",
+              left: 8,
+              bottom: 8,
+              bgcolor: "rgba(0,0,0,0.55)",
+              "&:hover": { bgcolor: "rgba(0,0,0,0.75)" },
+            }}
+            aria-label={`LinkedIn ${m.name}`}
+          >
+            <LinkedInIcon fontSize="small" />
+          </IconButton>
+
+          <IconButton
+            size="small"
+            component="a"
+            href={m.email ? `mailto:${m.email}` : "#"}
+            disabled={!m.email}
+            sx={{
+              position: "absolute",
+              right: 8,
+              bottom: 8,
+              bgcolor: "rgba(0,0,0,0.55)",
+              "&:hover": { bgcolor: "rgba(0,0,0,0.75)" },
+            }}
+            aria-label={`Email ${m.name}`}
+          >
+            <EmailIcon fontSize="small" />
+          </IconButton>
+        </Box>
       </Box>
 
       <Typography
@@ -100,14 +100,20 @@ function Card({ m }: { m: Member }) {
       >
         {m.name}
       </Typography>
-      <Typography variant="body2" sx={{ color: "white", textAlign: "center", opacity: 0.9 }}>
+      <Typography
+        variant="body2"
+        sx={{ color: "white", textAlign: "center", opacity: 0.9 }}
+      >
         {m.company}
       </Typography>
     </Box>
   );
 }
 
-export default function MeetTheAlumni({ title = "Meet the Alumni", items = DEFAULT_ALUMNI }: Props) {
+export default function MeetTheAlumni({
+  title = "Meet the Alumni",
+  items = DEFAULT_ALUMNI,
+}: Props) {
   const [page, setPage] = useState(0);
   const pageCount = Math.max(1, Math.ceil(items.length / PAGE_SIZE));
   const start = page * PAGE_SIZE;
@@ -142,6 +148,7 @@ export default function MeetTheAlumni({ title = "Meet the Alumni", items = DEFAU
             top: "40%",
             transform: "translateY(-50%)",
             bgcolor: "rgba(0,0,0,0.4)",
+            color: 'white',
             "&:hover": { bgcolor: "rgba(0,0,0,0.6)" },
           }}
           aria-label="Previous alumni"
@@ -158,6 +165,7 @@ export default function MeetTheAlumni({ title = "Meet the Alumni", items = DEFAU
             top: "40%",
             transform: "translateY(-50%)",
             bgcolor: "rgba(0,0,0,0.4)",
+            color: 'white',
             "&:hover": { bgcolor: "rgba(0,0,0,0.6)" },
           }}
           aria-label="Next alumni"
@@ -167,7 +175,9 @@ export default function MeetTheAlumni({ title = "Meet the Alumni", items = DEFAU
 
         <Grid container spacing={4} justifyContent="center" alignItems="flex-start">
           {visible.map((m, i) => (
-            <Grid item key={`${start + i}`}><Card m={m} /></Grid>
+            <Grid item key={`${start + i}`}>
+              <Card m={m} />
+            </Grid>
           ))}
           {visible.length < PAGE_SIZE &&
             Array.from({ length: PAGE_SIZE - visible.length }).map((_, i) => (
@@ -175,7 +185,6 @@ export default function MeetTheAlumni({ title = "Meet the Alumni", items = DEFAU
             ))}
         </Grid>
 
-        {/* Optional tiny page indicator */}
         <Typography
           variant="caption"
           sx={{ display: "block", textAlign: "center", color: "white", mt: 2, opacity: 0.8 }}

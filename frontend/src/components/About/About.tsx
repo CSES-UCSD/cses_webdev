@@ -1,6 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Container, Box, Grid, createTheme, useMediaQuery } from '@mui/material';
-import { aboutStyles } from './styles';
+import {
+  aboutStyles,
+  gradientImgWrapper,
+  gradientImg,
+  fullBleedGradientSection,
+  aboutImageSize,
+} from './styles';
 import MeetTheTeam from './MeetTheTeam';
 import Communities from './OurCommunities';
 import HowtoJoin from './HowToJoin';
@@ -8,8 +14,18 @@ import MeetTheAlumni from './MeetTheAlumni';
 import Typewriter from './TypeWriter';
 import { motion } from 'framer-motion';
 
-const PLACEHOLDER_BOOKS = 'https://placehold.co/200x200?text=Placeholder';
-const PLACEHOLDER_LIGHTBULB = 'https://placehold.co/300x300?text=Placeholder';
+const PLACEHOLDER_GENERAL = 'https://placehold.co/200x200?text=Placeholder';
+
+const COMMUNITY_COLORS = {
+  forefront: '#eab010',
+  dev: '#52d4b7',
+  openSource: '#64c3e3',
+  innovate: '#725df0',
+};
+
+const Colored: React.FC<{ color: string; children: React.ReactNode }> = ({ color, children }) => (
+  <span style={{ color, fontWeight: 700 }}>{children}</span>
+);
 
 const About = () => {
   const styles = aboutStyles();
@@ -39,54 +55,62 @@ const About = () => {
   return (
     <Box sx={{ position: 'relative', overflow: 'hidden' }}>
       <Box sx={styles.root}>
-        <Box sx={styles.backgroundImage}></Box>
+        <Box sx={styles.backgroundImage} />
 
         <Container maxWidth="xl" sx={styles.body}>
-          {/* WHAT IS CSES — text only with light overlay */}
-          <Box sx={{ position: 'relative', mx: 'calc(50% - 50vw)', width: '100vw' }}>
-            {/* light white/blue wash */}
-            <Box
-              aria-hidden
-              sx={{
-                position: 'absolute',
-                inset: 0,
-                pointerEvents: 'none',
-                background:
-                  '#47518a',
-              }}
-            />
-            {/* content stays centered to your page width */}
-            <Container
-              maxWidth="xl"
-              sx={{ position: 'relative', zIndex: 1, py: { xs: 8, md: 12 } }}
-            >
-              <h1
-                style={{
-                  fontFamily: 'Chakra Petch',
-                  fontSize: 'clamp(32px, 8vw, 65px)',
-                  fontWeight: 700,
-                  margin: 0,
-                  color: 'white',
-                  textAlign: 'left',
+          {/* WHAT IS CSES — full-bleed band with centered copy + gradient border */}
+          <Box sx={fullBleedGradientSection}>
+            <Box className="section-surface">
+              {/* background wash */}
+              <Box
+                aria-hidden
+                sx={{
+                  position: 'absolute',
+                  inset: 0,
+                  pointerEvents: 'none',
+                  background: '#47518a',
                 }}
+              />
+              {/* content */}
+              <Container
+                maxWidth="xl"
+                sx={{ position: 'relative', zIndex: 1, py: { xs: 8, md: 12 }, textAlign: 'center' }}
               >
-                <Typewriter text="WHAT IS CSES?" speed={200} />
-              </h1>
-              <p
-                style={{
-                  color: 'white',
-                  fontSize: 'clamp(15px, 3vw, 20px)',
-                  lineHeight: 1.7,
-                  marginTop: 12,
-                }}
-              >
-                CSES is growing the largest student-led tech community on campus. Through our Dev,
-                OpenSource, and Innovate divisions, we give students the chance to build real-world
-                software, contribute to open-source projects, and explore cutting-edge research. We
-                celebrate curiosity, foster innovation, and empower the next generation of tech
-                leaders.
-              </p>
-            </Container>
+                <h1
+                  style={{
+                    fontFamily: 'Chakra Petch',
+                    fontSize: 'clamp(32px, 8vw, 65px)',
+                    fontWeight: 700,
+                    margin: 0,
+                    color: 'white',
+                  }}
+                >
+                  <Typewriter text="WHAT IS CSES?" speed={200} />
+                </h1>
+
+                <p
+                  style={{
+                    color: 'white',
+                    fontSize: 'clamp(15px, 3vw, 20px)',
+                    lineHeight: 1.7,
+                    marginTop: 12,
+                    maxWidth: 1000,
+                    marginLeft: 'auto',
+                    marginRight: 'auto',
+                  }}
+                >
+                  For over 21 years, CSES has been at the
+                  <Colored color={COMMUNITY_COLORS.forefront}> forefront</Colored> of undergraduate
+                  computing, growing the largest student-led tech community on campus. Through our{' '}
+                  <Colored color={COMMUNITY_COLORS.dev}>Dev</Colored>,{' '}
+                  <Colored color={COMMUNITY_COLORS.openSource}>OpenSource</Colored>, and{' '}
+                  <Colored color={COMMUNITY_COLORS.innovate}>Innovate</Colored> divisions, we give
+                  students the chance to build real-world software, contribute to open-source
+                  projects, and explore cutting-edge research. We celebrate curiosity, foster
+                  innovation, and empower the next generation of tech leaders.
+                </p>
+              </Container>
+            </Box>
           </Box>
 
           <h1
@@ -95,13 +119,12 @@ const About = () => {
               marginTop: '10%',
               textAlign: 'center',
               fontFamily: 'Chakra Petch',
-              fontSize: 'clamp(32px, 8vw, 65px)',
+              fontSize: 'clamp(40px, 9vw, 80px)',
               fontWeight: 700,
             }}
           >
             WHAT DO WE DO?
           </h1>
-
           <Grid
             container
             sx={{ mt: '10%', display: 'flex', justifyContent: { xs: 'center', sm: 'center' } }}
@@ -117,9 +140,15 @@ const About = () => {
                 initial={{ x: -100, opacity: 0 }}
                 animate={isInView ? { x: 0, opacity: 1 } : {}}
                 transition={{ type: 'spring', stiffness: 50, damping: 20, mass: 1, delay: 0.2 }}
-                style={{ width: '100%', display: 'flex', justifyContent: 'center' }}
+                style={{ display: 'flex', justifyContent: 'center' }}
               >
-                <img src={PLACEHOLDER_BOOKS} alt="placeholder" style={{ width: '80%' }} />
+                {/* Placeholder image with gradient border  */}
+                <Box
+                  component="img"
+                  src={PLACEHOLDER_GENERAL}
+                  alt="placeholder"
+                  sx={{ display: 'block', width: { xs: 260, sm: 340, md: 420 }, height: { xs: 260, sm: 340, md: 420 }, objectFit: 'cover', ml: {md: -20} }}
+                />
               </motion.div>
             </Grid>
 
@@ -132,7 +161,7 @@ const About = () => {
               >
                 <Box sx={{ color: 'white', textAlign: { lg: 'left', sm: 'left', xs: 'center' } }}>
                   <h1>Our History</h1>
-                  <p style={{ color: 'white', fontSize: 'clamp(15px, 3vw, 20px)' }}>
+                  <p style={{ color: 'white', fontSize: 'clamp(18px, 2.4vw, 22px)' }}>
                     CSES was the first CSE organization at UCSD starting over twenty years ago, and
                     we have innovated over the years to stay relevant in serving the CSE community.
                     We are open to all majors and individuals who are interested in computing!
@@ -141,7 +170,6 @@ const About = () => {
               </motion.div>
             </Grid>
           </Grid>
-
           <Grid
             container
             justifyContent="center"
@@ -163,7 +191,7 @@ const About = () => {
                 <p
                   style={{
                     color: 'white',
-                    fontSize: 'clamp(15px, 3vw, 20px)',
+                    fontSize: 'clamp(18px, 2.4vw, 22px)',
                     textAlign: isSmallScreen ? 'center' : 'left',
                   }}
                 >
@@ -175,22 +203,26 @@ const About = () => {
               </motion.div>
             </Grid>
 
-            <Grid item sm={4} md={3} lg={3} maxHeight={'100%'}>
+            <Grid item sm={4} md={3} lg={3} maxHeight="100%">
               <motion.div
                 ref={ref}
                 initial={{ x: 100, opacity: 0 }}
                 animate={isInView ? { x: 0, opacity: 1 } : {}}
                 transition={{ type: 'spring', stiffness: 50, damping: 20, mass: 1, delay: 0.6 }}
               >
-                <img src={PLACEHOLDER_LIGHTBULB} alt="placeholder" />
+                {/* Placeholder image with gradient border */}
+                <Box
+                  component="img"
+                  src={PLACEHOLDER_GENERAL}
+                  alt="placeholder"
+                  sx={{ display: 'block', width: { xs: 260, sm: 340, md: 420 }, height: { xs: 260, sm: 340, md: 420 }, objectFit: 'cover', ml: {xs: +5} }}
+                />
               </motion.div>
             </Grid>
           </Grid>
-
           <HowtoJoin />
           <Communities />
           <MeetTheTeam />
-          {/* Add Alumni here */}
           <MeetTheAlumni />
         </Container>
       </Box>

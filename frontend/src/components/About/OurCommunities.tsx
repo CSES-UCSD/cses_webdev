@@ -22,7 +22,7 @@ const Communities = () => {
         variant="h3"
         sx={{
           ...styles.mainTitleTop,
-          fontSize: 'clamp(32px, 8vw, 65px)',
+          fontSize: 'clamp(40px, 9vw, 80px)',
           color: 'white',
           marginBottom: '2%',
         }}
@@ -34,8 +34,8 @@ const Communities = () => {
         variant="body1"
         sx={{
           color: 'white',
-          fontSize: 'clamp(15px, 3vw, 20px)',
-          maxWidth: '800px',
+          fontSize: 'clamp(18px, 2.4vw, 22px)',
+          maxWidth: '1100px',
           margin: '0 auto',
         }}
       >
@@ -47,8 +47,8 @@ const Communities = () => {
         variant="body1"
         sx={{
           color: 'white',
-          fontSize: 'clamp(15px, 3vw, 20px)',
-          maxWidth: '800px',
+          fontSize: 'clamp(18px, 2.4vw, 22px)',
+          maxWidth: '1100px',
           margin: '1% auto 4%',
         }}
       >
@@ -72,6 +72,7 @@ const Communities = () => {
         justifyContent="center"
         alignItems="center"
         direction={isMobile ? 'column' : 'row'}
+        sx={{ px: { xs: '2%', sm: '3%' } }}
       >
         {[opensource, innovate, dev].map((src, idx) => (
           <Grid item key={idx}>
@@ -80,7 +81,7 @@ const Communities = () => {
               src={src}
               alt={`CSES logo ${idx}`}
               sx={{
-                width: isMobile ? '200px' : '250px',
+                width: isMobile ? '240px' : '300px',
                 maxWidth: '90vw',
               }}
             />
