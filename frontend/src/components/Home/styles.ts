@@ -1,84 +1,213 @@
 export const homeStyles = () => ({
-  bg: {
-    width: '100%',
-    marginLeft: '-2%',
-    scale: '105%',
-    marginBottom: '20%',
-    opacity: '0.6',
-  },
+  /* ===== Page Root ===== */
   root: {
     position: 'relative',
-    background: 'linear-gradient(to bottom,black 0%, #2F56BC 20%, black 55%)',
-  },
-  backgroundImage: {
-    width: '100%',
+    backgroundColor: '#001a57', // UCSD navy
+    minHeight: '100vh',
+    overflow: 'hidden',
   },
   container: {
     position: 'relative',
     top: '83px',
     marginBottom: '100px',
   },
-  title: {
-    color: 'white',
-    fontSize: 'clamp(60px, 8vw, 85px)',
-    fontFamily: 'Chakra Petch',
-    marginLeft: '12%',
-    marginTop: '3%',
-    fontWeight: 700,
+
+  /* ===== Navbar ===== */
+  navbar: {
+    backgroundColor: '#001a57',
+    borderBottom: '3px solid #ffcc00',
+    padding: '0.8rem 2rem',
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
   },
-  subtitle: {
-    color: 'white',
-    fontSize: {
-      xs: 'clamp(20px, 8vw, 65px)',
-      sm: 'clamp(30px, 4vw, 60px)',
+  navLinks: {
+    display: 'flex',
+    gap: '2rem',
+    listStyle: 'none',
+    '& a': {
+      color: 'white',
+      textDecoration: 'none',
+      fontWeight: 500,
+      transition: '0.3s',
+      '&:hover': { color: '#ffcc00' },
     },
-    whiteSpace: 'nowrap',
-    overflow: 'hidden',
-    fontFamily: 'Inter',
-    marginLeft: '5%',
-    marginTop: { xs: '1%', sm: '3%', md: '1%' },
+  },
+  joinButton: {
+    backgroundColor: '#001a57',
+    border: '2px solid #ffcc00',
+    color: 'white',
+    padding: '0.4rem 1rem',
+    borderRadius: '8px',
     fontWeight: 600,
+    transition: '0.3s',
+    '&:hover': { backgroundColor: '#ffcc00', color: '#001a57' },
   },
-  statisticContainer: {
-    height: '105px',
-    backgroundColor: '#F3C969',
-    borderRadius: '0 20px 0px 0px',
-    marginTop: '10%',
-    marginLeft: '8%',
+
+  /* ===== Hero ===== */
+  hero: {
+    textAlign: 'center',
+    padding: '4rem 2rem',
   },
-  statisticWrapper: {
-    height: '93px',
-    width: '95%',
-    backgroundColor: '#FFF',
-    float: 'right',
-    borderRadius: '0 20px 0px 0px',
-  },
-  statisticTitle: {
-    fontSize: {
-      xs: 'clamp(40px, 3vw, 100px)',
-      sm: 'clamp(25px, 3vw, 40px)',
-    },
-    fontFamily: 'Inter',
-    fontWeight: 700,
-    paddingLeft: '10px',
-    paddingTop: '10px',
-  },
-  statisticSubtitle: {
-    fontSize: {
-      xs: 'clamp(15px, 3vw, 50px)',
-      sm: 'clamp(10px, 3vw, 15px)',
-      md: 'clamp(12px, 3vw, 15px)',
-    },
-    fontFamily: 'Inter',
-    fontWeight: 500,
-    paddingLeft: '10px',
-  },
-  button: {
-    color: 'white',
-    fontSize: '25px',
-    fontWeight: 500,
+  heroTitle: {
     fontFamily: 'Chakra Petch',
-    marginLeft: '11%',
-    marginTop: '3%',
+    fontSize: 'clamp(2.5rem, 6vw, 4rem)',
+    fontWeight: 700,
+    color: 'white',
+    marginBottom: '1rem',
+  },
+  heroHighlight: {
+    color: '#ffcc00',
+  },
+  heroSubtitle: {
+    fontFamily: 'Inter, Arial',
+    color: 'white',
+    fontSize: '1.2rem',
+    maxWidth: '600px',
+    margin: '0 auto',
+  },
+  heroLogo: {
+    width: '160px',
+    margin: '2rem auto',
+  },
+
+  /* ===== Stats ===== */
+  statsContainer: {
+    display: 'flex',
+    justifyContent: 'center',
+    gap: '2rem',
+    flexWrap: 'wrap',
+    margin: '2rem 0',
+  },
+  statCard: {
+    backgroundColor: '#fff',
+    color: '#001a57',
+    padding: '2rem',
+    borderRadius: '12px',
+    textAlign: 'center',
+    minWidth: '150px',
+    boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
+  },
+  statNumber: {
+    fontSize: '2rem',
+    fontWeight: 700,
+  },
+  statLabel: {
+    fontSize: '1rem',
+    fontWeight: 500,
+    color: '#444',
+  },
+
+  /* ===== Buttons ===== */
+  buttonPrimary: {
+    display: 'inline-block',
+    backgroundColor: '#001a57',
+    color: 'white',
+    border: '2px solid #00bfa6',
+    padding: '0.7rem 1.4rem',
+    borderRadius: '10px',
+    fontWeight: 600,
+    marginTop: '1rem',
+    transition: '0.3s',
+    '&:hover': {
+      backgroundColor: '#00bfa6',
+      color: '#001a57',
+    },
+  },
+
+  /* ===== Section Titles ===== */
+  sectionHeading: {
+    fontFamily: 'Chakra Petch',
+    fontSize: 'clamp(2rem, 5vw, 3rem)',
+    color: 'white',
+    textAlign: 'center',
+    margin: '3rem 0 2rem',
+  },
+
+  /* ===== Events ===== */
+  eventCard: {
+    backgroundColor: '#fff',
+    color: '#001a57',
+    borderRadius: '12px',
+    padding: '1rem',
+    minWidth: '200px',
+    border: '3px solid transparent',
+    backgroundImage: 'linear-gradient(white, white), linear-gradient(90deg, #ffcc00, #00bfa6)',
+    backgroundOrigin: 'border-box',
+    backgroundClip: 'content-box, border-box',
+    textAlign: 'center',
+  },
+
+  /* ===== Communities ===== */
+  communityCard: {
+    textAlign: 'center',
+    padding: '1rem',
+  },
+  communityLogo: {
+    maxWidth: '220px',
+    margin: '0 auto',
+  },
+
+  /* ===== Team Section ===== */
+  teamCard: {
+    backgroundColor: '#fff',
+    borderRadius: '12px',
+    padding: '2rem',
+    textAlign: 'center',
+    border: '3px solid transparent',
+    backgroundImage: 'linear-gradient(white, white), linear-gradient(90deg, #ffcc00, #00bfa6)',
+    backgroundOrigin: 'border-box',
+    backgroundClip: 'content-box, border-box',
+  },
+  teamInfo: {
+    color: '#001a57',
+    fontWeight: 500,
+    marginTop: '1rem',
+  },
+
+  /* ===== Sponsors ===== */
+  sponsorsContainer: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexWrap: 'wrap',
+    gap: '2rem',
+    marginTop: '2rem',
+  },
+  sponsorLogo: {
+    maxHeight: '70px',
+    objectFit: 'contain',
+  },
+
+  /* ===== Footer ===== */
+  footer: {
+    backgroundColor: '#001a57',
+    borderTop: '3px solid #ffcc00',
+    textAlign: 'center',
+    padding: '1.5rem',
+    marginTop: '3rem',
+  },
+  footerText: {
+    color: 'white',
+    fontSize: '0.9rem',
+  },
+  socials: {
+    marginTop: '1rem',
+    display: 'flex',
+    justifyContent: 'center',
+    gap: '1.2rem',
+    '& a': {
+      color: 'white',
+      fontSize: '1.5rem',
+      transition: '0.3s',
+      '&:hover': { color: '#ffcc00' },
+    },
+  },
+
+  /* ===== Responsive ===== */
+  '@media (max-width: 768px)': {
+    navLinks: { display: 'none' }, // optional hamburger replacement
+    statsContainer: { flexDirection: 'column', alignItems: 'center' },
+    sponsorsContainer: { flexDirection: 'column' },
   },
 });
