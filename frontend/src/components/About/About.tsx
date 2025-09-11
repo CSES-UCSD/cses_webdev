@@ -1,7 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Container, Box, Grid, createTheme, useMediaQuery } from '@mui/material';
-import bgTop from '../../images/shape2.svg';
-import bgBtm from '../../images/shape2.svg';
 import { aboutStyles } from './styles';
 import MeetTheTeam from './MeetTheTeam';
 import Communities from './OurCommunities';
@@ -30,49 +28,65 @@ const About = () => {
           observer.disconnect();
         }
       },
-      { threshold: 0.1 }
+      { threshold: 0.1 },
     );
     if (currentRef) observer.observe(currentRef);
-    return () => { if (currentRef) observer.unobserve(currentRef); };
+    return () => {
+      if (currentRef) observer.unobserve(currentRef);
+    };
   }, []);
 
   return (
     <Box sx={{ position: 'relative', overflow: 'hidden' }}>
       <Box sx={styles.root}>
-        <Box sx={styles.backgroundImage}>
-          <img src={bgTop} alt="bg1" style={{ ...styles.bg1, position: 'absolute' }} />
-          <img src={bgBtm} alt="bg2" style={{ ...styles.bg2, position: 'absolute' }} />
-        </Box>
+        <Box sx={styles.backgroundImage}></Box>
 
         <Container maxWidth="xl" sx={styles.body}>
-          {/* WHAT IS CSES — text only */}
-          <Box
-            sx={{
-              maxWidth: '900px',
-              mx: 'auto',
-              py: { xs: 6, md: 10 },
-              color: 'white',
-              textAlign: { xs: 'center', md: 'left' },
-            }}
-          >
-            <h1
-              style={{
-                fontFamily: 'Chakra Petch',
-                fontSize: 'clamp(32px, 8vw, 65px)',
-                fontWeight: 700,
-                margin: 0,
+          {/* WHAT IS CSES — text only with light overlay */}
+          <Box sx={{ position: 'relative', mx: 'calc(50% - 50vw)', width: '100vw' }}>
+            {/* light white/blue wash */}
+            <Box
+              aria-hidden
+              sx={{
+                position: 'absolute',
+                inset: 0,
+                pointerEvents: 'none',
+                background:
+                  '#47518a',
               }}
+            />
+            {/* content stays centered to your page width */}
+            <Container
+              maxWidth="xl"
+              sx={{ position: 'relative', zIndex: 1, py: { xs: 8, md: 12 } }}
             >
-              <Typewriter text="WHAT IS CSES?" speed={200} />
-            </h1>
-
-            <p style={{ fontSize: 'clamp(15px, 3vw, 20px)', lineHeight: 1.7, marginTop: 12 }}>
-              CSES is growing the largest student-led tech community on campus. Through our Dev,
-              OpenSource, and Innovate divisions, we give students the chance to build real-world
-              software, contribute to open-source projects, and explore cutting-edge research. We
-              celebrate curiosity, foster innovation, and empower the next generation of tech
-              leaders.
-            </p>
+              <h1
+                style={{
+                  fontFamily: 'Chakra Petch',
+                  fontSize: 'clamp(32px, 8vw, 65px)',
+                  fontWeight: 700,
+                  margin: 0,
+                  color: 'white',
+                  textAlign: 'left',
+                }}
+              >
+                <Typewriter text="WHAT IS CSES?" speed={200} />
+              </h1>
+              <p
+                style={{
+                  color: 'white',
+                  fontSize: 'clamp(15px, 3vw, 20px)',
+                  lineHeight: 1.7,
+                  marginTop: 12,
+                }}
+              >
+                CSES is growing the largest student-led tech community on campus. Through our Dev,
+                OpenSource, and Innovate divisions, we give students the chance to build real-world
+                software, contribute to open-source projects, and explore cutting-edge research. We
+                celebrate curiosity, foster innovation, and empower the next generation of tech
+                leaders.
+              </p>
+            </Container>
           </Box>
 
           <h1
