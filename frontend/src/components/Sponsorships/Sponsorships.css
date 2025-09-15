@@ -80,16 +80,21 @@ a:hover {
   h1 {
     font-size: 3rem; 
     padding: 0 5rem;
+    margin-top: 10px;
+    margin-bottom: 30px;
   }
 
   h2 {
     font-size: 3rem; 
     padding: 0 5rem;
+    margin-top: 30px;
+    margin-bottom: 20px;
   }
 
   p {
     font-size: 1.1rem;  
     line-height: 1.2;
+    margin-bottom: 30px;
   }
 
   .computer-science {
@@ -104,7 +109,7 @@ a:hover {
 
   .logos {
     flex-direction: column; 
-    gap: 2.5rem;              
+    gap: 5em;              
     align-items: center;   
   }
 
