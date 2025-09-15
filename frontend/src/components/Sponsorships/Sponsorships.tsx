@@ -32,5 +32,3 @@ export default function Sponsorships() {
     </div>
   );
 }
-
-// TODO get the right font 
