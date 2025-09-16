@@ -57,7 +57,7 @@ const About = () => {
       <Box sx={styles.root}>
         <Box sx={styles.backgroundImage} />
 
-        <Container maxWidth="xl" sx={styles.body}>
+        <Container sx={styles.body}>
           {/* WHAT IS CSES — full-bleed band with centered copy + gradient border */}
           <Box sx={fullBleedGradientSection}>
             <Box className="section-surface">
@@ -73,8 +73,8 @@ const About = () => {
               />
               {/* content */}
               <Container
-                maxWidth="xl"
-                sx={{ position: 'relative', zIndex: 1, py: { xs: 8, md: 12 }, textAlign: 'center' }}
+                maxWidth={false}
+                sx={{ position: 'relative', zIndex: 1, py: { xs: 8, md: 12 }, textAlign: 'center'}}
               >
                 <h1
                   style={{
@@ -132,7 +132,7 @@ const About = () => {
             <Grid
               item
               sm={4}
-              lg={3}
+              lg={4}
               sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}
             >
               <motion.div
@@ -147,12 +147,12 @@ const About = () => {
                   component="img"
                   src={PLACEHOLDER_GENERAL}
                   alt="placeholder"
-                  sx={{ display: 'block', width: { xs: 260, sm: 340, md: 420 }, height: { xs: 260, sm: 340, md: 420 }, objectFit: 'cover', ml: {md: -20} }}
+                  sx={{ display: 'block', width: { xs: 260, sm: 340, md: 384 }, height: { xs: 260, sm: 340, md: 320 }, objectFit: 'cover'}}
                 />
               </motion.div>
             </Grid>
 
-            <Grid item sm={5} lg={5}>
+            <Grid item sm={5} lg={8}>
               <motion.div
                 ref={ref}
                 initial={{ x: 100, opacity: 0 }}
@@ -170,7 +170,7 @@ const About = () => {
               </motion.div>
             </Grid>
           </Grid>
-          <Grid
+          {/* <Grid
             container
             justifyContent="center"
             columnSpacing={12}
@@ -178,7 +178,7 @@ const About = () => {
             spacing={4}
             direction={isSmallScreen ? 'column-reverse' : 'row'}
           >
-            <Grid item sm={5}>
+            <Grid item sm={5} lg={4}>
               <motion.div
                 ref={ref}
                 initial={{ x: -100, opacity: 0 }}
@@ -203,19 +203,63 @@ const About = () => {
               </motion.div>
             </Grid>
 
-            <Grid item sm={4} md={3} lg={3} maxHeight="100%">
+            <Grid item sm={4} md={3} lg={8} maxHeight="100%">
               <motion.div
                 ref={ref}
                 initial={{ x: 100, opacity: 0 }}
                 animate={isInView ? { x: 0, opacity: 1 } : {}}
                 transition={{ type: 'spring', stiffness: 50, damping: 20, mass: 1, delay: 0.6 }}
               >
-                {/* Placeholder image with gradient border */}
+  
                 <Box
                   component="img"
                   src={PLACEHOLDER_GENERAL}
                   alt="placeholder"
-                  sx={{ display: 'block', width: { xs: 260, sm: 340, md: 420 }, height: { xs: 260, sm: 340, md: 420 }, objectFit: 'cover', ml: {xs: +5} }}
+                  sx={{ display: 'block', width: { xs: 260, sm: 340, md: 420 }, height: { xs: 260, sm: 340, md: 420 }, objectFit: 'cover' }}
+                />
+              </motion.div>
+            </Grid>
+          </Grid> */}
+          <Grid
+            container
+            sx={{ mt: '10%', display: 'flex', justifyContent: { xs: 'center', sm: 'center' } }}
+          >
+                <Grid item sm={5} lg={8}>
+              <motion.div
+                ref={ref}
+                initial={{ x: 100, opacity: 0 }}
+                animate={isInView ? { x: 0, opacity: 1 } : {}}
+                transition={{ type: 'spring', stiffness: 50, damping: 20, mass: 1, delay: 0.2 }}
+              >
+                <Box sx={{ color: 'white', textAlign: { lg: 'left', sm: 'left', xs: 'center' } }}>
+                  <h1>Our History</h1>
+                  <p style={{ color: 'white', fontSize: 'clamp(18px, 2.4vw, 22px)' }}>
+                    CSES was the first CSE organization at UCSD starting over twenty years ago, and
+                    we have innovated over the years to stay relevant in serving the CSE community.
+                    We are open to all majors and individuals who are interested in computing!
+                  </p>
+                </Box>
+              </motion.div>
+            </Grid>
+            <Grid
+              item
+              sm={4}
+              lg={4}
+              sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+            >
+              <motion.div
+                ref={ref}
+                initial={{ x: -100, opacity: 0 }}
+                animate={isInView ? { x: 0, opacity: 1 } : {}}
+                transition={{ type: 'spring', stiffness: 50, damping: 20, mass: 1, delay: 0.2 }}
+                style={{ display: 'flex', justifyContent: 'center' }}
+              >
+                {/* Placeholder image with gradient border  */}
+                <Box
+                  component="img"
+                  src={PLACEHOLDER_GENERAL}
+                  alt="placeholder"
+                  sx={{ display: 'block', width: { xs: 260, sm: 340, md: 320 }, height: { xs: 260, sm: 340, md: 320 }, objectFit: 'cover'}}
                 />
               </motion.div>
             </Grid>
