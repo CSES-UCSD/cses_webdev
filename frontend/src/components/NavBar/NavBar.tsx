@@ -14,7 +14,7 @@ import {
 } from '@mui/material';
 import { Menu as MenuIcon, Close as CloseIcon } from '@mui/icons-material';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
-import csesLogo from '../../images/CSES_LOGO.png';
+import csesLogo from '../../images/CSES-logo.png';
 import MuiButton from '../Button/Button';
 import { navBarStyles } from './styles';
 import { AuthContext } from '../../context/AuthContext';
@@ -63,7 +63,7 @@ const NavBar = () => {
 
   return (
     <div>
-      <AppBar sx={{ backgroundColor: '#030E5D' }} position="fixed" elevation={0}>
+      <AppBar sx={{ backgroundColor: '#203A7E' /*change back to this later'#030E5D'*/ }} position="fixed" elevation={0}>
         <Toolbar>
           <Link to="/">
             <img
@@ -139,14 +139,14 @@ const NavBar = () => {
             </IconButton>
           </Box>
         </Toolbar>
+        <Box
+          sx={{
+            height: '4px',
+            background: 'linear-gradient(to right, #725DEF, #63CDDB, #EBB211)',
+          }}
+        />
       </AppBar>
 
-      <Box
-        sx={{
-          height: '4px',
-          background: 'linear-gradient(to right, #725DEF, #63CDDB, #EBB211)',
-        }}
-      />
 
       <Drawer anchor="top" open={isDrawerOpen} onClose={() => setIsDrawerOpen(false)}>
         <List sx={{ background: '#030E5D' }}>

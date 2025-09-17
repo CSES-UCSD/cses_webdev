@@ -4,7 +4,7 @@ import InstagramIcon from '../../images/instagram-icon.svg';
 import FacebookIcon from '../../images/facebook-icon.svg';
 import LinkedInIcon from '../../images/linkedin-icon.svg';
 import DiscordIcon from '../../images/discord-icon.svg';
-import csesLogo from '../../images/Footer_Logo.png';
+import csesLogo from '../../images/footer-logo.png';
 
 const links = [
   { logo: InstagramIcon, link: 'https://www.instagram.com/cses_ucsd/' },
