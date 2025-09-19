@@ -161,21 +161,21 @@ const EventsPage = () => {
                             gap: { xs: 1, sm: 3 },
                         }}
                     >
-
-                        <IconButton
-                            disableRipple
-                            onClick={handlePrev}
-                            sx={{
-                                color: "white",
-                                position: { xs: "absolute", sm: "static" },
-                                left: { xs: 0, sm: "auto" },
-                                zIndex: 2,
-                                "&:hover": { color: "rgba(255,255,255,0.3)" },
-                            }}
-                        >
-                            <ArrowBackIosNewRounded sx={{ fontSize: { xs: 28, sm: 36 } }} />
-                        </IconButton>
-
+                        {filteredUpcomingEvents.length > VISIBLE_COUNT && (
+                            <IconButton
+                                disableRipple
+                                onClick={handlePrev}
+                                sx={{
+                                    color: "white",
+                                    position: { xs: "absolute", sm: "static" },
+                                    left: { xs: 0, sm: "auto" },
+                                    zIndex: 2,
+                                    "&:hover": { color: "rgba(255,255,255,0.3)" },
+                                }}
+                            >
+                                <ArrowBackIosNewRounded sx={{ fontSize: { xs: 28, sm: 36 } }} />
+                            </IconButton>
+                        )}
                         <Box
                             sx={{
                                 display: "flex",
@@ -216,20 +216,21 @@ const EventsPage = () => {
                                 ))}
                             </Box>
                         </Box>
-
-                        <IconButton
-                            disableRipple
-                            onClick={handleNext}
-                            sx={{
-                                color: "white",
-                                position: { xs: "absolute", sm: "static" },
-                                right: { xs: 0, sm: "auto" },
-                                zIndex: 2,
-                                "&:hover": { color: "rgba(255,255,255,0.3)" },
-                            }}
-                        >
-                            <ArrowForwardIosRounded sx={{ fontSize: { xs: 28, sm: 36 } }} />
-                        </IconButton>
+                        {filteredUpcomingEvents.length > VISIBLE_COUNT && (
+                            <IconButton
+                                disableRipple
+                                onClick={handleNext}
+                                sx={{
+                                    color: "white",
+                                    position: { xs: "absolute", sm: "static" },
+                                    right: { xs: 0, sm: "auto" },
+                                    zIndex: 2,
+                                    "&:hover": { color: "rgba(255,255,255,0.3)" },
+                                }}
+                            >
+                                <ArrowForwardIosRounded sx={{ fontSize: { xs: 28, sm: 36 } }} />
+                            </IconButton>
+                        )}
                     </Box>
                 ) : (
                     <Typography sx={{ color: "white", mt: 2, fontSize: "1.5rem" }} align="center">
