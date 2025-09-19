@@ -76,15 +76,19 @@ const EventsPage = () => {
         );
     };
 
+    const filteredUpcomingEvents = selectedCategory
+        ? upcomingEvents.filter((event: any) => event.event_type === selectedCategory)
+        : upcomingEvents;
+
     let visibleEvents: Event[] = [];
-    if (upcomingEvents.length <= VISIBLE_COUNT) {
-        visibleEvents = upcomingEvents;
+    if (filteredUpcomingEvents.length <= VISIBLE_COUNT) {
+        visibleEvents = filteredUpcomingEvents;
     } else {
-        visibleEvents = upcomingEvents.slice(currentIndex, currentIndex + VISIBLE_COUNT);
+        visibleEvents = filteredUpcomingEvents.slice(currentIndex, currentIndex + VISIBLE_COUNT);
 
         if (visibleEvents.length < VISIBLE_COUNT) {
             const wrapCount = VISIBLE_COUNT - visibleEvents.length;
-            visibleEvents = visibleEvents.concat(upcomingEvents.slice(0, wrapCount));
+            visibleEvents = visibleEvents.concat(filteredUpcomingEvents.slice(0, wrapCount));
         }
     }
 
@@ -147,7 +151,7 @@ const EventsPage = () => {
 
             {/* Upcoming Events */}
             <Box sx={{ textAlign: "center", mb: 20, mt: 8 }}>
-                {upcomingEvents.length > 0 ? (
+                {filteredUpcomingEvents.length > 0 ? (
                     <Box
                         sx={{
                             display: "flex",
