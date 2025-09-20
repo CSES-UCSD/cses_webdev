@@ -36,7 +36,7 @@ const NavBar = () => {
     { text: 'About', link: '/about' },
     { text: 'Events', link: '/events' },
     { text: 'Sponsors', link: '/sponsors' },
-    { text: 'Get Involved', link: '/opportunities' },
+    { text: 'Initiatives', link: '/initiatives' },
   ];
 
   const clickItem = (link: string) => {
@@ -63,7 +63,7 @@ const NavBar = () => {
 
   return (
     <div>
-      <AppBar sx={{ backgroundColor: '#203A7E' /*change back to this later'#030E5D'*/ }} position="fixed" elevation={0}>
+      <AppBar sx={{ backgroundColor: '#030E5D' }} position="fixed" elevation={0}>
         <Toolbar>
           <Link to="/">
             <img
