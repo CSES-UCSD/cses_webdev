@@ -35,7 +35,7 @@ const NavBar = () => {
   const navItems = [
     { text: 'About', link: '/about' },
     { text: 'Events', link: '/events' },
-    { text: 'Sponsors', link: '/sponsors' },
+    { text: 'Sponsors', link: '/sponsorships' },
     { text: 'Initiatives', link: '/initiatives' },
   ];
 
