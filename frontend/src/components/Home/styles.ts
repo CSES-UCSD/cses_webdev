@@ -164,26 +164,31 @@ export const homeStyles = () => ({
 
   /* ===== CTA Button ===== */
   ctaButton: {
-    border: '2px solid #FF6B35',
-    borderRadius: '25px',
-    padding: '12px 24px',
-    display: 'inline-block',
-    background: '#020F5D',
-    cursor: 'pointer',
-    position: 'relative',
-    '&::before': {
-      content: '""',
-      position: 'absolute',
-      top: '-2px',
-      left: '-2px',
-      right: '-2px',
-      bottom: '-2px',
-      background: 'linear-gradient(45deg, #FF6B35, #00E5FF)',
-      borderRadius: '25px',
-      zIndex: '-1'
-    },
+    borderRadius: '40px',
+    border: '2px solid transparent',
+    backgroundImage:
+      'linear-gradient(#0b0b0b, #0b0b0b), linear-gradient(to right, #FFCE00, #00F0FF)',
+    backgroundOrigin: 'border-box',
+    backgroundClip: 'padding-box, border-box',
+    paddingX: '20px',
+    paddingY: '11px',
+    color: 'white',
+    fontSize: '20px',
+    textTransform: 'none',
     '&:hover': {
-      background: 'rgba(2, 15, 93, 0.9)'
+      backgroundImage:
+        'linear-gradient(rgba(255,255,255,0.05), rgba(255,255,255,0.05)), linear-gradient(to right, #FFCE00, #00F0FF)',
+      color: 'black'
+    },
+    '@media (max-width: 600px)': {
+      fontSize: '18px',
+      paddingX: '16px',
+      paddingY: '9px'
+    },
+    '@media (min-width: 1200px)': {
+      fontSize: '22px',
+      paddingX: '24px',
+      paddingY: '13px'
     }
   },
 
