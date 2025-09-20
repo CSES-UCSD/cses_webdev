@@ -22,6 +22,7 @@ interface Event {
     start_time: string;
     title: string;
     _id: string;
+    event_type: string;
 }
 
 const EventsPage = () => {
@@ -80,6 +81,10 @@ const EventsPage = () => {
         ? upcomingEvents.filter((event: any) => event.event_type === selectedCategory)
         : upcomingEvents;
 
+    const filteredPastEvents = selectedCategory
+        ? pastEvents.filter((event: any) => event.event_type === selectedCategory)
+        : pastEvents;
+
     let visibleEvents: Event[] = [];
     if (filteredUpcomingEvents.length <= VISIBLE_COUNT) {
         visibleEvents = filteredUpcomingEvents;
@@ -96,7 +101,8 @@ const EventsPage = () => {
         <Box
             sx={{
                 p: { xs: 2, sm: 4 },
-                mt: 12,
+                mt: 18,
+                mb: 18,
                 maxWidth: "1600px",
                 mx: "auto",
             }}
@@ -252,8 +258,8 @@ const EventsPage = () => {
                 </Typography>
 
                 <Grid container spacing={3} justifyContent="flex-start">
-                    {pastEvents.length > 0 ? (
-                        pastEvents.map((event) => (
+                    {filteredPastEvents.length > 0 ? (
+                        filteredPastEvents.map((event) => (
                             <Grid
                                 item
                                 key={event._id}
