@@ -93,7 +93,6 @@ const About = () => {
                     color: 'white',
                     fontSize: 'clamp(15px, 3vw, 20px)',
                     lineHeight: 1.7,
-                    marginTop: 12,
                     maxWidth: 1000,
                     marginLeft: 'auto',
                     marginRight: 'auto',
@@ -127,13 +126,14 @@ const About = () => {
           </h1>
           <Grid
             container
-            sx={{ mt: '10%', display: 'flex', justifyContent: { xs: 'center', sm: 'center' } }}
+            sx={{ display: 'flex', justifyContent: { xs: 'center', sm: 'center' } }}
           >
             <Grid
               item
-              sm={4}
+              sm={6}
+              md={4}
               lg={4}
-              sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+              sx={{ display: 'flex', justifyContent: 'flex-start', alignItems: 'center' }}
             >
               <motion.div
                 ref={ref}
@@ -147,12 +147,12 @@ const About = () => {
                   component="img"
                   src={PLACEHOLDER_GENERAL}
                   alt="placeholder"
-                  sx={{ display: 'block', width: { xs: 260, sm: 340, md: 384 }, height: { xs: 260, sm: 340, md: 320 }, objectFit: 'cover'}}
+                  sx={{ display: 'block', width: { xs: 260, sm: 340, md: 300 }, height: { xs: 260, sm: 340, md: 300 }, objectFit: 'cover'}}
                 />
               </motion.div>
             </Grid>
 
-            <Grid item sm={5} lg={8}>
+            <Grid item sm={6} md={8} lg={8}>
               <motion.div
                 ref={ref}
                 initial={{ x: 100, opacity: 0 }}
@@ -170,82 +170,32 @@ const About = () => {
               </motion.div>
             </Grid>
           </Grid>
-          {/* <Grid
-            container
-            justifyContent="center"
-            columnSpacing={12}
-            mt={12}
-            spacing={4}
-            direction={isSmallScreen ? 'column-reverse' : 'row'}
-          >
-            <Grid item sm={5} lg={4}>
-              <motion.div
-                ref={ref}
-                initial={{ x: -100, opacity: 0 }}
-                animate={isInView ? { x: 0, opacity: 1 } : {}}
-                transition={{ type: 'spring', stiffness: 50, damping: 20, mass: 1, delay: 0.6 }}
-              >
-                <Box sx={{ color: 'white', textAlign: { lg: 'left', sm: 'left', xs: 'center' } }}>
-                  <h1>Our Future</h1>
-                </Box>
-                <p
-                  style={{
-                    color: 'white',
-                    fontSize: 'clamp(18px, 2.4vw, 22px)',
-                    textAlign: isSmallScreen ? 'center' : 'left',
-                  }}
-                >
-                  Our mission statement is to help our members get professional opportunities while
-                  fostering a network of individuals. We do this through quarterly career fairs,
-                  mentorship programs for career development, and project opportunities to gain
-                  experience.
-                </p>
-              </motion.div>
-            </Grid>
-
-            <Grid item sm={4} md={3} lg={8} maxHeight="100%">
-              <motion.div
-                ref={ref}
-                initial={{ x: 100, opacity: 0 }}
-                animate={isInView ? { x: 0, opacity: 1 } : {}}
-                transition={{ type: 'spring', stiffness: 50, damping: 20, mass: 1, delay: 0.6 }}
-              >
-  
-                <Box
-                  component="img"
-                  src={PLACEHOLDER_GENERAL}
-                  alt="placeholder"
-                  sx={{ display: 'block', width: { xs: 260, sm: 340, md: 420 }, height: { xs: 260, sm: 340, md: 420 }, objectFit: 'cover' }}
-                />
-              </motion.div>
-            </Grid>
-          </Grid> */}
           <Grid
             container
-            sx={{ mt: '10%', display: 'flex', justifyContent: { xs: 'center', sm: 'center' } }}
+            sx={{ mt: '5%', display: 'flex', justifyContent: { xs: 'center', sm: 'center' } }}
           >
-                <Grid item sm={5} lg={8}>
+          <Grid item sm={6} md={8} lg={8} sx={{order: { xs: 2, md: 1 }}}>
               <motion.div
                 ref={ref}
                 initial={{ x: 100, opacity: 0 }}
                 animate={isInView ? { x: 0, opacity: 1 } : {}}
                 transition={{ type: 'spring', stiffness: 50, damping: 20, mass: 1, delay: 0.2 }}
               >
-                <Box sx={{ color: 'white', textAlign: { lg: 'left', sm: 'left', xs: 'center' } }}>
-                  <h1>Our History</h1>
+                <Box sx={{ color: 'white', textAlign: { lg: 'left', sm: 'left', xs: 'center' },}}>
+                  <h1>Our Future</h1>
                   <p style={{ color: 'white', fontSize: 'clamp(18px, 2.4vw, 22px)' }}>
-                    CSES was the first CSE organization at UCSD starting over twenty years ago, and
-                    we have innovated over the years to stay relevant in serving the CSE community.
-                    We are open to all majors and individuals who are interested in computing!
+                    Our mission statement is to help our members get professional opportunities while fostering a network of individuals.
+                    We do this through quarterly career fairs, mentorship programs for career development, and project opportunities to gain experience.
                   </p>
                 </Box>
               </motion.div>
             </Grid>
             <Grid
               item
-              sm={4}
+              sm={6}
+              md={4}
               lg={4}
-              sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+              sx={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'center', order: { xs: 1, md: 2 }}}
             >
               <motion.div
                 ref={ref}

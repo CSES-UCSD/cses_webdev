@@ -14,7 +14,7 @@ const Communities = () => {
       sx={{
         width: '100%',
         backgroundColor: 'transparent',
-        paddingY: '5%',
+        marginTop: '10%',
         textAlign: 'center',
       }}
     >
@@ -34,25 +34,14 @@ const Communities = () => {
         variant="body1"
         sx={{
           color: 'white',
-          fontSize: 'clamp(18px, 2.4vw, 22px)',
-          maxWidth: '1100px',
+          fontSize: 'clamp(16px, 2.4vw, 22px)',
+          maxWidth: '1200px',
           margin: '0 auto',
         }}
       >
         At CSES, we have various communities that cover different areas of tech and offer hands-on
-        projects that allow you to collaborate with others, gain experience, and build your resume.
-      </Typography>
-
-      <Typography
-        variant="body1"
-        sx={{
-          color: 'white',
-          fontSize: 'clamp(18px, 2.4vw, 22px)',
-          maxWidth: '1100px',
-          margin: '1% auto 4%',
-        }}
-      >
-        Websites are coming soon, but for now, check out our{' '}
+        projects for you to collaborate, gain experience, and build your resume. Websites are coming soon, 
+        but for now, check out our{' '}
         <Link
           href="https://linktr.ee/csesucsd"
           rel="noopener noreferrer"
@@ -75,19 +64,22 @@ const Communities = () => {
         sx={{ px: { xs: '2%', sm: '3%' } }}
       >
         {[opensource, innovate, dev].map((src, idx) => (
-          <Grid item key={idx}>
+          <Grid item xs={12} sm={4} key={idx}>
             <Box
               component="img"
               src={src}
               alt={`CSES logo ${idx}`}
               sx={{
-                width: isMobile ? '240px' : '300px',
-                maxWidth: '90vw',
+                width: '100%',         
+                maxWidth: 400,          
+                margin: '0 auto',       
+                display: 'block',
               }}
             />
           </Grid>
         ))}
       </Grid>
+
     </Container>
   );
 };

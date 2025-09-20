@@ -34,6 +34,9 @@ const TEAM: Member[] = [
   { name: "[name]", company: "[company]", division: "general" },
   { name: "[name]", company: "[company]", division: "general" },
   { name: "[name]", company: "[company]", division: "general" },
+  { name: "[name]", company: "[company]", division: "general" },
+  { name: "[name]", company: "[company]", division: "general" },
+  { name: "[name]", company: "[company]", division: "general" },
   { name: "[name]", company: "[company]", division: "dev" },
   { name: "[name]", company: "[company]", division: "dev" },
   { name: "[name]", company: "[company]", division: "dev" },
@@ -50,11 +53,11 @@ const DIVISIONS: { label: string; value: Division }[] = [
   { label: "Innovate", value: "innovate" },
 ];
 
-const PAGE_SIZE = 6; // 3 x 2 grid
+const PAGE_SIZE = 8; // 3 x 2 grid
 
 function TeamCard({ m }: { m: Member }) {
   return (
-    <Box sx={{ width: 260 }}>
+    <Box>
       {/* Gradient border wrapper */}
       <Box sx={gradientImgWrapper}>
         {/* Surface keeps square ratio and lets us overlay icons */}
@@ -151,7 +154,7 @@ export default function MeetTheTeam() {
   const canNext = page < pageCount - 1;
 
   return (
-    <Container sx={{ py: { xs: 6, md: 10 } }}>
+    <Container disableGutters sx={{marginTop: '10%'}}>
       <Typography
         component="h2"
         sx={{
@@ -211,7 +214,7 @@ export default function MeetTheTeam() {
           sx={{
             position: "absolute",
             left: { xs: -4, md: 0 },
-            top: "40%",
+            top: "50%",
             transform: "translateY(-50%)",
             bgcolor: "rgba(0,0,0,0.4)",
             color: 'white',
@@ -239,18 +242,54 @@ export default function MeetTheTeam() {
           <ChevronRightIcon />
         </IconButton>
 
-        <Grid container spacing={4} justifyContent="center" alignItems="flex-start">
+        <Grid container spacing={4} justifyContent="flex-start" alignItems="flex-start">
           {visible.map((m, i) => (
-            <Grid item key={`${m.division}-${i}`}>
+            <Grid item xs={6} sm={4} md={3} key={`${m.division}-${i}`}>
               <TeamCard m={m} />
             </Grid>
           ))}
           {visible.length < PAGE_SIZE &&
             Array.from({ length: PAGE_SIZE - visible.length }).map((_, i) => (
-              <Grid item key={`spacer-${i}`} sx={{ width: 260 }} />
+              <Grid item key={`spacer-${i}`} />
             ))}
         </Grid>
       </Box>
+
+      <Box
+    sx={{
+      display: { xs: "flex", md: "none" }, // only show on mobile
+      justifyContent: "center",
+      gap: 2,
+      mt: 2,
+    }}
+  >
+    <IconButton
+      onClick={() => setPage((p) => Math.max(0, p - 1))}
+      disabled={!canPrev}
+      sx={{
+        bgcolor: "rgba(0,0,0,0.4)",
+        color: "white",
+        "&:hover": { bgcolor: "rgba(0,0,0,0.6)" },
+        "&.Mui-disabled": { opacity: 0 },
+      }}
+      aria-label="Previous"
+    >
+      <ChevronLeftIcon />
+    </IconButton>
+    <IconButton
+      onClick={() => setPage((p) => Math.min(pageCount - 1, p + 1))}
+      disabled={!canNext}
+      sx={{
+        bgcolor: "rgba(0,0,0,0.4)",
+        color: "white",
+        "&:hover": { bgcolor: "rgba(0,0,0,0.6)" },
+        "&.Mui-disabled": { opacity: 0 },
+      }}
+      aria-label="Next"
+    >
+      <ChevronRightIcon />
+    </IconButton>
+  </Box>
     </Container>
   );
 }

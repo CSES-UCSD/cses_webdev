@@ -14,8 +14,7 @@ const HowtoJoin = () => {
       sx={{
         width: '100%',
         backgroundColor: 'transparent',
-        paddingY: '5%',
-        textAlign: 'center',
+        marginTop: '10%'
       }}
     >
       <Typography
@@ -36,10 +35,9 @@ const HowtoJoin = () => {
         justifyContent="center"
         alignItems="center"
         direction={isMobile ? 'column' : 'row'}
-        sx={{ paddingX: { xs: '2%', sm: '3%' } }}
       >
         {/* Image */}
-        <Grid item xs={12} sm={5}>
+        <Grid item xs={12} sm={6} md={4}>
           <Box
             component="img"
             src={about3}
@@ -51,20 +49,17 @@ const HowtoJoin = () => {
               border: '3px solid',
               borderImage: 'linear-gradient(45deg, #FFCE00, #00F0FF) 1',
               display: 'block',
-              margin: '0 auto',
             }}
           />
         </Grid>
 
         {/* Text */}
-        <Grid item xs={12} sm={6}>
+        <Grid item xs={12} sm={6} md={8}>
           <Typography
             variant="body1"
             sx={{
               color: 'white',
               fontSize: 'clamp(18px, 2.4vw, 22px)',
-              maxWidth: '500px',
-              margin: '0 auto',
             }}
           >
             To become a general member, simply sign up with your UCSD email!
@@ -75,37 +70,39 @@ const HowtoJoin = () => {
               color: 'white',
               fontSize: 'clamp(18px, 2.4vw, 22px)',
               marginTop: '20px',
-              maxWidth: '500px',
-              marginX: 'auto',
             }}
           >
             Do you want to be a part of the internal team? Become a member and follow us on our
             socials to be notified of when board applications open on a rolling basis.
           </Typography>
-        </Grid>
-      </Grid>
-
-      <Box sx={{ marginTop: '40px' }}>
+          <Box sx={{ marginTop: '40px'}}>
         <MuiButton
           variant="outlined"
           onClick={() => navigate('/membership')}
           sx={{
-            border: '2px solid',
-            borderImage: 'linear-gradient(to right, #FFCE00, #00F0FF) 1',
-            borderRadius: '30px',
-            paddingX: '40px',
-            paddingY: '22px',
-            color: 'white',
-            fontSize: '20px',
-            textTransform: 'none',
-            '&:hover': {
-              backgroundColor: 'rgba(255, 255, 255, 0.05)',
-            },
-          }}
+          borderRadius: '40px',
+          border: '2px solid transparent',
+          backgroundImage:
+            'linear-gradient(#0b0b0b, #0b0b0b), linear-gradient(to right, #FFCE00, #00F0FF)',
+          backgroundOrigin: 'border-box',
+          backgroundClip: 'padding-box, border-box',
+          paddingX: '20px',
+          paddingY: '11px',
+          color: 'white',
+          fontSize: '20px',
+          textTransform: 'none',
+          '&:hover': {
+            backgroundImage:
+              'linear-gradient(rgba(255,255,255,0.05), rgba(255,255,255,0.05)), linear-gradient(to right,  #FFCE00, #00F0FF)',
+            color: 'black'
+          },
+        }}
         >
           Become a member now!
         </MuiButton>
       </Box>
+        </Grid>
+      </Grid>
     </Container>
   );
 };

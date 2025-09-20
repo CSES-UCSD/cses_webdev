@@ -20,7 +20,7 @@ type Props = {
 };
 
 const PLACEHOLDER_PHOTO = "https://placehold.co/400x400?text=Photo";
-const PAGE_SIZE = 6;
+const PAGE_SIZE = 8;
 
 const DEFAULT_ALUMNI: Member[] = Array.from({ length: 12 }).map(() => ({
   name: "[name]",
@@ -30,7 +30,7 @@ const DEFAULT_ALUMNI: Member[] = Array.from({ length: 12 }).map(() => ({
 
 function Card({ m }: { m: Member }) {
   return (
-    <Box sx={{ width: 260 }}>
+    <Box >
       {/* Gradient border wrapper */}
       <Box sx={gradientImgWrapper}>
         <Box
@@ -123,7 +123,7 @@ export default function MeetTheAlumni({
   const canNext = page < pageCount - 1;
 
   return (
-    <Container sx={{ py: { xs: 6, md: 10 } }}>
+    <Container disableGutters sx={{ py: { xs: 6, md: 10 } }}>
       <Typography
         component="h2"
         sx={{
@@ -139,17 +139,20 @@ export default function MeetTheAlumni({
       </Typography>
 
       <Box sx={{ position: "relative", px: { xs: 0, md: 6 } }}>
+        {/* Desktop arrows (left/right of grid) */}
         <IconButton
           onClick={() => setPage((p) => Math.max(0, p - 1))}
           disabled={!canPrev}
           sx={{
+            display: { xs: "none", md: "flex" },
             position: "absolute",
-            left: { xs: -4, md: 0 },
+            left: 0,
             top: "40%",
             transform: "translateY(-50%)",
             bgcolor: "rgba(0,0,0,0.4)",
-            color: 'white',
+            color: "white",
             "&:hover": { bgcolor: "rgba(0,0,0,0.6)" },
+            "&.Mui-disabled": { opacity: 0 },
           }}
           aria-label="Previous alumni"
         >
@@ -160,31 +163,72 @@ export default function MeetTheAlumni({
           onClick={() => setPage((p) => Math.min(pageCount - 1, p + 1))}
           disabled={!canNext}
           sx={{
+            display: { xs: "none", md: "flex" },
             position: "absolute",
-            right: { xs: -4, md: 0 },
+            right: 0,
             top: "40%",
             transform: "translateY(-50%)",
             bgcolor: "rgba(0,0,0,0.4)",
-            color: 'white',
+            color: "white",
             "&:hover": { bgcolor: "rgba(0,0,0,0.6)" },
+            "&.Mui-disabled": { opacity: 0 },
           }}
           aria-label="Next alumni"
         >
           <ChevronRightIcon />
         </IconButton>
 
-        <Grid container spacing={4} justifyContent="center" alignItems="flex-start">
+        {/* Grid */}
+        <Grid container spacing={3} justifyContent="center" alignItems="flex-start">
           {visible.map((m, i) => (
-            <Grid item key={`${start + i}`}>
+            <Grid item xs={6} sm={4} md={3} key={`${start + i}`}>
               <Card m={m} />
             </Grid>
           ))}
           {visible.length < PAGE_SIZE &&
             Array.from({ length: PAGE_SIZE - visible.length }).map((_, i) => (
-              <Grid item key={`spacer-${i}`} sx={{ width: 260 }} />
+              <Grid item key={`spacer-${i}`} />
             ))}
         </Grid>
 
+        {/* Mobile arrows (centered below grid) */}
+        <Box
+          sx={{
+            display: { xs: "flex", md: "none" },
+            justifyContent: "center",
+            gap: 2,
+            mt: 2,
+          }}
+        >
+          <IconButton
+            onClick={() => setPage((p) => Math.max(0, p - 1))}
+            disabled={!canPrev}
+            sx={{
+              bgcolor: "rgba(0,0,0,0.4)",
+              color: "white",
+              "&:hover": { bgcolor: "rgba(0,0,0,0.6)" },
+              "&.Mui-disabled": { opacity: 0 },
+            }}
+            aria-label="Previous alumni"
+          >
+            <ChevronLeftIcon />
+          </IconButton>
+          <IconButton
+            onClick={() => setPage((p) => Math.min(pageCount - 1, p + 1))}
+            disabled={!canNext}
+            sx={{
+              bgcolor: "rgba(0,0,0,0.4)",
+              color: "white",
+              "&:hover": { bgcolor: "rgba(0,0,0,0.6)" },
+              "&.Mui-disabled": { opacity: 0 },
+            }}
+            aria-label="Next alumni"
+          >
+            <ChevronRightIcon />
+          </IconButton>
+        </Box>
+
+        {/* Page indicator */}
         <Typography
           variant="caption"
           sx={{ display: "block", textAlign: "center", color: "white", mt: 2, opacity: 0.8 }}
