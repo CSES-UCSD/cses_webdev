@@ -83,7 +83,7 @@ const NavBar = () => {
             ))}
 
             {/* Gradient Join Us Button */}
-            {!isLoggedIn && location.pathname !== '/login' && (
+            {/* {!isLoggedIn && location.pathname !== '/login' && (
               <Box
                 onClick={() => navigate('/login')}
                 sx={{
@@ -117,7 +117,7 @@ const NavBar = () => {
                   </Typography>
                 </Box>
               </Box>
-            )}
+            )} */}
           </Box>
 
           {isLoggedIn && userData && (
@@ -170,7 +170,7 @@ const NavBar = () => {
             </ListItem>
           ))}
 
-          {!isLoggedIn && location.pathname !== '/login' && (
+          {/* {!isLoggedIn && location.pathname !== '/login' && (
             <ListItem button key="Login" sx={styles.listitem} onClick={() => clickItem('/login')}>
               <ListItemText
                 primary={
@@ -180,7 +180,7 @@ const NavBar = () => {
                 }
               />
             </ListItem>
-          )}
+          )} */}
         </List>
       </Drawer>
     </div>
