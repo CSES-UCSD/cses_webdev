@@ -47,6 +47,7 @@ const Initiatives = () => {
             p: 4,
             maxWidth: "1800px",
             mx: "auto",
+            mt: 7,
             pt: 15,
         }}
         >
