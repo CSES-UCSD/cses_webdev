@@ -1,367 +1,295 @@
-import React, { useState } from 'react';
-import { Box, Grid, ToggleButton, createTheme, useMediaQuery } from '@mui/material';
-import previous from '../../images/previous.png';
-import next from '../../images/next.png';
-import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
-import { buttonStyles } from '../Button/styles';
-import { aboutStyles } from './styles';
-import Sithu from '../../images/meettheteamImages/sithu.jpg';
-import Rahul from '../../images/meettheteamImages/rahul.png';
-import Yashil from '../../images/meettheteamImages/yashil vora.jpg';
-import Mishka from '../../images/meettheteamImages/mishka.jpeg';
-import Brian from '../../images/meettheteamImages/brian.jpg';
-import Jake from '../../images/meettheteamImages/jake villaseno.jpeg';
-import Jose from '../../images/meettheteamImages/josue martinez.jpeg';
-import Angelina from '../../images/meettheteamImages/angelina yee.jpg';
-import Ganesh from '../../images/meettheteamImages/ganesh kumarappan.jpg';
-import Sardor from '../../images/meettheteamImages/sardor sobirov.jpg';
-import Shreya from '../../images/meettheteamImages/shreya gupta.jpg';
-import ShreyaN from '../../images/meettheteamImages/Shreya Nagunuri.png';
-import Kevin from '../../images/meettheteamImages/kevin kim.jpeg';
-import KevinW from '../../images/meettheteamImages/KevinWu.png';
-import Sofia from '../../images/meettheteamImages/sofia nguyen.png';
-import Maanasa from '../../images/meettheteamImages/maanasa prasad.png';
-import Michael from '../../images/meettheteamImages/michael he.png';
-import Pranav_Soma from '../../images/meettheteamImages/Pranav_Soma.jpeg';
-import Nikitha_Maderamitla from '../../images/meettheteamImages/Nikitha_Maderamitla.jpg';
-import Aryen_Singhal from '../../images/meettheteamImages/Aryen_Singhal.jpg';
-import Hillary_Chang from '../../images/meettheteamImages/Hillary_Chang.webp';
-import Aditya_Kakarla from '../../images/meettheteamImages/Aditya_Kakarla.jpg';
-import Chase_Peterson from '../../images/meettheteamImages/Chase_Peterson.jpg';
-import Tia_Irani from '../../images/meettheteamImages/Tia_Irani.jpeg';
-import Steven_Shi from '../../images/meettheteamImages/Steven_Shi.jpg';
-import Vinod_Vairavaraj from '../../images/meettheteamImages/Vinod_Vairavaraj.png';
-import Shree_Venkatesh from '../../images/meettheteamImages/Shree_Venkatesh.jpg';
-import Bhavik_Chandna from '../../images/meettheteamImages/Bhavik_Chandna.jpg';
-import Kevin_Sun from '../../images/meettheteamImages/Kevin_Sun.jpg';
-import Aryamun_Das from '../../images/meettheteamImages/Ryan_Das.jpeg';
-import Aditi_Bansal from '../../images/meettheteamImages/Aditi_Bansal.jpg';
-import Lucas_Hlaing from '../../images/meettheteamImages/Lucas_Hiaing.jpeg';
-import Varun_Parekh from '../../images/meettheteamImages/Varun_Parekh.jpg';
-import Yash_Ravipati from '../../images/meettheteamImages/Yash_Ravipati.jpg'
+import React, { useMemo, useState, useEffect } from "react";
+import {
+  Box,
+  Container,
+  Grid,
+  IconButton,
+  Tabs,
+  Tab,
+  Typography,
+} from "@mui/material";
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import EmailIcon from "@mui/icons-material/Email";
+import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
+import ChevronRightIcon from "@mui/icons-material/ChevronRight";
+import { gradientImgWrapper, gradientImg } from "./styles";
 
-const categories = [
-  {
-    id: 1,
-    name: 'CSES Board',
-    members: [
-      { name: 'Rahul Mistry', title: 'President', photo: Rahul },
-      { name: 'Michael He', title: 'VP External', photo: Michael },
-      { name: 'Sithu Soe', title: 'VP Operations', photo: Sithu },
-      { name: 'Maanasa Prasad', title: 'VP Events', photo: Maanasa },
-      { name: 'Lucas Hlaing', title: 'Finance Director', photo: Lucas_Hlaing },
-      { name: 'Varun Parekh', title: 'Technical Workshop Director', photo: Varun_Parekh },
-      { name: 'Angelina Yee', title: 'Marketing Chair', photo: Angelina },
-      { name: 'Josue Martinez', title: 'External Director - Alumni and Professor', photo: Jose },
-      { name: 'Hillary Chang', title: 'Corporate Connections Director', photo: Hillary_Chang },
-    ],
-  },
-  {
-    id: 2,
-    name: 'CSES Dev',
-    members: [
-      { name: 'Shreya Gupta', title: 'President', photo: Shreya },
-      { name: 'Steven Shi', title: 'VP Products', photo: Steven_Shi },
-      { name: 'Jake Villasenor', title: 'VP Design', photo: Jake },
-      { name: 'Sardor Sobirov', title: 'Frontend Developer', photo: Sardor },
-      { name: 'Sithu Soe', title: 'Frontend Developer', photo: Sithu },
-      { name: 'Kevin Wu', title: 'Frontend Developer', photo: KevinW },
-      { name: 'Shreya Nagunuri', title: 'Backend Developer', photo: ShreyaN },
-      { name: 'Brian Liu', title: 'Backend Developer', photo: Brian },
-      { name: 'Ganesh Kumarappan', title: 'Backend Developer', photo: Ganesh },
-    ],
-  },
-  {
-    id: 4,
-    name: 'CSES Open Source',
-    members: [
-      { name: 'Yashil Vora', title: 'President', photo: Yashil },
-      { name: 'Mishka Jethwani', title: 'VP Operations', photo: Mishka },
-      { name: 'Yash Ravipati', title: 'VP Tech', photo: Yash_Ravipati},
-      { name: 'Aryen Singhal', title: 'Engineering Manager', photo: Aryen_Singhal },
-      { name: 'Chase Peterson', title: 'Engineering Manager', photo: Chase_Peterson },
-      { name: 'Shree Venkatesh', title: 'Engineering Manager', photo: Shree_Venkatesh },
-      { name: 'Kevin Sun', title: 'Engineering Manager', photo: Kevin_Sun },
-      { name: 'Kevin Kim', title: 'Lead Software Engineer', photo: Kevin },
-      { name: 'Sofia Nguyen', title: 'UI/UX Designer', photo: Sofia },
-      { name: 'Tia Irani', title: 'UI/UX Designer', photo: Tia_Irani },
-      { name: 'Aditi Bansal', title: 'UI/UX Designer', photo: Aditi_Bansal },
-      { name: 'Vinod Vairavaraj', title: 'UI/UX Designer', photo: Vinod_Vairavaraj },
-    ],
-  },
-  {
-    id: 6,
-    name: 'CSES E/Acc',
-    members: [
-      { name: 'Pranav Soma', title: 'President', photo: Pranav_Soma },
-      { name: 'Aryamun Das', title: 'Founder', photo: Aryamun_Das },
-      { name: 'Nikitha Maderamitla', title: 'Internal Director', photo: Nikitha_Maderamitla },
-      { name: 'Aditya Kakarla', title: 'External Director', photo: Aditya_Kakarla },
-      { name: 'Bhavik Chandna', title: 'Project Lead', photo: Bhavik_Chandna },
-    ],
-  },
-];
-
-const MeetTheTeam = () => {
-  const styles = aboutStyles();
-  const theme = createTheme();
-  const [currentCategory, setCurrentCategory] = useState(categories[0]);
-  const [currentPage, setCurrentPage] = useState(1);
-  const isMiddleScreen = useMediaQuery(theme.breakpoints.between('sm', 'md'));
-  const isSmallScreen = useMediaQuery(theme.breakpoints.between('xs', 'sm'));
-  const verySmallScreen = useMediaQuery('(max-width:350px');
-
-  const membersPerPage = 6;
-  const remainingSpots = membersPerPage - (currentCategory.members.length % membersPerPage);
-
-  // Calculate the number of members displayed on the current page
-  const membersDisplayed = currentCategory.members.slice((currentPage - 1) * 6, currentPage * 6);
-
-  // Define the threshold for different margin values
-  const marginThreshold = 3;
-
-  // Check if there are fewer than 3 members displayed
-  const areFewMembers = membersDisplayed.length < marginThreshold;
-
-  // Define the margin values based on the number of members displayed
-  const marginTopValue = areFewMembers ? '3%' : '-50%';
-
-  const emptyMembers = Array.from({ length: remainingSpots }).map((_, index) => ({
-    name: `Empty Member ${index + 1}`,
-    title: 'Empty Title',
-    photo: 'blankSquare',
-  }));
-
-  const handleCategoryChange = (category: (typeof categories)[number]) => {
-    setCurrentCategory(category);
-    setCurrentPage(1);
-  };
-
-  const handlePreviousPage = () => {
-    setCurrentPage((prevPage) => Math.max(prevPage - 1, 1));
-  };
-
-  const handleNextPage = () => {
-    const maxPages = Math.ceil(currentCategory.members.length / 6);
-    setCurrentPage((prevPage) => Math.min(prevPage + 1, maxPages));
-  };
-
-  return (
-    <div>
-      <Grid item xs={12} sm={4.5} md={5.5} lg={5}>
-        <Box
-          sx={{
-            ...styles.mainTitleBottom,
-            textAlign: 'center',
-            fontSize: 'clamp(32px, 8vw, 65px)',
-          }}
-        >
-          MEET THE TEAM!
-        </Box>
-      </Grid>
-      <Grid
-        container
-        sx={{ marginTop: '5%', display: 'flex', justifyContent: 'center', alignItems: 'center' }}
-      >
-        <ToggleButtonGroup value={currentCategory.name} exclusive aria-label="Category Selection">
-          {categories.map((category) => (
-            <ToggleButton
-              key={category.name}
-              value={category.name}
-              sx={{
-                ...buttonStyles(false, false, false),
-                marginRight: '0px',
-                marginLeft: '0px',
-                '&.MuiToggleButton-root.Mui-selected, &.MuiToggleButton-root.Mui-selected:hover': {
-                  backgroundColor: 'grey',
-                  color: 'white',
-                },
-                fontSize: 'clamp(10px, 2vw, 15px)',
-              }}
-              onClick={() => {
-                handleCategoryChange(category);
-              }}
-            >
-              {category.name}
-            </ToggleButton>
-          ))}
-        </ToggleButtonGroup>
-      </Grid>
-      <Grid
-        container
-        sx={{
-          marginTop: '4%',
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-        }}
-      >
-        <Grid container item xs={12} sm={9} md={9} lg={9} justifyContent="center">
-          {currentCategory.members
-            .slice((currentPage - 1) * 6, currentPage * 6)
-            .map((member, index) => (
-              <Grid
-                item
-                xs={6}
-                sm={4}
-                md={4}
-                lg={4}
-                key={index}
-                sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}
-              >
-                <div
-                  style={{
-                    width: verySmallScreen
-                      ? '120px'
-                      : isSmallScreen
-                      ? '120px'
-                      : isMiddleScreen
-                      ? '140px'
-                      : '190px',
-                    height: verySmallScreen
-                      ? '120px'
-                      : isSmallScreen
-                      ? '120px'
-                      : isMiddleScreen
-                      ? '140px'
-                      : '190px',
-                    overflow: 'hidden',
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                  }}
-                >
-                  <img
-                    src={member.photo}
-                    key={member.photo}
-                    alt="img"
-                    style={{
-                      width: '100%',
-                      height: '100%',
-                      objectFit: 'cover',
-                    }}
-                  />
-                </div>
-                <h3
-                  style={{
-                    color: 'white',
-                    textAlign: 'center',
-                    fontFamily: 'Inter',
-                    fontWeight: '700',
-                    fontSize: '18px',
-                  }}
-                >
-                  {member.name}
-                </h3>
-                <h5
-                  style={{
-                    color: 'white',
-                    textAlign: 'center',
-                    fontFamily: 'Inter',
-                    fontWeight: '500',
-                    fontSize: '14px',
-                    marginTop: '-2%',
-                  }}
-                >
-                  {member.title}
-                </h5>
-              </Grid>
-            ))}
-
-          {emptyMembers.map((member, index) => (
-            <Grid item xs={6} sm={4} md={4} lg={4} key={index + currentCategory.members.length}>
-              {/* Empty placeholder, no visible content */}
-            </Grid>
-          ))}
-        </Grid>
-
-        <Grid
-          container
-          item
-          xs={12}
-          sm={15}
-          md={20}
-          justifyContent="center"
-          sx={{
-            marginTop: {
-              xs: '8%', // Default margin for extra small screens
-              sm: membersDisplayed.length <= 3 ? '-30%' : '-70%', // Adjusted for small screens
-              md: membersDisplayed.length <= 3 ? '-30%' : '-60%', // Adjusted for medium screens
-              lg: membersDisplayed.length <= 3 ? '-15%' : '-45%', // Adjusted for large screens
-            },
-            marginBottom: {
-              xs: membersDisplayed.length <= 3 ? '10%' : '0%',
-              sm: membersDisplayed.length <= 3 ? '10%' : '0%',
-              md: membersDisplayed.length <= 3 ? '10%' : '0%',
-            },
-          }}
-        >
-          <Grid
-            container
-            item
-            xs={5}
-            sm={20}
-            md={15}
-            justifyContent="space-between"
-            sx={{ 
-              alignItems: 'center',
-              marginLeft:{
-                sm: '4%',
-                md: '6%',
-                lg: '10%'
-              },
-              marginRight:{
-                sm: '4%',
-                md: '6%',
-                lg: '10%'
-              }
-             }}
-             
-          >
-            <Grid item>
-              <button
-                style={{
-                  border: 'none',
-                  background: 'none',
-                  cursor: currentPage === 1 ? 'auto' : 'pointer',
-                  opacity: currentPage === 1 ? '20%' : '100%',
-                }}
-                onClick={handlePreviousPage}
-                disabled={currentPage === 1}
-              >
-                <img
-                  src={previous}
-                  alt="img"
-                  style={{
-                    width: 30,
-                    height: 30,
-                  }}
-                />
-              </button>
-            </Grid>
-            <Grid item>
-              <button
-                style={{
-                  border: 'none',
-                  background: 'none',
-                  cursor:
-                    currentPage === Math.ceil(currentCategory.members.length / 6)
-                      ? 'auto'
-                      : 'pointer',
-                  opacity:
-                    currentPage === Math.ceil(currentCategory.members.length / 6) ? '20%' : '100%',
-                }}
-                onClick={handleNextPage}
-                disabled={currentPage === Math.ceil(currentCategory.members.length / 6)}
-              >
-                <img src={next} alt="img" style={{ width: 30, height: 30 }} />
-              </button>
-            </Grid>
-          </Grid>
-        </Grid>
-      </Grid>
-    </div>
-  );
+type Division = "general" | "dev" | "open-source" | "innovate";
+type Member = {
+  name: string;
+  company: string;
+  division: Division;
+  linkedin?: string;
+  email?: string;
+  photo?: string;
 };
 
-export default MeetTheTeam;
+const PLACEHOLDER_PHOTO = "https://placehold.co/400x400?text=Photo";
+
+// Mock data (all placeholders).
+const TEAM: Member[] = [
+  { name: "[name]", company: "[company]", division: "general" },
+  { name: "[name]", company: "[company]", division: "general" },
+  { name: "[name]", company: "[company]", division: "general" },
+  { name: "[name]", company: "[company]", division: "general" },
+  { name: "[name]", company: "[company]", division: "general" },
+  { name: "[name]", company: "[company]", division: "general" },
+  { name: "[name]", company: "[company]", division: "general" },
+  { name: "[name]", company: "[company]", division: "general" },
+  { name: "[name]", company: "[company]", division: "general" },
+  { name: "[name]", company: "[company]", division: "dev" },
+  { name: "[name]", company: "[company]", division: "dev" },
+  { name: "[name]", company: "[company]", division: "dev" },
+  { name: "[name]", company: "[company]", division: "open-source" },
+  { name: "[name]", company: "[company]", division: "open-source" },
+  { name: "[name]", company: "[company]", division: "innovate" },
+  { name: "[name]", company: "[company]", division: "innovate" },
+];
+
+const DIVISIONS: { label: string; value: Division }[] = [
+  { label: "General", value: "general" },
+  { label: "Dev", value: "dev" },
+  { label: "Open Source", value: "open-source" },
+  { label: "Innovate", value: "innovate" },
+];
+
+const PAGE_SIZE = 8; // 3 x 2 grid
+
+function TeamCard({ m }: { m: Member }) {
+  return (
+    <Box>
+      {/* Gradient border wrapper */}
+      <Box sx={gradientImgWrapper}>
+        {/* Surface keeps square ratio and lets us overlay icons */}
+        <Box
+          sx={{
+            position: "relative",
+            width: "100%",
+            aspectRatio: "1 / 1",
+            overflow: "hidden",
+            bgcolor: "rgba(255,255,255,0.04)",
+            borderRadius: 0, // flat corners
+          }}
+        >
+          <Box
+            component="img"
+            src={m.photo || PLACEHOLDER_PHOTO}
+            alt={m.name}
+            sx={{
+              ...gradientImg,
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+            }}
+          />
+
+          {/* Bottom-left: LinkedIn */}
+          <IconButton
+            size="small"
+            component="a"
+            href={m.linkedin || "#"}
+            target={m.linkedin ? "_blank" : undefined}
+            rel={m.linkedin ? "noopener noreferrer" : undefined}
+            disabled={!m.linkedin}
+            sx={{
+              position: "absolute",
+              left: 8,
+              bottom: 8,
+              bgcolor: "rgba(0,0,0,0.55)",
+              "&:hover": { bgcolor: "rgba(0,0,0,0.75)" },
+            }}
+            aria-label={`LinkedIn ${m.name}`}
+          >
+            <LinkedInIcon fontSize="small" />
+          </IconButton>
+
+          {/* Bottom-right: Email */}
+          <IconButton
+            size="small"
+            component="a"
+            href={m.email ? `mailto:${m.email}` : "#"}
+            disabled={!m.email}
+            sx={{
+              position: "absolute",
+              right: 8,
+              bottom: 8,
+              bgcolor: "rgba(0,0,0,0.55)",
+              "&:hover": { bgcolor: "rgba(0,0,0,0.75)" },
+            }}
+            aria-label={`Email ${m.name}`}
+          >
+            <EmailIcon fontSize="small" />
+          </IconButton>
+        </Box>
+      </Box>
+
+      <Typography
+        variant="subtitle1"
+        sx={{ color: "white", textAlign: "center", mt: 1, fontWeight: 600 }}
+      >
+        {m.name}
+      </Typography>
+      <Typography
+        variant="body2"
+        sx={{ color: "white", textAlign: "center", opacity: 0.9 }}
+      >
+        {m.company}
+      </Typography>
+    </Box>
+  );
+}
+
+export default function MeetTheTeam() {
+  const [tab, setTab] = useState<Division>("general");
+  const [page, setPage] = useState(0);
+
+  useEffect(() => setPage(0), [tab]);
+
+  const filtered = useMemo(() => TEAM.filter((t) => t.division === tab), [tab]);
+  const pageCount = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
+  const start = page * PAGE_SIZE;
+  const visible = filtered.slice(start, start + PAGE_SIZE);
+
+  const canPrev = page > 0;
+  const canNext = page < pageCount - 1;
+
+  return (
+    <Container disableGutters sx={{marginTop: '10%'}}>
+      <Typography
+        component="h2"
+        sx={{
+          color: "white",
+          textAlign: "center",
+          fontFamily: "Chakra Petch",
+          fontWeight: 700,
+          fontSize: "clamp(28px, 6vw, 56px)",
+          mb: 3,
+        }}
+      >
+        Meet the Team
+      </Typography>
+
+      {/* Pill tabs */}
+      <Box sx={{ display: "flex", justifyContent: "center", mb: 5 }}>
+        <Box
+          sx={{
+            border: "2px solid rgba(82,229,231,0.8)",
+            borderRadius: 9999,
+            px: 1,
+            overflow: "hidden",
+            maxWidth: 760,
+            width: "100%",
+          }}
+        >
+          <Tabs
+            value={tab}
+            onChange={(_, v) => setTab(v)}
+            variant="fullWidth"
+            textColor="inherit"
+            TabIndicatorProps={{ style: { display: "none" } }}
+            sx={{
+              "& .MuiTab-root": {
+                color: "white",
+                textTransform: "none",
+                fontWeight: 600,
+                minHeight: 44,
+                borderRight: "1px solid rgba(82,229,231,0.35)",
+              },
+              "& .MuiTab-root:last-of-type": { borderRight: "none" },
+              "& .Mui-selected": { background: "rgba(82,229,231,0.18)" },
+            }}
+          >
+            {DIVISIONS.map((d) => (
+              <Tab key={d.value} label={d.label} value={d.value} />
+            ))}
+          </Tabs>
+        </Box>
+      </Box>
+
+      {/* Pager with arrows */}
+      <Box sx={{ position: "relative", px: { xs: 0, md: 6 } }}>
+        <IconButton
+          onClick={() => setPage((p) => Math.max(0, p - 1))}
+          disabled={!canPrev}
+          sx={{
+            position: "absolute",
+            left: { xs: -4, md: 0 },
+            top: "50%",
+            transform: "translateY(-50%)",
+            bgcolor: "rgba(0,0,0,0.4)",
+            color: 'white',
+            "&:hover": { bgcolor: "rgba(0,0,0,0.6)" },
+          }}
+          aria-label="Previous"
+        >
+          <ChevronLeftIcon />
+        </IconButton>
+
+        <IconButton
+          onClick={() => setPage((p) => Math.min(pageCount - 1, p + 1))}
+          disabled={!canNext}
+          sx={{
+            position: "absolute",
+            right: { xs: -4, md: 0 },
+            top: "40%",
+            transform: "translateY(-50%)",
+            bgcolor: "rgba(0,0,0,0.4)",
+            color: 'white',
+            "&:hover": { bgcolor: "rgba(0,0,0,0.6)" },
+          }}
+          aria-label="Next"
+        >
+          <ChevronRightIcon />
+        </IconButton>
+
+        <Grid container spacing={4} justifyContent="flex-start" alignItems="flex-start">
+          {visible.map((m, i) => (
+            <Grid item xs={6} sm={4} md={3} key={`${m.division}-${i}`}>
+              <TeamCard m={m} />
+            </Grid>
+          ))}
+          {visible.length < PAGE_SIZE &&
+            Array.from({ length: PAGE_SIZE - visible.length }).map((_, i) => (
+              <Grid item key={`spacer-${i}`} />
+            ))}
+        </Grid>
+      </Box>
+
+      <Box
+    sx={{
+      display: { xs: "flex", md: "none" }, // only show on mobile
+      justifyContent: "center",
+      gap: 2,
+      mt: 2,
+    }}
+  >
+    <IconButton
+      onClick={() => setPage((p) => Math.max(0, p - 1))}
+      disabled={!canPrev}
+      sx={{
+        bgcolor: "rgba(0,0,0,0.4)",
+        color: "white",
+        "&:hover": { bgcolor: "rgba(0,0,0,0.6)" },
+        "&.Mui-disabled": { opacity: 0 },
+      }}
+      aria-label="Previous"
+    >
+      <ChevronLeftIcon />
+    </IconButton>
+    <IconButton
+      onClick={() => setPage((p) => Math.min(pageCount - 1, p + 1))}
+      disabled={!canNext}
+      sx={{
+        bgcolor: "rgba(0,0,0,0.4)",
+        color: "white",
+        "&:hover": { bgcolor: "rgba(0,0,0,0.6)" },
+        "&.Mui-disabled": { opacity: 0 },
+      }}
+      aria-label="Next"
+    >
+      <ChevronRightIcon />
+    </IconButton>
+  </Box>
+    </Container>
+  );
+}
