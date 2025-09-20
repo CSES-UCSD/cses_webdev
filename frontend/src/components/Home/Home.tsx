@@ -209,13 +209,13 @@ const Home = () => {
               </Grid>
             </Grid>
 
-            <MuiButton
+            {/* <MuiButton
               variant="outlined"
               onClick={() => navigate('/membership')}
               sx={styles.ctaButton}
             >
               Become a member now!
-            </MuiButton>
+            </MuiButton> */}
           </Box>
 
           {/* Events Section  REDO THE WHOLE THING*/}
