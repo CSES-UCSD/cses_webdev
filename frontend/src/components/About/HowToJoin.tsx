@@ -38,20 +38,29 @@ const HowtoJoin = () => {
       >
         {/* Image */}
         <Grid item xs={12} sm={6} md={4}>
-          <Box
-            component="img"
-            src={about3}
-            alt="How to Join"
-            sx={{
-              width: '100%',
-              maxWidth: '460px',
-              borderRadius: '8px',
-              border: '3px solid',
-              borderImage: 'linear-gradient(45deg, #FFCE00, #00F0FF) 1',
-              display: 'block',
-            }}
-          />
+            <Box
+                sx={{
+                display: "inline-block",
+                borderRadius: "12px", 
+                p: "3px", 
+                background: "linear-gradient(45deg, #FFCE00, #00F0FF)",
+                width: "100%",
+                maxWidth: "460px",
+                }}
+            >
+                <Box
+                component="img"
+                src={about3}
+                alt="How to Join"
+                sx={{
+                    width: "100%",
+                    display: "block",
+                    borderRadius: "10px", 
+                }}
+                />
+            </Box>
         </Grid>
+
 
         {/* Text */}
         <Grid item xs={12} sm={6} md={8}>
