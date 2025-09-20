@@ -13,6 +13,8 @@ import HowtoJoin from './HowToJoin';
 import MeetTheAlumni from './MeetTheAlumni';
 import Typewriter from './TypeWriter';
 import { motion } from 'framer-motion';
+import OurHistory from '../../images/aboutpage/ourhistory.png'
+import OurFuture from '../../images/aboutpage/ourfuture.png'
 
 const PLACEHOLDER_GENERAL = 'https://placehold.co/200x200?text=Placeholder';
 
@@ -142,13 +144,27 @@ const About = () => {
                 transition={{ type: 'spring', stiffness: 50, damping: 20, mass: 1, delay: 0.2 }}
                 style={{ display: 'flex', justifyContent: 'center' }}
               >
-                {/* Placeholder image with gradient border  */}
                 <Box
-                  component="img"
-                  src={PLACEHOLDER_GENERAL}
-                  alt="placeholder"
-                  sx={{ display: 'block', width: { xs: 260, sm: 340, md: 300 }, height: { xs: 260, sm: 340, md: 300 }, objectFit: 'cover'}}
-                />
+                  sx={{
+                    display: "inline-block",
+                    borderRadius: "12px", 
+                    p: "3px", 
+                    background: "linear-gradient(45deg, #FFCE00, #00F0FF)",
+                  }}
+                >
+                  <Box
+                    component="img"
+                    src={OurHistory}
+                    alt="placeholder"
+                    sx={{
+                      display: "block",
+                      width: { xs: 260, sm: 340, md: 300 },
+                      height: { xs: 260, sm: 340, md: 300 },
+                      objectFit: "cover",
+                      borderRadius: "10px", 
+                    }}
+                  />
+                </Box>
               </motion.div>
             </Grid>
 
@@ -204,13 +220,28 @@ const About = () => {
                 transition={{ type: 'spring', stiffness: 50, damping: 20, mass: 1, delay: 0.2 }}
                 style={{ display: 'flex', justifyContent: 'center' }}
               >
-                {/* Placeholder image with gradient border  */}
+        
                 <Box
-                  component="img"
-                  src={PLACEHOLDER_GENERAL}
-                  alt="placeholder"
-                  sx={{ display: 'block', width: { xs: 260, sm: 340, md: 320 }, height: { xs: 260, sm: 340, md: 320 }, objectFit: 'cover'}}
-                />
+                  sx={{
+                    display: "inline-block",
+                    borderRadius: "12px", 
+                    p: "3px", 
+                    background: "linear-gradient(45deg, #FFCE00, #00F0FF)",
+                  }}
+                >
+                  <Box
+                    component="img"
+                    src={OurFuture}
+                    alt="placeholder"
+                    sx={{
+                      display: "block",
+                      width: { xs: 260, sm: 340, md: 300 },
+                      height: { xs: 260, sm: 340, md: 300 },
+                      objectFit: "cover",
+                      borderRadius: "10px", 
+                    }}
+                  />
+                </Box>
               </motion.div>
             </Grid>
           </Grid>

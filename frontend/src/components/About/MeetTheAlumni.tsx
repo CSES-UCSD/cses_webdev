@@ -5,6 +5,10 @@ import EmailIcon from "@mui/icons-material/Email";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import { gradientImgWrapper, gradientImg } from "./styles";
+import Rahul from '../../images/meettheteamImages/rahul.png';
+import Varun_Parekh from '../../images/meettheteamImages/Varun_Parekh.jpg';
+import Josue from '../../images/meettheteamImages/josue martinez.jpeg';
+import Maanasa from '../../images/meettheteamImages/maanasa prasad.png';
 
 type Member = {
   name: string;
@@ -22,11 +26,12 @@ type Props = {
 const PLACEHOLDER_PHOTO = "https://placehold.co/400x400?text=Photo";
 const PAGE_SIZE = 8;
 
-const DEFAULT_ALUMNI: Member[] = Array.from({ length: 12 }).map(() => ({
-  name: "[name]",
-  company: "[company]",
-  photo: PLACEHOLDER_PHOTO,
-}));
+const DEFAULT_ALUMNI: Member[] = [
+  { name: "Rahul Mistry", company: "Former President", photo: Rahul },
+  { name: "Maanasa Prasad", company: "Former VP Events", photo: Maanasa },
+  { name: "Varun Parekh", company: "Former Technical Workshop Director", photo: Varun_Parekh },
+  { name: "Josue Martinez", company: "Former External Director - Alumni and Professor", photo: Josue },
+];
 
 function Card({ m }: { m: Member }) {
   return (
