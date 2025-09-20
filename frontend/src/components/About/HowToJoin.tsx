@@ -85,7 +85,7 @@ const HowtoJoin = () => {
             socials to be notified of when board applications open on a rolling basis.
           </Typography>
           <Box sx={{ marginTop: '40px'}}>
-        <MuiButton
+        {/* <MuiButton
           variant="outlined"
           onClick={() => navigate('/membership')}
           sx={{
@@ -108,7 +108,7 @@ const HowtoJoin = () => {
         }}
         >
           Become a member now!
-        </MuiButton>
+        </MuiButton> */}
       </Box>
         </Grid>
       </Grid>
