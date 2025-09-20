@@ -13,6 +13,40 @@ import EmailIcon from "@mui/icons-material/Email";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import { gradientImgWrapper, gradientImg } from "./styles";
+import Sithu from '../../images/meettheteamImages/sithu.jpg';
+import Rahul from '../../images/meettheteamImages/rahul.png';
+import Yashil from '../../images/meettheteamImages/yashil vora.jpg';
+import Mishka from '../../images/meettheteamImages/mishka.jpeg';
+import Brian from '../../images/meettheteamImages/brian.jpg';
+import Jake from '../../images/meettheteamImages/jake villaseno.jpeg';
+import Jose from '../../images/meettheteamImages/josue martinez.jpeg';
+import Angelina from '../../images/meettheteamImages/angelina yee.jpg';
+import Ganesh from '../../images/meettheteamImages/ganesh kumarappan.jpg';
+import Sardor from '../../images/meettheteamImages/sardor sobirov.jpg';
+import Shreya from '../../images/meettheteamImages/shreya gupta.jpg';
+import ShreyaN from '../../images/meettheteamImages/Shreya Nagunuri.png';
+import Kevin from '../../images/meettheteamImages/kevin kim.jpeg';
+import KevinW from '../../images/meettheteamImages/KevinWu.png';
+import Sofia from '../../images/meettheteamImages/sofia nguyen.png';
+import Maanasa from '../../images/meettheteamImages/maanasa prasad.png';
+import Michael from '../../images/meettheteamImages/michael he.png';
+import Pranav_Soma from '../../images/meettheteamImages/Pranav_Soma.jpeg';
+import Nikitha_Maderamitla from '../../images/meettheteamImages/Nikitha_Maderamitla.jpg';
+import Aryen_Singhal from '../../images/meettheteamImages/Aryen_Singhal.jpg';
+import Hillary_Chang from '../../images/meettheteamImages/Hillary_Chang.webp';
+import Aditya_Kakarla from '../../images/meettheteamImages/Aditya_Kakarla.jpg';
+import Chase_Peterson from '../../images/meettheteamImages/Chase_Peterson.jpg';
+import Tia_Irani from '../../images/meettheteamImages/Tia_Irani.jpeg';
+import Steven_Shi from '../../images/meettheteamImages/Steven_Shi.jpg';
+import Vinod_Vairavaraj from '../../images/meettheteamImages/Vinod_Vairavaraj.png';
+import Shree_Venkatesh from '../../images/meettheteamImages/Shree_Venkatesh.jpg';
+import Bhavik_Chandna from '../../images/meettheteamImages/Bhavik_Chandna.jpg';
+import Kevin_Sun from '../../images/meettheteamImages/Kevin_Sun.jpg';
+import Aryamun_Das from '../../images/meettheteamImages/Ryan_Das.jpeg';
+import Aditi_Bansal from '../../images/meettheteamImages/Aditi_Bansal.jpg';
+import Lucas_Hlaing from '../../images/meettheteamImages/Lucas_Hiaing.jpeg';
+import Varun_Parekh from '../../images/meettheteamImages/Varun_Parekh.jpg';
+import Yash_Ravipati from '../../images/meettheteamImages/Yash_Ravipati.jpg'
 
 type Division = "general" | "dev" | "open-source" | "innovate";
 type Member = {
@@ -26,24 +60,50 @@ type Member = {
 
 const PLACEHOLDER_PHOTO = "https://placehold.co/400x400?text=Photo";
 
-// Mock data (all placeholders).
+// Transformed data
 const TEAM: Member[] = [
-  { name: "[name]", company: "[company]", division: "general" },
-  { name: "[name]", company: "[company]", division: "general" },
-  { name: "[name]", company: "[company]", division: "general" },
-  { name: "[name]", company: "[company]", division: "general" },
-  { name: "[name]", company: "[company]", division: "general" },
-  { name: "[name]", company: "[company]", division: "general" },
-  { name: "[name]", company: "[company]", division: "general" },
-  { name: "[name]", company: "[company]", division: "general" },
-  { name: "[name]", company: "[company]", division: "general" },
-  { name: "[name]", company: "[company]", division: "dev" },
-  { name: "[name]", company: "[company]", division: "dev" },
-  { name: "[name]", company: "[company]", division: "dev" },
-  { name: "[name]", company: "[company]", division: "open-source" },
-  { name: "[name]", company: "[company]", division: "open-source" },
-  { name: "[name]", company: "[company]", division: "innovate" },
-  { name: "[name]", company: "[company]", division: "innovate" },
+  // CSES Board -> general
+  { name: "Rahul Mistry", company: "President", division: "general", photo: Rahul },
+  { name: "Michael He", company: "VP External", division: "general", photo: Michael },
+  { name: "Sithu Soe", company: "VP Operations", division: "general", photo: Sithu },
+  { name: "Maanasa Prasad", company: "VP Events", division: "general", photo: Maanasa },
+  { name: "Lucas Hlaing", company: "Finance Director", division: "general", photo: Lucas_Hlaing },
+  { name: "Varun Parekh", company: "Technical Workshop Director", division: "general", photo: Varun_Parekh },
+  { name: "Angelina Yee", company: "Marketing Chair", division: "general", photo: Angelina },
+  { name: "Josue Martinez", company: "External Director - Alumni and Professor", division: "general", photo: Jose },
+  { name: "Hillary Chang", company: "Corporate Connections Director", division: "general", photo: Hillary_Chang },
+
+  // CSES Dev -> dev
+  { name: "Shreya Gupta", company: "President", division: "dev", photo: Shreya },
+  { name: "Steven Shi", company: "VP Products", division: "dev", photo: Steven_Shi },
+  { name: "Jake Villasenor", company: "VP Design", division: "dev", photo: Jake },
+  { name: "Sardor Sobirov", company: "Frontend Developer", division: "dev", photo: Sardor },
+  { name: "Sithu Soe", company: "Frontend Developer", division: "dev", photo: Sithu },
+  { name: "Kevin Wu", company: "Frontend Developer", division: "dev", photo: KevinW },
+  { name: "Shreya Nagunuri", company: "Backend Developer", division: "dev", photo: ShreyaN },
+  { name: "Brian Liu", company: "Backend Developer", division: "dev", photo: Brian },
+  { name: "Ganesh Kumarappan", company: "Backend Developer", division: "dev", photo: Ganesh },
+
+  // CSES Open Source -> open-source
+  { name: "Yashil Vora", company: "President", division: "open-source", photo: Yashil },
+  { name: "Mishka Jethwani", company: "VP Operations", division: "open-source", photo: Mishka },
+  { name: "Yash Ravipati", company: "VP Tech", division: "open-source", photo: Yash_Ravipati },
+  { name: "Aryen Singhal", company: "Engineering Manager", division: "open-source", photo: Aryen_Singhal },
+  { name: "Chase Peterson", company: "Engineering Manager", division: "open-source", photo: Chase_Peterson },
+  { name: "Shree Venkatesh", company: "Engineering Manager", division: "open-source", photo: Shree_Venkatesh },
+  { name: "Kevin Sun", company: "Engineering Manager", division: "open-source", photo: Kevin_Sun },
+  { name: "Kevin Kim", company: "Lead Software Engineer", division: "open-source", photo: Kevin },
+  { name: "Sofia Nguyen", company: "UI/UX Designer", division: "open-source", photo: Sofia },
+  { name: "Tia Irani", company: "UI/UX Designer", division: "open-source", photo: Tia_Irani },
+  { name: "Aditi Bansal", company: "UI/UX Designer", division: "open-source", photo: Aditi_Bansal },
+  { name: "Vinod Vairavaraj", company: "UI/UX Designer", division: "open-source", photo: Vinod_Vairavaraj },
+
+  // CSES E/Acc -> innovate
+  { name: "Pranav Soma", company: "President", division: "innovate", photo: Pranav_Soma },
+  { name: "Aryamun Das", company: "Founder", division: "innovate", photo: Aryamun_Das },
+  { name: "Nikitha Maderamitla", company: "Internal Director", division: "innovate", photo: Nikitha_Maderamitla },
+  { name: "Aditya Kakarla", company: "External Director", division: "innovate", photo: Aditya_Kakarla },
+  { name: "Bhavik Chandna", company: "Project Lead", division: "innovate", photo: Bhavik_Chandna },
 ];
 
 const DIVISIONS: { label: string; value: Division }[] = [
