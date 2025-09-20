@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Container, Box, Grid } from '@mui/material';
+import { Container, Box, Grid, Button as MuiButton } from '@mui/material';
 import { homeStyles } from './styles';
 import DevLogo from '../../images/DevLogo.png';
 import InnovateLogo from '../../images/InnovateLogo.png';
@@ -209,9 +209,13 @@ const Home = () => {
               </Grid>
             </Grid>
 
-            <Box sx={styles.ctaButton} onClick={() => navigate('/membership')}>
-              <Box sx={styles.ctaButtonText}>Become a member now!</Box>
-            </Box>
+            <MuiButton
+              variant="outlined"
+              onClick={() => navigate('/membership')}
+              sx={styles.ctaButton}
+            >
+              Become a member now!
+            </MuiButton>
           </Box>
 
           {/* Events Section  REDO THE WHOLE THING*/}
@@ -247,9 +251,13 @@ const Home = () => {
             </Box>
 
             <Box sx={{ marginTop: '3rem' }}>
-              <Box sx={styles.ctaButton} onClick={() => navigate('/events')}>
-                <Box sx={styles.ctaButtonText}>See Events Page</Box>
-              </Box>
+              <MuiButton
+                variant="outlined"
+                onClick={() => navigate('/events')}
+                sx={styles.ctaButton}
+              >
+                See Events Page
+              </MuiButton>
             </Box>
           </Box>
 
@@ -263,9 +271,13 @@ const Home = () => {
             </Grid>
 
             <Box sx={{ marginTop: '3rem' }}>
-              <Box sx={styles.ctaButton} onClick={() => navigate('/about')}>
-                <Box sx={styles.ctaButtonText}>About us</Box>
-              </Box>
+              <MuiButton
+                variant="outlined"
+                onClick={() => navigate('/about')}
+                sx={styles.ctaButton}
+              >
+                About us
+              </MuiButton>
             </Box>
           </Box>
 
@@ -305,9 +317,13 @@ const Home = () => {
               ))}
             </Box>
 
-            <Box sx={styles.ctaButton} onClick={() => navigate('/about')}>
-              <Box sx={styles.ctaButtonText}>Meet the Team</Box>
-            </Box>
+            <MuiButton
+              variant="outlined"
+              onClick={() => navigate('/about')}
+              sx={styles.ctaButton}
+            >
+              Meet the Team
+            </MuiButton>
           </Box>
 
           {/* Current Sponsors */}
