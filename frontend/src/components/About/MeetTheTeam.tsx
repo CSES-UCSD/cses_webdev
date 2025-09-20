@@ -58,7 +58,7 @@ const PLACEHOLDER_PHOTO = "https://placehold.co/400x400?text=Photo";
 
 const TEAM: Member[] = [
   // General
-  { name: "Pranav Soma", company: "President", division: "innovate", photo: Pranav_Soma },
+  { name: "Pranav Soma", company: "President", division: "general", photo: Pranav_Soma },
   { name: "Michael He", company: "VP External", division: "general", photo: Michael },
   { name: "Sithu Soe", company: "VP Operations", division: "general", photo: Sithu },
   { name: "Lucas Hlaing", company: "Finance Director", division: "general", photo: Lucas_Hlaing },
