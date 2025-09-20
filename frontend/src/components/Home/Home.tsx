@@ -32,7 +32,9 @@ const Home = () => {
   const [totalUsers, setTotalUsers] = useState(0);
   const [currentPersonIndex, setCurrentPersonIndex] = useState(0);
   const [displayedFutureEvents, setDisplayedFutureEvents] = useState<EventData[]>([]);
+  const [allFutureEvents, setAllFutureEvents] = useState<EventData[]>([]);
   const [eventsToShow, setEventsToShow] = useState(4);
+  const [currentEventPage, setCurrentEventPage] = useState(0);
 
   const teamMembers = [
     {
@@ -86,6 +88,20 @@ const Home = () => {
     );
   };
 
+  const handlePrevEvent = () => {
+    setCurrentEventPage((prev) => {
+      const maxPage = Math.max(0, Math.ceil(allFutureEvents.length / eventsToShow) - 1);
+      return prev > 0 ? prev - 1 : maxPage;
+    });
+  };
+
+  const handleNextEvent = () => {
+    setCurrentEventPage((prev) => {
+      const maxPage = Math.max(0, Math.ceil(allFutureEvents.length / eventsToShow) - 1);
+      return prev < maxPage ? prev + 1 : 0;
+    });
+  };
+
   useEffect(() => {
     axios
       .get(`${process.env.REACT_APP_BACKEND_URL}/api/v1/events`)
@@ -131,14 +147,21 @@ const Home = () => {
         );
         let mostRecentEvents = await response.json();
         console.log('Events received:', mostRecentEvents);
-        setDisplayedFutureEvents(mostRecentEvents.slice(0, eventsToShow));
+        setAllFutureEvents(mostRecentEvents);
       } catch (error) {
         console.error('Error fetching upcoming events:', error);
       }
     };
 
     fetchRecentEvents();
-  }, [eventsToShow]);
+  }, []);
+
+  // Update displayed events when page or eventsToShow changes
+  useEffect(() => {
+    const startIndex = currentEventPage * eventsToShow;
+    const endIndex = startIndex + eventsToShow;
+    setDisplayedFutureEvents(allFutureEvents.slice(startIndex, endIndex));
+  }, [allFutureEvents, currentEventPage, eventsToShow]);
 
   return (
     <div style={styles.pageWrapper}>
@@ -222,7 +245,7 @@ const Home = () => {
           <Box sx={styles.sectionWrapper}>
             <Box sx={styles.sectionTitle}>{"{Events}"}</Box>
             <Box sx={styles.eventsWrapper}>
-              <Box sx={styles.arrowLeft}>‹</Box>
+              <Box sx={styles.arrowLeft} onClick={handlePrevEvent}>‹</Box>
 
               <Grid container spacing={3} justifyContent="center" sx={styles.eventsGrid}>
                 {displayedFutureEvents.length > 0 ? (
@@ -247,7 +270,7 @@ const Home = () => {
                 )}
               </Grid>
 
-              <Box sx={styles.arrowRight}>›</Box>
+              <Box sx={styles.arrowRight} onClick={handleNextEvent}>›</Box>
             </Box>
 
             <Box sx={{ marginTop: '3rem' }}>
