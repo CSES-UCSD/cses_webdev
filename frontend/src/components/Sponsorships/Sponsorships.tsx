@@ -20,7 +20,7 @@ export default function Sponsorships() {
         <p>
           Check out our sponsorship package{" "}
           <span className="sponsorship-link">
-            <a href="/Sponsorship.pdf" download>here.</a>
+            <a href="/SponsorshipPackage.pdf" download>here.</a>
           </span>
         </p>
       
