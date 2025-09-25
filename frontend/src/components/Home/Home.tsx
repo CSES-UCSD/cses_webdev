@@ -8,10 +8,17 @@ import OpenSourceLogo from '../../images/OpenSourceLogo.png';
 import HomeLogo from '../../images/HomeLogo.png';
 import ASLogo from '../../images/AS.png';
 import CSEDeptLogo from '../../images/csedeplogo.png';
-import Sithu from '../../images/aboutpage/sithu.jpg';
+import Sithu from '../../images/homepage/sithu.jpg';
 import axios from 'axios';
 import CountUp from 'react-countup';
 import { motion } from "framer-motion";
+import jesusgonzalez from '../../images/homepage/jesusgonzalez.png';
+import shreevenkatesh from '../../images/homepage/shreevenkatesh.jpg';
+import pranavsoma from '../../images/homepage/pranavsoma.jpg';
+import nikithamaderamitla from '../../images/homepage/nikithaM.jpg';
+import westonzong from '../../images/homepage/westonzong.jpg';
+import vanditajain from '../../images/homepage/vanditajain.jpg';
+
 
 interface EventData {
   calendar_link: string;
@@ -38,13 +45,57 @@ const Home = () => {
 
   const teamMembers = [
     {
+      name: "Jesus Gonzalez",
+      team: "Innovate Researcher",
+      position: "Software Engineering Intern",
+      company: "Intuit",
+
+      photo: jesusgonzalez // placeholder for now
+    },
+    {
+      name: "Shree Venkatesh",
+      team: "Engineering Manager on Open Source",
+      position: "Software Development Engineer",
+      company: "Amazon Web Services",
+      photo: shreevenkatesh // placeholder for now
+    },
+    {
+      name: "Pranav Soma",
+      team: "CSES President",
+      position: "Associate Software Engineer",
+      company: "Service Now",
+      photo: pranavsoma // placeholder for now
+    },
+    {
+      name: "Nikitha Maderamitla",
+      team: "Innovate VP Internal",
+      position: "Software Engineer",
+      company: "Curanostics",
+      photo: nikithamaderamitla // placeholder for now
+    },
+    {
+      name: "Weston Zong",
+      team: "Open Source Developers",
+      position: "Software Engineer",
+      company: "Roblox",
+      photo: westonzong // placeholder for now
+    },
+    {
+      name: "Vandita Jain",
+      team: "Innovate Member",
+      position: "AL and ML Intern",
+      company: "Global Impact Assessment",
+      photo: vanditajain // placeholder for now
+    },
+    
+    {
       name: "Sithu Soe",
       position: "Software Engineer Intern",
       company: "ServiceNow",
       classOf: "2026",
       photo: Sithu
     },
-    {
+    /*{
       name: "Michael Chen",
       position: "Full Stack Developer",
       company: "Microsoft",
@@ -71,8 +122,9 @@ const Home = () => {
       company: "Meta",
       classOf: "2022",
       photo: null
-    }
+    }*/
   ];
+
 
   const currentMember = teamMembers[currentPersonIndex];
 
@@ -326,7 +378,7 @@ const Home = () => {
                 </Box>
                 <Box sx={styles.carouselText}>
                   <Box sx={styles.carouselPosition}>{currentMember.position} | {currentMember.company}</Box>
-                  <Box sx={styles.carouselClass}>Class of {currentMember.classOf}</Box>
+                  <Box sx={styles.carouselPosition}>{currentMember.team}</Box>
                   <Box sx={styles.carouselName}>{currentMember.name}</Box>
                 </Box>
               </Box>
