@@ -97,6 +97,25 @@ const EventsPage = () => {
         }
     }
 
+    const [pastIndex, setPastIndex] = useState(0);
+
+    const pastCols = isXs ? 1 : isSm ? 2 : isMd ? 3 : 4;
+    const pastRows = 3;
+    const pastPerPage = pastCols * pastRows;
+
+    const paginatedPastEvents = [];
+    for (let i = 0; i < filteredPastEvents.length; i += pastPerPage) {
+        paginatedPastEvents.push(filteredPastEvents.slice(i, i + pastPerPage));
+    }
+
+    const handlePastPrev = () => {
+        setPastIndex((prev) => (prev === 0 ? paginatedPastEvents.length - 1 : prev - 1));
+    };
+
+    const handlePastNext = () => {
+        setPastIndex((prev) => (prev === paginatedPastEvents.length - 1 ? 0 : prev + 1));
+    };
+
     return (
         <Box
             sx={{
@@ -204,7 +223,6 @@ const EventsPage = () => {
                                         key={event._id}
                                         sx={{
                                             flex: "1 1 0",
-                                            mr: 4.5,
                                             minWidth: "260px",
                                         }}
                                     >
@@ -246,7 +264,7 @@ const EventsPage = () => {
             </Box>
 
             {/* Past Events */}
-            <Box sx={{ textAlign: "center", px: 0 }}>
+            <Box sx={{ textAlign: "center" }}>
                 <Typography
                     variant="h3"
                     align="center"
@@ -257,38 +275,91 @@ const EventsPage = () => {
                     Past Events
                 </Typography>
 
-                <Grid container spacing={3} justifyContent="flex-start">
-                    {filteredPastEvents.length > 0 ? (
-                        filteredPastEvents.map((event) => (
-                            <Grid
-                                item
-                                key={event._id}
-                                xs={12} sm={6} md={4} lg={3}
-                                sx={{ display: "flex", justifyContent: "center" }}
+                {filteredPastEvents.length > 0 ? (
+                    <Box
+                        sx={{
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            width: "100%",
+                            gap: { xs: 0 },
+                        }}
+                    >
+                        {paginatedPastEvents.length > 1 && (
+                            <IconButton
+                                disableRipple
+                                onClick={handlePastPrev}
+                                sx={{
+                                    color: "white",
+                                    position: { xs: "absolute", sm: "static" },
+                                    left: { xs: 0, sm: "auto" },
+                                    zIndex: 2,
+                                    "&:hover": { color: "rgba(255,255,255,0.3)" },
+                                }}
                             >
-                                <Box sx={{ width: "100%", maxWidth: "260px", mr: 3 }}>
-                                    <EventCard
-                                        title={event.title}
-                                        startDate={event.start_time}
-                                        endDate={event.end_time}
-                                        location={event.location}
-                                        calendar_link={event.calendar_link}
-                                        description={event.description}
-                                        instagram_link={event.instagram_link}
-                                        _id={event._id}
-                                    />
-                                </Box>
-                            </Grid>
-                        ))
-                    ) : (
-                        <Typography
-                            sx={{ color: "white", mt: 8, mb: 8, fontSize: "1.5rem", width: "100%" }}
-                            align="center"
+                                <ArrowBackIosNewRounded sx={{ fontSize: { xs: 28, sm: 36 } }} />
+                            </IconButton>
+                        )}
+
+                        <Box
+                            sx={{
+                                flex: 1,
+                                mx: { xs: 8, sm: 2 },
+                                width: "100%",
+                            }}
                         >
-                            No past events.
-                        </Typography>
-                    )}
-                </Grid>
+                            <Grid container spacing={3} justifyContent="center">
+                                {paginatedPastEvents[pastIndex].map((event) => (
+                                    <Grid
+                                        item
+                                        key={event._id}
+                                        xs={12} sm={6} md={4} lg={3}
+                                        sx={{
+                                            display: "flex",
+                                            justifyContent: "center",
+                                        }}
+                                    >
+                                        <Box sx={{ width: "100%" }}>
+                                            <EventCard
+                                                title={event.title}
+                                                startDate={event.start_time}
+                                                endDate={event.end_time}
+                                                location={event.location}
+                                                calendar_link={event.calendar_link}
+                                                description={event.description}
+                                                instagram_link={event.instagram_link}
+                                                _id={event._id}
+                                            />
+                                        </Box>
+                                    </Grid>
+                                ))}
+                            </Grid>
+                        </Box>
+
+                        {paginatedPastEvents.length > 1 && (
+                            <IconButton
+                                disableRipple
+                                onClick={handlePastNext}
+                                sx={{
+                                    color: "white",
+                                    position: { xs: "absolute", sm: "static" },
+                                    right: { xs: 0, sm: "auto" },
+                                    zIndex: 2,
+                                    "&:hover": { color: "rgba(255,255,255,0.3)" },
+                                }}
+                            >
+                                <ArrowForwardIosRounded sx={{ fontSize: { xs: 28, sm: 36 } }} />
+                            </IconButton>
+                        )}
+                    </Box>
+                ) : (
+                    <Typography
+                        sx={{ color: "white", mt: 8, mb: 8, fontSize: "1.5rem", width: "100%" }}
+                        align="center"
+                    >
+                        No past events.
+                    </Typography>
+                )}
             </Box>
         </Box>
     );
