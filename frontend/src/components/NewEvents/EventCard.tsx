@@ -50,8 +50,8 @@ const EventCard = ({
     >
       <Box
         sx={{
-          width: 280,
-          height: 320,
+          minHeight: "20rem",
+          width: "16rem",
           borderRadius: 6,
           bgcolor: "white",
           display: "flex",
