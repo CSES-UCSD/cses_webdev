@@ -46,43 +46,36 @@ const Home = () => {
   const teamMembers = [
     {
       name: "Jesus Gonzalez",
-      team: "Innovate Researcher",
-      position: "Software Engineering Intern",
+      position: "Software Engineer Intern",
       company: "Intuit",
-
       photo: jesusgonzalez // placeholder for now
     },
     {
       name: "Shree Venkatesh",
-      team: "Engineering Manager on Open Source",
       position: "Software Development Engineer",
       company: "Amazon Web Services",
       photo: shreevenkatesh // placeholder for now
     },
     {
       name: "Pranav Soma",
-      team: "CSES President",
       position: "Associate Software Engineer",
-      company: "Service Now",
+      company: "ServiceNow",
       photo: pranavsoma // placeholder for now
     },
     {
       name: "Nikitha Maderamitla",
-      team: "Innovate VP Internal",
       position: "Software Engineer",
       company: "Curanostics",
       photo: nikithamaderamitla // placeholder for now
     },
     {
       name: "Weston Zong",
-      team: "Open Source Developers",
       position: "Software Engineer",
       company: "Roblox",
       photo: westonzong // placeholder for now
     },
     {
       name: "Vandita Jain",
-      team: "Innovate Member",
       position: "AL and ML Intern",
       company: "Global Impact Assessment",
       photo: vanditajain // placeholder for now
@@ -90,9 +83,9 @@ const Home = () => {
     
     {
       name: "Sithu Soe",
-      position: "Software Engineer Intern",
+      position: "Associate Software Engineer Intern",
       company: "ServiceNow",
-      classOf: "2026",
+      // classOf: "2026",
       photo: Sithu
     },
     /*{
@@ -378,7 +371,7 @@ const Home = () => {
                 </Box>
                 <Box sx={styles.carouselText}>
                   <Box sx={styles.carouselPosition}>{currentMember.position} | {currentMember.company}</Box>
-                  <Box sx={styles.carouselPosition}>{currentMember.team}</Box>
+                  {/* <Box sx={styles.carouselPosition}>{currentMember.classOf}</Box> */}
                   <Box sx={styles.carouselName}>{currentMember.name}</Box>
                 </Box>
               </Box>
