@@ -3,6 +3,7 @@ import { Box, Grid, Button, Typography, IconButton, useTheme, useMediaQuery } fr
 import { ArrowBackIosNewRounded, ArrowForwardIosRounded } from "@mui/icons-material";
 import axios from "axios";
 import EventCard from "./EventCard";
+import { positions } from "@mui/system";
 
 const categories = ["General", "Dev", "Open Source", "Innovate"];
 
@@ -119,8 +120,8 @@ const EventsPage = () => {
     return (
         <Box
             sx={{
-                mt: { xs: 10, sm: 14, md: 18 },
-                mb: { xs: 10, sm: 14, md: 18 },
+                mt: 18,
+                mb: 18,
                 maxWidth: "1400px",
                 mx: "auto",
                 px: { xs: 2, sm: 3, md: 4, lg: 5 },
@@ -133,7 +134,7 @@ const EventsPage = () => {
                 sx={{
                     mb: { xs: 2, md: 3 },
                     color: "white",
-                    fontSize: { xs: "28px", sm: "40px", md: "55px", lg: "65px" }
+                    fontSize: { sm: "40px", md: "55px", lg: "65px" }
                 }}
             >
                 Events
@@ -201,6 +202,7 @@ const EventsPage = () => {
                                     color: "white",
                                     flexShrink: 0,
                                     "&:hover": { color: "rgba(255,255,255,0.5)" },
+                                    mr: { xs: 1, lg: 2 }
                                 }}
                             >
                                 <ArrowBackIosNewRounded sx={{ fontSize: { sm: 28, md: 32 } }} />
@@ -222,6 +224,8 @@ const EventsPage = () => {
                                     gap: { xs: 2, sm: 2.5, md: 3, lg: 3.5 },
                                     flexWrap: "nowrap",
                                     width: "100%",
+                                    alignItems: { xs: "center", lg: "stretch" },
+                                    position: "relative"
                                 }}
                             >
                                 {visibleEvents.map((event) => (
@@ -229,10 +233,10 @@ const EventsPage = () => {
                                         key={event._id}
                                         sx={{
                                             flex: {
-                                                xs: "0 0 85%",
-                                                sm: "0 1 auto",
-                                                md: "0 1 auto",
-                                                lg: "0 1 auto"
+                                                xs: "0 0 100%",
+                                                sm: "0 0 auto",
+                                                md: "0 0 auto",
+                                                lg: "0 0 auto"
                                             },
                                             width: {
                                                 xs: "85%",
@@ -240,9 +244,7 @@ const EventsPage = () => {
                                                 md: "calc((100% - 48px) / 3)",
                                                 lg: "calc((100% - 84px) / 4)"
                                             },
-                                            minWidth: "0.75rem",
-                                            maxWidth: "15rem",
-                                            mr: "3rem"
+                                            display: "flex",
                                         }}
                                     >
                                         <EventCard
@@ -267,6 +269,7 @@ const EventsPage = () => {
                                     color: "white",
                                     flexShrink: 0,
                                     "&:hover": { color: "rgba(255,255,255,0.5)" },
+                                    ml: { xs: 0, lg: 2 }
                                 }}
                             >
                                 <ArrowForwardIosRounded sx={{ fontSize: { sm: 28, md: 32 } }} />
@@ -296,7 +299,7 @@ const EventsPage = () => {
                     sx={{
                         mb: { xs: 6, md: 8 },
                         color: "white",
-                        fontSize: { xs: "28px", sm: "40px", md: "55px", lg: "65px" }
+                        fontSize: { sm: "40px", md: "55px", lg: "65px" }
                     }}
                 >
                     Past Events
@@ -327,7 +330,7 @@ const EventsPage = () => {
                         )}
 
                         <Box sx={{ flex: 1, minWidth: 0, px: { xs: 1, sm: 0 } }}>
-                            <Grid container spacing={{ xs: 2, sm: 2, md: 2.5 }} justifyContent="center">
+                            <Grid container spacing={{ xs: 2, sm: 2, md: 2.5 }} justifyContent="center" alignItems="stretch">
                                 {paginatedPastEvents[pastIndex].map((event) => (
                                     <Grid
                                         item
@@ -376,7 +379,7 @@ const EventsPage = () => {
                             color: "white",
                             mt: { xs: 6, md: 8 },
                             mb: { xs: 6, md: 8 },
-                            fontSize: { xs: "1.1rem", sm: "1.3rem", md: "1.5rem" }
+                            fontSize: { sm: "40px", md: "55px", lg: "65px" }
                         }}
                         align="center"
                     >
