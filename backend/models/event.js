@@ -11,6 +11,12 @@ const eventSchema = new Schema({
   instagram_link: String,
   code: { type: String },
   qrCode: { type: String },
+  event_type: {
+    type: String,
+    enum: ["General", "Dev", "Open Source", "Innovate"],
+    required: true,
+    default: "General",
+  },
 });
 
 // Export model
