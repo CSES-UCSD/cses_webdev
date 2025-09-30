@@ -18,6 +18,7 @@ import pranavsoma from '../../images/homepage/pranavsoma.jpg';
 import nikithamaderamitla from '../../images/homepage/nikithaM.jpg';
 import westonzong from '../../images/homepage/westonzong.jpg';
 import vanditajain from '../../images/homepage/vanditajain.jpg';
+import EventCard from '../NewEvents/EventCard';
 
 
 interface EventData {
@@ -42,6 +43,7 @@ const Home = () => {
   const [allFutureEvents, setAllFutureEvents] = useState<EventData[]>([]);
   const [eventsToShow, setEventsToShow] = useState(4);
   const [currentEventPage, setCurrentEventPage] = useState(0);
+
 
   const teamMembers = [
     {
@@ -265,7 +267,7 @@ const Home = () => {
                   <Box sx={styles.statsNumber}>
                     <CountUp end={totalEvents} duration={2} />+
                   </Box>
-                  <Box sx={styles.statsLabel}>Events</Box>
+                  <Box sx={styles.statsLabel}>Annual Events</Box>
                 </Box>
               </Grid>
 
@@ -295,17 +297,23 @@ const Home = () => {
               <Grid container spacing={3} justifyContent="center" sx={styles.eventsGrid}>
                 {displayedFutureEvents.length > 0 ? (
                   displayedFutureEvents.map((event, index) => (
-                    <Grid item xs={12} sm={12} md={3} key={event._id}>
-                      <Box sx={styles.eventCard}>
-                        <Box sx={styles.eventCardContent}></Box>
-                        <Box sx={styles.eventLabel}>{event.title}</Box>
-                      </Box>
+                    <Grid item xs={12} sm={6} md={4} key={event._id}>
+                      <EventCard
+                        title={event.title}
+                        startDate={event.start_time}
+                        endDate={event.end_time}
+                        location={event.location}
+                        calendar_link={event.calendar_link}
+                        description={event.description}
+                        instagram_link={event.instagram_link}
+                        _id={event._id}
+                      />
                     </Grid>
                   ))
                 ) : (
                   // Fallback for when no events are available
                   Array.from({ length: eventsToShow }, (_, index) => index + 1).map((event, index) => (
-                    <Grid item xs={12} sm={12} md={3} key={index}>
+                    <Grid item xs={12} sm={12} md={4} key={index}>
                       <Box sx={styles.eventCard}>
                         <Box sx={styles.eventCardContent}></Box>
                         <Box sx={styles.eventLabel}>[Event {event}]</Box>
