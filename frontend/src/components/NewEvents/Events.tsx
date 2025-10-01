@@ -379,7 +379,7 @@ const EventsPage = () => {
                             color: "white",
                             mt: { xs: 6, md: 8 },
                             mb: { xs: 6, md: 8 },
-                            fontSize: { sm: "40px", md: "55px", lg: "65px" }
+                            fontSize: { sm: "1.5rem", md: "1.5rem", lg: "1.5rem" }
                         }}
                         align="center"
                     >
