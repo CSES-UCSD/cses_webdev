@@ -14,7 +14,7 @@ const eventSchema = new Schema({
   event_type: {
     type: String,
     enum: ["General", "Dev", "Open Source", "Innovate"],
-    required: true,
+    required: false,
     default: "General",
   },
 });
