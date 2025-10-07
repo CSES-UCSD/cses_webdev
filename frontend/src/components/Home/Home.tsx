@@ -6,8 +6,17 @@ import DevLogo from '../../images/DevLogo.png';
 import InnovateLogo from '../../images/InnovateLogo.png';
 import OpenSourceLogo from '../../images/OpenSourceLogo.png';
 import HomeLogo from '../../images/HomeLogo.png';
-import ASLogo from '../../images/AS.png';
-import CSEDeptLogo from '../../images/csedeplogo.png';
+import ASLogo from '../../images/sponsors/AS_Logo.png';
+import CSEDeptLogo from '../../images/sponsors/CSEDept_Logo.png';
+import BasementLogo from '../../images/sponsors/Basement_Logo.jpeg';
+import EyePopAILogo from '../../images/sponsors/EyePopAI_Logo.png';
+import GoogleLogo from '../../images/sponsors/Google_Logo.webp';
+import IGELogo from '../../images/sponsors/IGE_Logo.png';
+import LinuxLogo from '../../images/sponsors/Linux_Logo.png';
+import LovableLogo from '../../images/sponsors/Lovable_Logo.png';
+import OSPOLogo from '../../images/sponsors/OSPO_Logo.png';
+import PersonaLogo from '../../images/sponsors/Persona_Logo.png';
+import RobloxLogo from '../../images/sponsors/Roblox_Logo.png';
 import Sithu from '../../images/homepage/sithu.jpg';
 import axios from 'axios';
 import CountUp from 'react-countup';
@@ -54,7 +63,7 @@ const Home = () => {
     },
     {
       name: "Shree Venkatesh",
-      position: "Software Development Engineer",
+      position: "Software Development Engineer Intern",
       company: "Amazon Web Services",
       photo: shreevenkatesh // placeholder for now
     },
@@ -410,9 +419,17 @@ const Home = () => {
             </Box>
 
             <Grid container spacing={3} justifyContent="center" alignItems="center">
-              <Grid item xs={12} sm={4} md={3}><img src={ASLogo} alt="Associated Student" style={styles.sponsorLogoTall} /></Grid>
-              <Grid item xs={12} sm={4} md={3}><img src={CSEDeptLogo} alt="CSE Department" style={styles.sponsorLogo} /></Grid>
-              <Grid item xs={12} sm={4} md={3}><Box sx={styles.emptySponsorCard}></Box></Grid>
+              <Grid item xs={6} sm={4} md={2}><img src={ASLogo} alt="Associated Student" style={styles.sponsorLogo} /></Grid>
+              <Grid item xs={6} sm={4} md={2}><img src={CSEDeptLogo} alt="CSE Department" style={styles.sponsorLogo} /></Grid>
+              <Grid item xs={6} sm={4} md={2}><img src={GoogleLogo} alt="Google" style={styles.sponsorLogo} /></Grid>
+              <Grid item xs={6} sm={4} md={2}><img src={RobloxLogo} alt="Roblox" style={styles.sponsorLogo} /></Grid>
+              <Grid item xs={6} sm={4} md={2}><img src={PersonaLogo} alt="Persona" style={styles.sponsorLogo} /></Grid>
+              <Grid item xs={6} sm={4} md={2}><img src={LovableLogo} alt="Lovable" style={styles.sponsorLogo} /></Grid>
+              <Grid item xs={6} sm={4} md={2}><img src={EyePopAILogo} alt="EyePop AI" style={styles.sponsorLogo} /></Grid>
+              <Grid item xs={6} sm={4} md={2}><img src={IGELogo} alt="IGE" style={styles.sponsorLogo} /></Grid>
+              <Grid item xs={6} sm={4} md={2}><img src={LinuxLogo} alt="Linux Foundation" style={styles.sponsorLogo} /></Grid>
+              <Grid item xs={6} sm={4} md={2}><img src={OSPOLogo} alt="OSPO" style={styles.sponsorLogo} /></Grid>
+              <Grid item xs={6} sm={4} md={2}><img src={BasementLogo} alt="Basement" style={styles.sponsorLogo} /></Grid>
             </Grid>
           </Box>
         </Container>
