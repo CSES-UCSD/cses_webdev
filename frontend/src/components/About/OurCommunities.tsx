@@ -1,8 +1,8 @@
 import { Container, Box, Grid, Typography, Link, useMediaQuery } from '@mui/material';
 import { aboutStyles } from './styles';
-import dev from '../../images/ourCommunitiesImages/cses_dev.png';
-import opensource from '../../images/ourCommunitiesImages/cses_opensource.png';
-import innovate from '../../images/ourCommunitiesImages/cses_innovate.png';
+import dev from '../../images/ourCommunitiesImages/DevLogo.png';
+import opensource from '../../images/ourCommunitiesImages/OpenSourceLogo.png';
+import innovate from '../../images/ourCommunitiesImages/InnovateLogo.png';
 
 const Communities = () => {
   const styles = aboutStyles();
