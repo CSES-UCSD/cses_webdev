@@ -11,6 +11,7 @@ import CSEDeptLogo from '../../images/sponsors/CSEDept_Logo.png';
 import BasementLogo from '../../images/sponsors/Basement_Logo.jpeg';
 import EyePopAILogo from '../../images/sponsors/EyePopAI_Logo.png';
 import GoogleLogo from '../../images/sponsors/Google_Logo.webp';
+import BSLLogo from '../../images/sponsors/BSL.png'
 import IGELogo from '../../images/sponsors/IGE_Logo.png';
 import LinuxLogo from '../../images/sponsors/Linux_Logo.png';
 import LovableLogo from '../../images/sponsors/Lovable_Logo.png';
@@ -421,7 +422,7 @@ const Home = () => {
             <Grid container spacing={3} justifyContent="center" alignItems="center">
               <Grid item xs={6} sm={4} md={2}><img src={ASLogo} alt="Associated Student" style={styles.sponsorLogo} /></Grid>
               <Grid item xs={6} sm={4} md={2}><img src={CSEDeptLogo} alt="CSE Department" style={styles.sponsorLogo} /></Grid>
-              <Grid item xs={6} sm={4} md={2}><img src={GoogleLogo} alt="Google" style={styles.sponsorLogo} /></Grid>
+              <Grid item xs={6} sm={4} md={2}><img src={BSLLogo} alt="Big Strategy Lab" style={styles.sponsorLogo} /></Grid> 
               <Grid item xs={6} sm={4} md={2}><img src={RobloxLogo} alt="Roblox" style={styles.sponsorLogo} /></Grid>
               <Grid item xs={6} sm={4} md={2}><img src={PersonaLogo} alt="Persona" style={styles.sponsorLogo} /></Grid>
               <Grid item xs={6} sm={4} md={2}><img src={LovableLogo} alt="Lovable" style={styles.sponsorLogo} /></Grid>
