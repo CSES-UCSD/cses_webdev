@@ -4,7 +4,6 @@ import ASLogo from "../../images/sponsors/AS_Logo.png";
 import CSEDeptLogo from "../../images/sponsors/CSEDept_Logo.png";
 import BasementLogo from "../../images/sponsors/Basement_Logo.jpeg";
 import EyePopAILogo from "../../images/sponsors/EyePopAI_Logo.png";
-import GoogleLogo from "../../images/sponsors/Google_Logo.webp";
 import BSLLogo from '../../images/sponsors/BSL.png'
 import IGELogo from "../../images/sponsors/IGE_Logo.png";
 import LinuxLogo from "../../images/sponsors/Linux_Logo.png";

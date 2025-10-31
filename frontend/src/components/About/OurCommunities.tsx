@@ -1,9 +1,9 @@
 import { Container, Box, Grid, Typography, Link, useMediaQuery } from '@mui/material';
 import { Link as RouterLink } from 'react-router-dom';
 import { aboutStyles } from './styles';
-import dev from '../../images/DevLogo.png';
-import opensource from '../../images/OpenSourceLogo.png';
-import innovate from '../../images/InnovateLogo.png';
+import dev from '../../images/ourCommunitiesImages/DevLogo.png';
+import opensource from '../../images/ourCommunitiesImages/OpenSourceLogo.png';
+import innovate from '../../images/ourCommunitiesImages/InnovateLogo.png';
 
 const Communities = () => {
   const styles = aboutStyles();
