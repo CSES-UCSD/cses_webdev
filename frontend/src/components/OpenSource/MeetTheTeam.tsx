@@ -28,7 +28,7 @@ import William_Widjaja from '../../images/opensourceteam/William Widjaja.png';
 import Yashil_Vora from '../../images/opensourceteam/Yashil Vora.jpg';
 import Yixuan_Li from '../../images/opensourceteam/Yixuan Li.jpg';
 import Yash_Ravipati from '../../images/meettheteamImages/Yash_Ravipati.jpg'
-import placeholder from '../../images/opensourceteam/Placeholder.jpg'
+import placeholder from '../../images/Placeholder.jpg'
 
 const categories = [
   {

@@ -15,6 +15,9 @@ import Initiatives from './components/Initiatives/Initiatives';
 import TemplateWebsite from './components/TemplateWebsite/TemplateWebsite';
 import OpenSource from './components/OpenSource/OpenSource';
 import Sponsorships from './components/Sponsorships/Sponsorships'; // added my mal and line 34
+import OpenSourceCommunity from './components/OpenSourceCommunity/OpenSourceCommunity';
+import DevCommunity from './components/Dev/DevCommunity'
+import InovateCommunity from './components/Inovate/InovateCommunity'
 
 function App() {
   return (
@@ -34,6 +37,9 @@ function App() {
           <Route path="/templatewebsite" element={<TemplateWebsite />} />
           <Route path="/opensource" element={<OpenSource />} />
           <Route path="/sponsorships" element={<Sponsorships />} /> 
+          <Route path="/opensourcecommunity" element={<OpenSourceCommunity />} /> 
+          <Route path="/devcommunity" element={<DevCommunity />} />
+          <Route path="/inovatecommunity" element={<InovateCommunity />} />
         </Routes>
         <Footer />
       </Container>

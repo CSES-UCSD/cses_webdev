@@ -351,9 +351,15 @@ const Home = () => {
           <Box sx={styles.sectionWrapper}>
             <Box sx={styles.sectionTitle}>{"{Communities}"}</Box>
             <Grid container spacing={3} justifyContent="center">
-              <Grid item xs={12} sm={4}><img src={OpenSourceLogo} alt="Open Source" style={styles.communityLogo} /></Grid>
-              <Grid item xs={12} sm={4}><img src={InnovateLogo} alt="Innovate" style={styles.communityLogo} /></Grid>
-              <Grid item xs={12} sm={4}><img src={DevLogo} alt="Dev" style={styles.communityLogo} /></Grid>
+              <Grid item xs={12} sm={4} onClick={() => navigate('/opensourcecommunity')} style={{ cursor: 'pointer' }}>
+                <img src={OpenSourceLogo} alt="Open Source" style={styles.communityLogo} />
+              </Grid>
+              <Grid item xs={12} sm={4} onClick={() => navigate('/inovatecommunity')} style={{ cursor: 'pointer' }}>
+                <img src={InnovateLogo} alt="Innovate" style={styles.communityLogo} />
+              </Grid>
+              <Grid item xs={12} sm={4} onClick={() => navigate('/devcommunity')} style={{ cursor: 'pointer' }}>
+                <img src={DevLogo} alt="Dev" style={styles.communityLogo} />
+              </Grid>
             </Grid>
 
             <Box sx={{ marginTop: '3rem' }}>

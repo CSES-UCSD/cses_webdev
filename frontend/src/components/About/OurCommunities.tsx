@@ -1,8 +1,9 @@
 import { Container, Box, Grid, Typography, Link, useMediaQuery } from '@mui/material';
+import { Link as RouterLink } from 'react-router-dom';
 import { aboutStyles } from './styles';
-import dev from '../../images/ourCommunitiesImages/DevLogo.png';
-import opensource from '../../images/ourCommunitiesImages/OpenSourceLogo.png';
-import innovate from '../../images/ourCommunitiesImages/InnovateLogo.png';
+import dev from '../../images/DevLogo.png';
+import opensource from '../../images/OpenSourceLogo.png';
+import innovate from '../../images/InnovateLogo.png';
 
 const Communities = () => {
   const styles = aboutStyles();
@@ -63,21 +64,54 @@ const Communities = () => {
         direction={isMobile ? 'column' : 'row'}
         sx={{ px: { xs: '2%', sm: '3%' } }}
       >
-        {[opensource, innovate, dev].map((src, idx) => (
-          <Grid item xs={12} sm={4} key={idx}>
+        <Grid item xs={12} sm={4}>
+          <Link component={RouterLink} to="/opensourcecommunity" underline="none" sx={{ display: 'inline-block' }}>
             <Box
               component="img"
-              src={src}
-              alt={`CSES logo ${idx}`}
+              src={opensource}
+              alt="CSES Open Source"
               sx={{
-                width: '100%',         
-                maxWidth: 400,          
-                margin: '0 auto',       
+                width: '100%',
+                maxWidth: 400,
+                margin: '0 auto',
                 display: 'block',
+                cursor: 'pointer',
               }}
             />
-          </Grid>
-        ))}
+          </Link>
+        </Grid>
+        <Grid item xs={12} sm={4}>
+          <Link component={RouterLink} to="/inovatecommunity" underline="none" sx={{ display: 'inline-block' }}>
+            <Box
+              component="img"
+              src={innovate}
+              alt="CSES Innovate"
+              sx={{
+                width: '100%',
+                maxWidth: 400,
+                margin: '0 auto',
+                display: 'block',
+                cursor: 'pointer',
+              }}
+            />
+          </Link>
+        </Grid>
+        <Grid item xs={12} sm={4}>
+          <Link component={RouterLink} to="/devcommunity" underline="none" sx={{ display: 'inline-block' }}>
+            <Box
+              component="img"
+              src={dev}
+              alt="CSES Dev"
+              sx={{
+                width: '100%',
+                maxWidth: 400,
+                margin: '0 auto',
+                display: 'block',
+                cursor: 'pointer',
+              }}
+            />
+          </Link>
+        </Grid>
       </Grid>
 
     </Container>
