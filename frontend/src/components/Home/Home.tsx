@@ -2,16 +2,34 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Container, Box, Grid, Button as MuiButton } from '@mui/material';
 import { homeStyles } from './styles';
-import DevLogo from '../../images/DevLogo.png';
-import InnovateLogo from '../../images/InnovateLogo.png';
-import OpenSourceLogo from '../../images/OpenSourceLogo.png';
+import DevLogo from '../../images/ourCommunitiesImages/DevLogo.png';
+import InnovateLogo from '../../images/ourCommunitiesImages/InnovateLogo.png';
+import OpenSourceLogo from '../../images/ourCommunitiesImages/OpenSourceLogo.png';
 import HomeLogo from '../../images/HomeLogo.png';
-import ASLogo from '../../images/AS.png';
-import CSEDeptLogo from '../../images/csedeplogo.png';
-import Sithu from '../../images/aboutpage/sithu.jpg';
+import ASLogo from '../../images/sponsors/AS_Logo.png';
+import CSEDeptLogo from '../../images/sponsors/CSEDept_Logo.png';
+import BasementLogo from '../../images/sponsors/Basement_Logo.jpeg';
+import EyePopAILogo from '../../images/sponsors/EyePopAI_Logo.png';
+import GoogleLogo from '../../images/sponsors/Google_Logo.webp';
+import BSLLogo from '../../images/sponsors/BSL.png'
+import IGELogo from '../../images/sponsors/IGE_Logo.png';
+import LinuxLogo from '../../images/sponsors/Linux_Logo.png';
+import LovableLogo from '../../images/sponsors/Lovable_Logo.png';
+import OSPOLogo from '../../images/sponsors/OSPO_Logo.png';
+import PersonaLogo from '../../images/sponsors/Persona_Logo.png';
+import RobloxLogo from '../../images/sponsors/Roblox_Logo.png';
+import Sithu from '../../images/homepage/sithu.jpg';
 import axios from 'axios';
 import CountUp from 'react-countup';
 import { motion } from "framer-motion";
+import jesusgonzalez from '../../images/homepage/jesusgonzalez.png';
+import shreevenkatesh from '../../images/homepage/shreevenkatesh.jpg';
+import pranavsoma from '../../images/homepage/pranavsoma.jpg';
+import nikithamaderamitla from '../../images/homepage/nikithaM.jpg';
+import westonzong from '../../images/homepage/westonzong.jpg';
+import vanditajain from '../../images/homepage/vanditajain.jpg';
+import EventCard from '../NewEvents/EventCard';
+
 
 interface EventData {
   calendar_link: string;
@@ -36,15 +54,53 @@ const Home = () => {
   const [eventsToShow, setEventsToShow] = useState(4);
   const [currentEventPage, setCurrentEventPage] = useState(0);
 
+
   const teamMembers = [
     {
-      name: "Sithu Soe",
+      name: "Jesus Gonzalez",
       position: "Software Engineer Intern",
-      company: "ServiceNow",
-      classOf: "2026",
-      photo: Sithu
+      company: "Intuit",
+      photo: jesusgonzalez // placeholder for now
     },
     {
+      name: "Shree Venkatesh",
+      position: "Software Development Engineer Intern",
+      company: "Amazon Web Services",
+      photo: shreevenkatesh // placeholder for now
+    },
+    {
+      name: "Pranav Soma",
+      position: "Associate Software Engineer",
+      company: "ServiceNow",
+      photo: pranavsoma // placeholder for now
+    },
+    {
+      name: "Nikitha Maderamitla",
+      position: "Software Engineer",
+      company: "Curanostics",
+      photo: nikithamaderamitla // placeholder for now
+    },
+    {
+      name: "Weston Zong",
+      position: "Software Engineer",
+      company: "Roblox",
+      photo: westonzong // placeholder for now
+    },
+    {
+      name: "Vandita Jain",
+      position: "AL and ML Intern",
+      company: "Global Impact Assessment",
+      photo: vanditajain // placeholder for now
+    },
+    
+    {
+      name: "Sithu Soe",
+      position: "Associate Software Engineer Intern",
+      company: "ServiceNow",
+      // classOf: "2026",
+      photo: Sithu
+    },
+    /*{
       name: "Michael Chen",
       position: "Full Stack Developer",
       company: "Microsoft",
@@ -71,8 +127,9 @@ const Home = () => {
       company: "Meta",
       classOf: "2022",
       photo: null
-    }
+    }*/
   ];
+
 
   const currentMember = teamMembers[currentPersonIndex];
 
@@ -220,7 +277,7 @@ const Home = () => {
                   <Box sx={styles.statsNumber}>
                     <CountUp end={totalEvents} duration={2} />+
                   </Box>
-                  <Box sx={styles.statsLabel}>Events</Box>
+                  <Box sx={styles.statsLabel}>Annual Events</Box>
                 </Box>
               </Grid>
 
@@ -250,17 +307,23 @@ const Home = () => {
               <Grid container spacing={3} justifyContent="center" sx={styles.eventsGrid}>
                 {displayedFutureEvents.length > 0 ? (
                   displayedFutureEvents.map((event, index) => (
-                    <Grid item xs={12} sm={12} md={3} key={event._id}>
-                      <Box sx={styles.eventCard}>
-                        <Box sx={styles.eventCardContent}></Box>
-                        <Box sx={styles.eventLabel}>{event.title}</Box>
-                      </Box>
+                    <Grid item xs={12} sm={6} md={4} key={event._id}>
+                      <EventCard
+                        title={event.title}
+                        startDate={event.start_time}
+                        endDate={event.end_time}
+                        location={event.location}
+                        calendar_link={event.calendar_link}
+                        description={event.description}
+                        instagram_link={event.instagram_link}
+                        _id={event._id}
+                      />
                     </Grid>
                   ))
                 ) : (
                   // Fallback for when no events are available
                   Array.from({ length: eventsToShow }, (_, index) => index + 1).map((event, index) => (
-                    <Grid item xs={12} sm={12} md={3} key={index}>
+                    <Grid item xs={12} sm={12} md={4} key={index}>
                       <Box sx={styles.eventCard}>
                         <Box sx={styles.eventCardContent}></Box>
                         <Box sx={styles.eventLabel}>[Event {event}]</Box>
@@ -332,7 +395,7 @@ const Home = () => {
                 </Box>
                 <Box sx={styles.carouselText}>
                   <Box sx={styles.carouselPosition}>{currentMember.position} | {currentMember.company}</Box>
-                  <Box sx={styles.carouselClass}>Class of {currentMember.classOf}</Box>
+                  {/* <Box sx={styles.carouselPosition}>{currentMember.classOf}</Box> */}
                   <Box sx={styles.carouselName}>{currentMember.name}</Box>
                 </Box>
               </Box>
@@ -363,9 +426,17 @@ const Home = () => {
             </Box>
 
             <Grid container spacing={3} justifyContent="center" alignItems="center">
-              <Grid item xs={12} sm={4} md={3}><img src={ASLogo} alt="Associated Student" style={styles.sponsorLogoTall} /></Grid>
-              <Grid item xs={12} sm={4} md={3}><img src={CSEDeptLogo} alt="CSE Department" style={styles.sponsorLogo} /></Grid>
-              <Grid item xs={12} sm={4} md={3}><Box sx={styles.emptySponsorCard}></Box></Grid>
+              <Grid item xs={6} sm={4} md={2}><img src={ASLogo} alt="Associated Student" style={styles.sponsorLogo} /></Grid>
+              <Grid item xs={6} sm={4} md={2}><img src={CSEDeptLogo} alt="CSE Department" style={styles.sponsorLogo} /></Grid>
+              <Grid item xs={6} sm={4} md={2}><img src={BSLLogo} alt="Big Strategy Lab" style={styles.sponsorLogo} /></Grid> 
+              <Grid item xs={6} sm={4} md={2}><img src={RobloxLogo} alt="Roblox" style={styles.sponsorLogo} /></Grid>
+              <Grid item xs={6} sm={4} md={2}><img src={PersonaLogo} alt="Persona" style={styles.sponsorLogo} /></Grid>
+              <Grid item xs={6} sm={4} md={2}><img src={LovableLogo} alt="Lovable" style={styles.sponsorLogo} /></Grid>
+              <Grid item xs={6} sm={4} md={2}><img src={EyePopAILogo} alt="EyePop AI" style={styles.sponsorLogo} /></Grid>
+              <Grid item xs={6} sm={4} md={2}><img src={IGELogo} alt="IGE" style={styles.sponsorLogo} /></Grid>
+              <Grid item xs={6} sm={4} md={2}><img src={LinuxLogo} alt="Linux Foundation" style={styles.sponsorLogo} /></Grid>
+              <Grid item xs={6} sm={4} md={2}><img src={OSPOLogo} alt="OSPO" style={styles.sponsorLogo} /></Grid>
+              <Grid item xs={6} sm={4} md={2}><img src={BasementLogo} alt="Basement" style={styles.sponsorLogo} /></Grid>
             </Grid>
           </Box>
         </Container>

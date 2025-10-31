@@ -464,6 +464,10 @@ export const homeStyles = () => ({
     height: "150px",
     objectFit: "contain" as const,
     filter: "brightness(1.1)",
+    background: "white",
+    borderRadius: "12px",
+    boxShadow: "0 4px 6px rgba(0,0,0,0.2)",
+    padding: "10px",
     '@media (max-width: 600px)': {
       width: "100px",
       height: "100px"

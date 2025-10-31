@@ -2,10 +2,12 @@ import { useNavigate } from 'react-router-dom';
 import { Container, Box, Grid, Typography, Button as MuiButton, useMediaQuery } from '@mui/material';
 import about3 from '../../images/aboutpage/about_3.jpg';
 import { aboutStyles } from './styles';
+import { homeStyles } from '../Home/styles';
 
 const HowtoJoin = () => {
   const navigate = useNavigate();
   const styles = aboutStyles();
+  const homeStyle = homeStyles();
   const isMobile = useMediaQuery('(max-width:600px)');
 
   return (
@@ -85,6 +87,67 @@ const HowtoJoin = () => {
             socials to be notified of when board applications open on a rolling basis.
           </Typography>
           <Box sx={{ marginTop: '40px'}}>
+            <Typography
+              variant="h5"
+              sx={{
+                color: 'white',
+                fontSize: 'clamp(20px, 3vw, 28px)',
+                marginBottom: '20px',
+                fontWeight: 600,
+              }}
+            >
+              Apply to Our Teams:
+            </Typography>
+            
+            <Grid container spacing={2} sx={{ marginTop: '10px' }}>
+              <Grid item xs={12} sm={6}>
+                <MuiButton
+                  variant="outlined"
+                  href="https://forms.gle/Xu2hzJuTkykeMyzdA" 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  sx={{ ...homeStyle.ctaButton, width: '100%' }}
+                >
+                  General Board
+                </MuiButton>
+              </Grid>
+              
+              <Grid item xs={12} sm={6}>
+                <MuiButton
+                  variant="outlined"
+                  href="https://forms.gle/1TiCjRtjsaB4eEAB6"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  sx={{ ...homeStyle.ctaButton, width: '100%' }}
+                >
+                  Open Source
+                </MuiButton>
+              </Grid>
+              
+              <Grid item xs={12} sm={6}>
+                <MuiButton
+                  variant="outlined"
+                  href="https://forms.gle/atoFPypgiV5rzE6i6" 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  sx={{ ...homeStyle.ctaButton, width: '100%' }}
+                >
+                  Innovate
+                </MuiButton>
+              </Grid>
+              
+              <Grid item xs={12} sm={6}>
+                <MuiButton
+                  variant="outlined"
+                  href="https://forms.gle/VRzyTK1z7R72j6nW6"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  sx={{ ...homeStyle.ctaButton, width: '100%' }}
+                >
+                  Dev
+                </MuiButton>
+              </Grid>
+            </Grid>
         {/* <MuiButton
           variant="outlined"
           onClick={() => navigate('/membership')}

@@ -2,13 +2,13 @@ import { ReactNode, useEffect, useRef, useState } from 'react';
 import { Container, Typography, Grid, Link, Box, useTheme } from '@mui/material';
 import MuiButton from '@mui/material/Button';
 import bg from '../../images/shape2.svg';
-import sponsor from '../../images/cseLogo.gif';
-import sponsor2 from '../../images/AS.png';
+import sponsor from '../../images/sponsors/CSEDept_Logo.png';
+import sponsor2 from '../../images/sponsors/AS_Logo.png';
 import { opportunitiesStyles } from './styles';
 import members from '../../images/opportunitiespage/members.jpg';
 import sponsors from '../../images/opportunitiespage/sponsors.png';
 import { useNavigate } from 'react-router-dom';
-
+// NOTE: THIS PAGE IS NOT BEING USED ANYMORE
 interface ImageWithBoxShadowProps {
   src: string;
   alt: string;
