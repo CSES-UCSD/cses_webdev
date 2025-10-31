@@ -19,14 +19,14 @@
 }
 
 .intro-title {
-  font-size: 2.5rem;
+  font-size: 2.7rem;
   margin-bottom: 1rem;
   text-align: center;
 }
 
 .intro-text {
   text-align: center;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   line-height: 1.6;
   max-width: 800px;
   margin: 2rem auto 0;
@@ -43,7 +43,7 @@
 }
 
 .opportunities h2 {
-  font-size: 2.5rem; 
+  font-size: 2.7rem; 
   font-weight: bold;
   text-align: center;
 }
@@ -92,7 +92,7 @@
 }
 
 .opportunity-card h3 {
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   margin-bottom: 1rem;
   color: #69c0ff; 
 }
@@ -106,7 +106,7 @@
 }
 
 .opportunity-card p {
-  font-size: 1rem;
+  font-size: 1.1rem;
   line-height: 1.4;
   margin-top: 0; 
 }
@@ -176,7 +176,7 @@
 
 .projects h2 {
   text-align: center;
-  font-size: 40px
+  font-size: 44px
 }
 
 .project-tab {
@@ -261,7 +261,7 @@
 .project-details {
   max-width: 600px;
   margin: 0.5rem auto 0; 
-  font-size: 1rem;
+  font-size: 1.1rem;
   line-height: 1.5;
   padding: 0 1rem;
   text-align: center;
