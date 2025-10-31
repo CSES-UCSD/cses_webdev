@@ -12,7 +12,6 @@ import Membership from './components/Membership/Membership';
 import Login from './components/Login/Login';
 import EditForm from './components/Login/EditProfile';
 import Initiatives from './components/Initiatives/Initiatives';
-import TemplateWebsite from './components/TemplateWebsite/TemplateWebsite';
 import OpenSource from './components/OpenSource/OpenSource';
 import Sponsorships from './components/Sponsorships/Sponsorships'; // added my mal and line 34
 import OpenSourceCommunity from './components/OpenSourceCommunity/OpenSourceCommunity';
@@ -34,12 +33,11 @@ function App() {
           { /* <Route path="/login" element={<Login />} /> */}
           <Route path="/editprofile" element={<EditForm />} />
           <Route path="/initiatives" element={<Initiatives />} />
-          <Route path="/templatewebsite" element={<TemplateWebsite />} />
           <Route path="/opensource" element={<OpenSource />} />
           <Route path="/sponsorships" element={<Sponsorships />} /> 
           <Route path="/opensourcecommunity" element={<OpenSourceCommunity />} /> 
           <Route path="/devcommunity" element={<DevCommunity />} />
-          <Route path="/inovatecommunity" element={<InovateCommunity />} />
+          <Route path="/innovatecommunity" element={<InovateCommunity />} />
         </Routes>
         <Footer />
       </Container>
