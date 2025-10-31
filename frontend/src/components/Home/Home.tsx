@@ -354,7 +354,7 @@ const Home = () => {
               <Grid item xs={12} sm={4} onClick={() => navigate('/opensourcecommunity')} style={{ cursor: 'pointer' }}>
                 <img src={OpenSourceLogo} alt="Open Source" style={styles.communityLogo} />
               </Grid>
-              <Grid item xs={12} sm={4} onClick={() => navigate('/inovatecommunity')} style={{ cursor: 'pointer' }}>
+              <Grid item xs={12} sm={4} onClick={() => navigate('/innovatecommunity')} style={{ cursor: 'pointer' }}>
                 <img src={InnovateLogo} alt="Innovate" style={styles.communityLogo} />
               </Grid>
               <Grid item xs={12} sm={4} onClick={() => navigate('/devcommunity')} style={{ cursor: 'pointer' }}>

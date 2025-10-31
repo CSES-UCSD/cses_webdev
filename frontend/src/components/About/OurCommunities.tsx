@@ -81,7 +81,7 @@ const Communities = () => {
           </Link>
         </Grid>
         <Grid item xs={12} sm={4}>
-          <Link component={RouterLink} to="/inovatecommunity" underline="none" sx={{ display: 'inline-block' }}>
+          <Link component={RouterLink} to="/innovatecommunity" underline="none" sx={{ display: 'inline-block' }}>
             <Box
               component="img"
               src={innovate}
