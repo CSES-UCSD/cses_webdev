@@ -11,6 +11,7 @@ import connectMailchimp from './mailchimp/connect-mailchimp.js';
 import eventRoutes from './routes/event.js';
 import subscriptionRoutes from './routes/emailSubscription.js';
 import userRoutes from './routes/user.js';
+import reactionsRoutes from './routes/reactions.js'
 
 // initialize the application
 const app = express();
@@ -41,6 +42,7 @@ app.get('/', function (_, res) {
 app.use(`${baseApi}`, eventRoutes);
 app.use(`${baseApi}/subscribers`, subscriptionRoutes);
 app.use(`${baseApi}/users`, userRoutes);
+app.use(`${baseApi}/reactions`, reactionsRoutes);
 
 var server = app.listen(PORT, '0.0.0.0', function () {
   var port = server.address().port;
