@@ -1,0 +1,189 @@
+import { colors, fonts, radii } from '../../theme';
+
+export const communityStyles = () => ({
+  pageWrapper: {
+    position: 'relative' as const,
+    backgroundColor: colors.background,
+    minHeight: '100vh',
+    // Clips the oversized backdrop rather than letting it scroll the page.
+    overflow: 'hidden' as const,
+    pt: { xs: 14, md: 18 },
+    pb: { xs: 8, md: 12 },
+  },
+  // Full-page backdrop: one oversized community graphic behind all content,
+  // dropped back far enough to stay legible under the copy.
+  backdrop: {
+    position: 'absolute' as const,
+    top: 0,
+    height: '100%',
+    width: 'auto',
+    minWidth: { xs: '160%', md: '70%' },
+    objectFit: 'contain' as const,
+    objectPosition: 'top center',
+    // The artwork carries its own top-to-bottom fade, so this only needs to
+    // knock it back against the dark page rather than do the fading itself.
+    opacity: 0.55,
+    pointerEvents: 'none' as const,
+    userSelect: 'none' as const,
+    zIndex: 0,
+  },
+  container: {
+    position: 'relative' as const,
+    zIndex: 1,
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    px: { xs: 3, md: 6 },
+  },
+  pageTitle: {
+    fontFamily: fonts.heading,
+    fontWeight: 700,
+    fontSize: { xs: '1.8rem', md: '2.4rem' },
+    color: colors.textPrimary,
+    textAlign: 'center',
+  },
+
+  // Community switcher
+  pills: {
+    display: 'flex',
+    gap: 2,
+    flexWrap: 'wrap' as const,
+    justifyContent: 'center',
+    mt: 4,
+  },
+  pill: (accent: string, active: boolean) => ({
+    fontFamily: fonts.body,
+    fontSize: { xs: '0.85rem', md: '0.95rem' },
+    fontWeight: 500,
+    textTransform: 'none',
+    borderRadius: '8px',
+    px: 3,
+    py: 1,
+    color: active ? colors.background : colors.textPrimary,
+    backgroundColor: active ? accent : colors.surface,
+    border: `1px solid ${accent}`,
+    '&:hover': {
+      backgroundColor: active ? accent : `${accent}22`,
+    },
+  }),
+
+  // Community showcase
+  showcase: {
+    position: 'relative' as const,
+    width: '100%',
+    maxWidth: '1100px',
+    mt: { xs: 6, md: 9 },
+  },
+  showcaseInner: {
+    position: 'relative' as const,
+    zIndex: 1,
+    display: 'flex',
+    // Top-aligned so each column can be offset independently; centring here
+    // was what forced the copy and logo onto a single line.
+    alignItems: 'flex-start',
+    gap: { xs: 5, md: 8 },
+    flexDirection: { xs: 'column', md: 'row' },
+  },
+  copyColumn: {
+    flex: 1,
+    minWidth: 0,
+  },
+  communityName: {
+    fontFamily: fonts.heading,
+    fontWeight: 700,
+    fontSize: { xs: '1.6rem', md: '2rem' },
+    color: colors.textPrimary,
+  },
+  communityDescription: {
+    fontFamily: fonts.body,
+    fontSize: { xs: '0.9rem', md: '1rem' },
+    lineHeight: 1.8,
+    color: colors.textSecondary,
+    mt: 2.5,
+    maxWidth: '520px',
+  },
+  logoColumn: {
+    flex: 1,
+    display: 'flex',
+    justifyContent: 'center',
+    minWidth: 0,
+  },
+  logo: {
+    width: '100%',
+    maxWidth: { xs: '220px', md: '300px' },
+    height: 'auto',
+  },
+
+  // Current Projects
+  projectsHeading: {
+    fontFamily: fonts.heading,
+    fontWeight: 700,
+    fontSize: { xs: '1.5rem', md: '2rem' },
+    color: colors.textPrimary,
+    textAlign: 'center',
+    mt: { xs: 9, md: 12 },
+  },
+  projectsSubtitle: {
+    fontFamily: fonts.heading,
+    fontSize: { xs: '0.85rem', md: '0.95rem' },
+    color: colors.textSecondary,
+    textAlign: 'center',
+    mt: 1.5,
+  },
+  projectsList: {
+    width: '100%',
+    maxWidth: '1100px',
+    display: 'flex',
+    flexDirection: 'column',
+    gap: 2.5,
+    mt: { xs: 4, md: 6 },
+  },
+  projectCard: {
+    boxSizing: 'border-box' as const,
+    backgroundColor: colors.surface,
+    border: `1px solid ${colors.border}`,
+    borderRadius: radii.card,
+    p: { xs: 2.5, md: 3 },
+    display: 'flex',
+    alignItems: 'flex-start',
+    justifyContent: 'space-between',
+    gap: 2,
+  },
+  projectName: {
+    fontFamily: fonts.body,
+    fontWeight: 600,
+    fontSize: { xs: '0.95rem', md: '1.05rem' },
+    color: colors.textPrimary,
+  },
+  projectDescription: {
+    fontFamily: fonts.body,
+    fontSize: { xs: '0.8rem', md: '0.9rem' },
+    lineHeight: 1.7,
+    color: colors.textSecondary,
+    mt: 1,
+  },
+  projectMembers: {
+    fontFamily: fonts.body,
+    fontSize: '0.75rem',
+    color: colors.textSecondary,
+    mt: 1.5,
+  },
+  statusChip: (status: string) => ({
+    flexShrink: 0,
+    fontFamily: fonts.body,
+    fontSize: '0.7rem',
+    fontWeight: 600,
+    color: colors.background,
+    backgroundColor: status === 'Active' ? colors.mint : colors.gold,
+    borderRadius: radii.pill,
+    px: 1.5,
+    py: 0.4,
+  }),
+  emptyText: {
+    fontFamily: fonts.body,
+    fontSize: '0.9rem',
+    color: colors.textSecondary,
+    textAlign: 'center',
+    mt: 4,
+  },
+});
