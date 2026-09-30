@@ -1,12 +1,12 @@
 // Team members shown in the "Meet the Team!" section on the Home page.
 // Edit this file to update the people displayed — no other code changes needed.
 import { EventCategory } from '../../utils/types';
-import Vaidik from '../../images/meettheteamImages/Vaidik Nadheria.png';
+import Vaidik from '../../images/meettheteamImages/Vaidik Nadheria.jpg';
 import Samantha from '../../images/meettheteamImages/Samantha.jpg';
 import Unnati from '../../images/meettheteamImages/Unnati.jpg';
-import Sameeksha from '../../images/meettheteamImages/Sameeksha.png';
+import Sameeksha from '../../images/meettheteamImages/Sameeksha.jpg';
 import Vedant from '../../images/meettheteamImages/Vedant.jpg';
-import Vihan from '../../images/meettheteamImages/Vihan.png';
+import Vihan from '../../images/meettheteamImages/Vihan.jpg';
 import Michelle from '../../images/meettheteamImages/michelle_dong.jpg';
 import Sanmita from '../../images/meettheteamImages/Sanmita.jpg';
 import Sathwika from '../../images/meettheteamImages/Sathwika.jpg';
