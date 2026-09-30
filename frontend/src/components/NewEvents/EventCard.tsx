@@ -47,7 +47,7 @@ const EventCard = ({ event }: { event: CalendarEvent }) => {
   const styles = eventCardStyles();
 
   return (
-    <Box sx={styles.card}>
+    <Box className="glow-card" sx={styles.card}>
       <Box sx={styles.title}>{event.title}</Box>
       <Box sx={styles.category}>{event.type || event.category}</Box>
 

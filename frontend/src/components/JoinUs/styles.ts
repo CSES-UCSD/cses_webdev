@@ -1,4 +1,4 @@
-import { colors, fonts, radii } from '../../theme';
+import { colors, fonts, radii, glowCard } from '../../theme';
 
 // Gap between sponsor tiles, in px. Shared by the row gap and the tile width
 // calculation so the stagger stays aligned if it changes.
@@ -15,8 +15,7 @@ export const joinUsStyles = () => ({
     background: `
       radial-gradient(ellipse 90% 55% at 20% 15%, rgba(114, 93, 240, 0.15), transparent 65%),
       radial-gradient(ellipse 90% 55% at 80% 32%, rgba(100, 195, 227, 0.12), transparent 65%),
-      radial-gradient(ellipse 90% 55% at 50% 68%, rgba(93, 240, 196, 0.10), transparent 65%),
-      ${colors.background}
+      radial-gradient(ellipse 90% 55% at 50% 68%, rgba(93, 240, 196, 0.10), transparent 65%)
     `,
     pt: { xs: 14, md: 18 },
     pb: { xs: 8, md: 12 },
@@ -101,8 +100,7 @@ export const joinUsStyles = () => ({
   },
   statBox: {
     boxSizing: 'border-box' as const,
-    backgroundColor: colors.surface,
-    border: `1px solid ${colors.purple}`,
+    ...glowCard(colors.purple),
     borderRadius: radii.card,
     height: '100%',
     minHeight: { xs: '110px', md: '150px' },

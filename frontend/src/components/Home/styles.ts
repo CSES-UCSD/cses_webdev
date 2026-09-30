@@ -1,8 +1,9 @@
-import { colors, fonts, radii } from '../../theme';
+import { colors, fonts, radii, glowCard } from '../../theme';
 
 export const homeStyles = () => ({
   pageWrapper: {
-    backgroundColor: colors.background,
+    // Transparent so the cursor spotlight behind the page shows through; html paints the same color.
+    backgroundColor: 'transparent',
     minHeight: '100vh',
     overflowX: 'hidden' as const,
   },
@@ -128,8 +129,7 @@ export const homeStyles = () => ({
     height: 'auto',
   },
   communityCard: (accent: string) => ({
-    backgroundColor: colors.surface,
-    border: `1px solid ${accent}55`,
+    ...glowCard(`${accent}55`),
     borderRadius: radii.card,
     // Without a global CssBaseline reset, width: '100%' is content-box: the
     // padding and border would add ~50px and overlap the neighbouring column.
@@ -161,8 +161,7 @@ export const homeStyles = () => ({
     width: '100%',
   },
   teamCard: {
-    backgroundColor: colors.surface,
-    border: `1px solid ${colors.border}`,
+    ...glowCard(),
     borderRadius: radii.card,
     // Same content-box trap as communityCard: without border-box, height 100%
     // plus padding and border overflows the grid cell and collides with the dots.

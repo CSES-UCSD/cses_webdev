@@ -16,11 +16,13 @@ import OpenSource from './components/OpenSource/OpenSource';
 import Sponsorships from './components/Sponsorships/Sponsorships'; // added my mal and line 34
 import CommunityPage from './components/Communities/CommunityPage';
 import JoinUs from './components/JoinUs/JoinUs';
+import CursorEffects from './components/common/CursorEffects';
 
 function App() {
   return (
     <BrowserRouter>
       <ScrollToTop />
+      <CursorEffects />
       <Container maxWidth={false} style={{ margin: 0, padding: 0 }}>
         <NavBar />
         <Routes>

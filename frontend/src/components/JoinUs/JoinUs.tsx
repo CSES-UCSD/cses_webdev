@@ -95,7 +95,7 @@ const JoinUs = () => {
         <Grid container spacing={3} justifyContent="center" sx={styles.statsGrid}>
           {STATS.map((stat) => (
             <Grid item xs={12} sm={4} key={stat.label}>
-              <Box sx={styles.statBox}>
+              <Box className="glow-card" sx={styles.statBox}>
                 <Box sx={styles.statNumber}>{stat.number}</Box>
                 <Box sx={styles.statLabel}>{stat.label}</Box>
               </Box>

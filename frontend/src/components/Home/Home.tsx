@@ -109,7 +109,7 @@ const Home = () => {
                     alt={`CSE Society ${community.name}`}
                     sx={styles.communityLogo}
                   />
-                  <Box sx={styles.communityCard(community.accent)}>
+                  <Box className="glow-card" sx={styles.communityCard(community.accent)}>
                     <Box sx={styles.communityCardText}>{community.description}</Box>
                   </Box>
                 </Box>
@@ -133,7 +133,7 @@ const Home = () => {
             <Grid container spacing={3} justifyContent="center" sx={styles.teamGrid}>
               {visibleMembers.map((member) => (
                 <Grid item xs={12} sm={6} md={3} key={`${member.community}-${member.name}`}>
-                  <Box sx={styles.teamCard}>
+                  <Box className="glow-card" sx={styles.teamCard}>
                     <Box
                       component="img"
                       src={member.photo}

@@ -24,3 +24,26 @@ export const radii = {
   card: '12px',
   pill: '999px',
 };
+
+// Card that lights up under the cursor. Give the element className="glow-card"
+// so components/common/CursorEffects can feed it the pointer position (--glow-x/--glow-y,
+// relative to the card). The border is transparent so the layers underneath
+// show through it:
+//   1. soft glow inside the card
+//   2. the card fill (padding-box only, leaving the 1px border ring uncovered)
+//   3. a brighter glow that only shows in that ring, lighting up the border
+//   4. the resting border color
+// The glow reaches past the card's edge, so neighbouring cards share one spotlight.
+const GLOW_SIZE = '260px';
+const glowGradient = (alpha: string) =>
+  `radial-gradient(circle at var(--glow-x, -999px) var(--glow-y, -999px), rgba(243, 244, 246, ${alpha}), transparent ${GLOW_SIZE})`;
+
+export const glowCard = (borderColor: string = colors.border) => ({
+  border: '1px solid transparent',
+  background: [
+    `${glowGradient('var(--glow-opacity)')} padding-box`,
+    `linear-gradient(${colors.surface}, ${colors.surface}) padding-box`,
+    `${glowGradient('calc(3 * var(--glow-opacity))')} border-box`,
+    `linear-gradient(${borderColor}, ${borderColor}) border-box`,
+  ].join(', '),
+});

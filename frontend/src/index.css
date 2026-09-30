@@ -7,6 +7,64 @@ html {
   background-color: #07070f;
 }
 
+/* Only html paints the page color, so the cursor spotlight (z-index -1) can
+   sit between it and the content. */
+body {
+  background-color: transparent;
+}
+
 code {
   font-family: Inter, source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
+
+/* Cursor glow for cards (theme.ts glowCard, components/common/CursorEffects). Registering
+   the opacity lets it fade in and out instead of switching abruptly. */
+@property --glow-opacity {
+  syntax: '<percentage>';
+  inherits: true;
+  initial-value: 0%;
+}
+
+:root {
+  transition: --glow-opacity 0.3s ease;
+}
+
+/* Cursor effects (components/common/CursorEffects.tsx). The colored dot replaces
+   the system cursor, except in text fields where the caret cursor is useful. */
+.cursor-effects-active,
+.cursor-effects-active * {
+  cursor: none !important;
+}
+
+.cursor-effects-active input:not([type='button']):not([type='submit']):not([type='checkbox']):not([type='radio']),
+.cursor-effects-active textarea,
+.cursor-effects-active [contenteditable='true'] {
+  cursor: text !important;
+}
+
+.cursor-dot,
+.cursor-spotlight {
+  position: fixed;
+  top: 0;
+  left: 0;
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0;
+  will-change: transform;
+}
+
+.cursor-dot {
+  z-index: 2147483647;
+  transition: opacity 0.2s ease;
+  /* A lighter, see-through tint of the theme light blue (theme.ts colors.lightBlue).
+     Transparency goes in the color because opacity is used to show and hide the dot. */
+  background-color: rgba(170, 225, 243, 0.65);
+}
+
+/* Behind the page content, so text and cards sit on top of the light. */
+.cursor-spotlight {
+  z-index: -1;
+  background: radial-gradient(circle, rgba(243, 244, 246, 0.17) 0%, rgba(243, 244, 246, 0.07) 35%, rgba(243, 244, 246, 0) 70%);
+  transition: opacity 0.3s ease;
+}
+
