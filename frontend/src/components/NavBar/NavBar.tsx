@@ -11,10 +11,8 @@ import {
   Button,
   Toolbar,
   Avatar,
-  Menu,
-  MenuItem,
 } from '@mui/material';
-import { Menu as MenuIcon, Close as CloseIcon, ExpandMore } from '@mui/icons-material';
+import { Menu as MenuIcon, Close as CloseIcon } from '@mui/icons-material';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import csesLogo from '../../images/logo.png';
 import { navBarStyles } from './styles';
@@ -22,13 +20,8 @@ import { AuthContext } from '../../context/AuthContext';
 import ProfileDropdown from './ProfileDropdown';
 import { User } from '../../utils/types';
 import { APPLY_URL } from '../../constants';
+import { COMMUNITIES } from '../Communities/communityData';
 import axios from 'axios';
-
-const COMMUNITY_ITEMS = [
-  { text: 'Open-Source', link: '/opensourcecommunity' },
-  { text: 'Innovate', link: '/innovatecommunity' },
-  { text: 'Dev', link: '/devcommunity' },
-];
 
 const NavBar = () => {
   const location = useLocation();
@@ -37,16 +30,20 @@ const NavBar = () => {
 
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [userData, setUserData] = useState<User | null>(null);
-  const [communitiesAnchor, setCommunitiesAnchor] = useState<null | HTMLElement>(null);
 
   const { user, isLoggedIn } = useContext(AuthContext);
 
   const navItems = [
     { text: 'Home', link: '/' },
     { text: 'Events', link: '/events' },
+    // Opens the first community page; its pills switch between the three.
+    { text: 'Communities', link: COMMUNITIES[0].path },
   ];
 
-  const isCommunityRoute = COMMUNITY_ITEMS.some(({ link }) => location.pathname === link);
+  // Any of the three community pages counts as being on "Communities".
+  const isActive = (link: string) =>
+    location.pathname === link ||
+    (link === COMMUNITIES[0].path && COMMUNITIES.some(({ path }) => path === location.pathname));
 
   const clickItem = (link: string) => {
     setIsDrawerOpen(false);
@@ -93,42 +90,12 @@ const NavBar = () => {
                 to={link}
                 sx={{
                   ...styles.button,
-                  ...(location.pathname === link ? styles.buttonActive : {}),
+                  ...(isActive(link) ? styles.buttonActive : {}),
                 }}
               >
                 {text}
               </Button>
             ))}
-
-            <Button
-              endIcon={<ExpandMore />}
-              onClick={(e) => setCommunitiesAnchor(e.currentTarget)}
-              sx={{
-                ...styles.button,
-                ...(isCommunityRoute ? styles.buttonActive : {}),
-              }}
-            >
-              Communities
-            </Button>
-            <Menu
-              anchorEl={communitiesAnchor}
-              open={Boolean(communitiesAnchor)}
-              onClose={() => setCommunitiesAnchor(null)}
-              sx={styles.menu}
-            >
-              {COMMUNITY_ITEMS.map(({ text, link }) => (
-                <MenuItem
-                  key={text}
-                  sx={styles.menuItem}
-                  onClick={() => {
-                    setCommunitiesAnchor(null);
-                    navigate(link);
-                  }}
-                >
-                  {text}
-                </MenuItem>
-              ))}
-            </Menu>
 
             <Button href={APPLY_URL} target="_blank" rel="noopener noreferrer" sx={styles.button}>
               Join us
@@ -167,18 +134,6 @@ const NavBar = () => {
           </ListItem>
 
           {navItems.map(({ text, link }) => (
-            <ListItem button key={text} sx={styles.listitem} onClick={() => clickItem(link)}>
-              <ListItemText
-                primary={
-                  <Typography align="center" sx={styles.button}>
-                    {text}
-                  </Typography>
-                }
-              />
-            </ListItem>
-          ))}
-
-          {COMMUNITY_ITEMS.map(({ text, link }) => (
             <ListItem button key={text} sx={styles.listitem} onClick={() => clickItem(link)}>
               <ListItemText
                 primary={

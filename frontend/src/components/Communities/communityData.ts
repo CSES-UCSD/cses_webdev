@@ -28,13 +28,10 @@ export interface Community {
   // Full-page backdrop for this community, drawn behind all content.
   graphic: string;
   description: string;
-  // Each page orients its copy, logo, and backdrop differently.
+  // Each page orients its copy and backdrop differently; the logo always sits opposite
+  // the copy, right next to it.
   copySide: Side;
-  logoSide: Side;
   graphicSide: Side;
-  // How far below the copy the logo sits, in px at md and up. The design
-  // staggers the two rather than aligning them on one line.
-  logoOffset: number;
   projects: Project[];
 }
 
@@ -49,27 +46,29 @@ export const COMMUNITIES: Community[] = [
     description:
       'Contribute to meaningful open-source projects and learn collaborative development practices. Work with Git workflows, code review, and team collaboration in a supportive environment.',
     copySide: 'left',
-    logoSide: 'right',
-    logoOffset: 170,
     graphicSide: 'right',
     projects: [
       {
         name: 'TritonScript',
+        status: 'Active',
         description:
           'An open-source, community-driven forum for UCSD students to collaboratively share class notes, study guides, and learning materials.',
       },
       {
         name: 'TritonSpend',
+        status: 'Active',
         description:
           'Helps university students manage personal finances effectively through intuitive dashboards and expense tracking.',
       },
       {
         name: 'Low-Price Center',
+        status: 'Active',
         description:
           'Enables UCSD students to exchange and sell goods easily through a centralized marketplace.',
       },
       {
         name: 'Opportune',
+        status: 'Active',
         description:
           'Connects UCSD students and alumni to support job searches, internships, and career growth with analytics and social features.',
       },
@@ -85,32 +84,35 @@ export const COMMUNITIES: Community[] = [
     description:
       'Turn your ideas into reality through hackathons, prototyping, and entrepreneurial ventures. Learn design thinking, rapid prototyping, and how to bring innovative solutions to life.',
     copySide: 'right',
-    logoSide: 'left',
-    logoOffset: 120,
     graphicSide: 'left',
     projects: [
       {
         name: 'ORCA',
+        status: 'Active',
         description:
           'An AI-based music production platform that streamlines arrangement, transcription, and sheet music digitization using deep learning models.',
       },
       {
         name: 'THIA',
+        status: 'Active',
         description:
           'An AI-driven therapy system delivering personalized, emotionally responsive mental health support using fine-tuned LLMs, memory tracking, and a lifelike 3D avatar.',
       },
       {
         name: 'SPYRE',
+        status: 'Active',
         description:
           'An accessible coding platform that translates spoken language into executable code, empowering individuals with physical disabilities to write software by voice.',
       },
       {
         name: 'Skin Lesion',
+        status: 'Active',
         description:
           'A CNN-based diagnostic tool for classifying skin lesions in dermoscopic images to support early skin cancer detection.',
       },
       {
         name: 'Virtual Try On',
+        status: 'Active',
         description:
           'A virtual try-on system using webcam input and generative models to render real-time, motion-aware garment fits with user-uploaded clothing.',
       },
@@ -126,22 +128,23 @@ export const COMMUNITIES: Community[] = [
     description:
       'Build industry-ready skills through workshops, projects, and professional development. Get career guidance, connect with mentors, and prepare for success in the tech industry.',
     copySide: 'left',
-    logoSide: 'right',
-    logoOffset: 140,
     graphicSide: 'right',
     projects: [
       {
         name: 'WebClicker++',
+        status: 'Active',
         description:
           'A mobile-friendly classroom response system for creating courses, deploying timed questions, tracking attendance, and viewing analytics. Widely used in CSE courses at UC San Diego.',
       },
       {
         name: 'Lakewood Heating and AC',
+        status: 'Active',
         description:
           'A website revamp modernizing the company’s online presence, showcasing HVAC services, success stories, integrated reviews, and a custom admin portal for staff.',
       },
       {
         name: 'Paesani MBX',
+        status: 'Active',
         description:
           'A platform showcasing the MBX software, a C++ library that lets molecular dynamics drivers simulate chemical systems, with tutorials, contributor profiles, and publications.',
       },
