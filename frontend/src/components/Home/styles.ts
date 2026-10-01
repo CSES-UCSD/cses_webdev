@@ -5,7 +5,9 @@ export const homeStyles = () => ({
     // Transparent so the cursor spotlight behind the page shows through; html paints the same color.
     backgroundColor: 'transparent',
     minHeight: '100vh',
-    overflowX: 'hidden' as const,
+    // `clip` stops sideways overflow like `hidden` but, unlike it, doesn't make this
+    // a scroll container, which would break the hero's position: sticky.
+    overflowX: 'clip' as const,
   },
   container: {
     display: 'flex',
@@ -29,7 +31,8 @@ export const homeStyles = () => ({
   heroTitle: {
     fontFamily: fonts.heading,
     fontWeight: 700,
-    fontSize: { xs: '2.6rem', sm: '3.5rem', md: '4.5rem' },
+    // Capped by viewport width on small screens so "CSE Society" stays on one line.
+    fontSize: { xs: 'min(3.9rem, 12.5vw)', sm: 'min(5.25rem, 12.5vw)', md: '6.75rem' },
     color: colors.textPrimary,
     letterSpacing: '0.02em',
   },

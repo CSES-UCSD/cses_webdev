@@ -1,10 +1,10 @@
 import { useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Box, Button, Container, Grid } from '@mui/material';
-import { motion } from 'framer-motion';
+import { Box, Container, Grid } from '@mui/material';
 import { homeStyles } from './styles';
 import { colors } from '../../theme';
 import SegmentedTabs from '../common/SegmentedTabs';
+import HeroIntro from './HeroIntro';
 import { TEAM_MEMBERS } from './teamData';
 import DevLogo from '../../images/ourCommunitiesImages/DevLogo.png';
 import InnovateLogo from '../../images/ourCommunitiesImages/InnovateLogo.png';
@@ -63,30 +63,7 @@ const Home = () => {
 
   return (
     <Box sx={styles.pageWrapper}>
-      {/* Hero */}
-      <Box sx={styles.hero}>
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-        >
-          <Box component="h1" sx={{ ...styles.heroTitle, m: 0 }}>
-            CSE Society
-          </Box>
-          <Box sx={styles.heroSubtitle}>at UC San Diego</Box>
-          <Box sx={styles.heroTagline}>
-            Empowering students through technology, innovation, and community
-          </Box>
-          <Box sx={styles.heroButtons}>
-            <Button sx={styles.primaryButton} onClick={() => navigate('/membership')}>
-              Join us&nbsp;&nbsp;→
-            </Button>
-            <Button sx={styles.secondaryButton} onClick={() => navigate('/events')}>
-              Explore Events →
-            </Button>
-          </Box>
-        </motion.div>
-      </Box>
+      <HeroIntro />
 
       <Container maxWidth="xl" sx={styles.container}>
         {/* What is CSES? */}
