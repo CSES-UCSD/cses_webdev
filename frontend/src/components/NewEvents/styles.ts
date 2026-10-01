@@ -1,8 +1,9 @@
-import { colors, fonts, radii } from '../../theme';
+import { colors, fonts, radii, glowCard } from '../../theme';
 
 export const eventsStyles = () => ({
   pageWrapper: {
-    backgroundColor: colors.background,
+    // Transparent so the cursor spotlight behind the page shows through; html paints the same color.
+    backgroundColor: 'transparent',
     minHeight: '100vh',
     pb: 10,
   },
@@ -63,8 +64,7 @@ export const eventsStyles = () => ({
 export const eventCardStyles = () => ({
   card: {
     display: 'block',
-    backgroundColor: colors.surface,
-    border: `1px solid ${colors.border}`,
+    ...glowCard(),
     borderRadius: radii.card,
     // Without a global border-box reset, width 100% plus padding and border
     // made the card wider than its column and overflowed the page on mobile.

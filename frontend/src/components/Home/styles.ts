@@ -1,10 +1,13 @@
-import { colors, fonts, radii } from '../../theme';
+import { colors, fonts, radii, glowCard } from '../../theme';
 
 export const homeStyles = () => ({
   pageWrapper: {
-    backgroundColor: colors.background,
+    // Transparent so the cursor spotlight behind the page shows through; html paints the same color.
+    backgroundColor: 'transparent',
     minHeight: '100vh',
-    overflowX: 'hidden' as const,
+    // `clip` stops sideways overflow like `hidden` but, unlike it, doesn't make this
+    // a scroll container, which would break the hero's position: sticky.
+    overflowX: 'clip' as const,
   },
   container: {
     display: 'flex',
@@ -28,7 +31,8 @@ export const homeStyles = () => ({
   heroTitle: {
     fontFamily: fonts.heading,
     fontWeight: 700,
-    fontSize: { xs: '2.6rem', sm: '3.5rem', md: '4.5rem' },
+    // Capped by viewport width on small screens so "CSE Society" stays on one line.
+    fontSize: { xs: 'min(3.9rem, 12.5vw)', sm: 'min(5.25rem, 12.5vw)', md: '6.75rem' },
     color: colors.textPrimary,
     letterSpacing: '0.02em',
   },
@@ -112,44 +116,6 @@ export const homeStyles = () => ({
     mt: 4,
   },
 
-  // Communities
-  communityColumn: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    textDecoration: 'none',
-    cursor: 'pointer',
-    transition: 'transform 0.2s ease',
-    '&:hover': { transform: 'translateY(-4px)' },
-  },
-  communityLogo: {
-    width: '100%',
-    maxWidth: '220px',
-    height: 'auto',
-  },
-  communityCard: (accent: string) => ({
-    backgroundColor: colors.surface,
-    border: `1px solid ${accent}55`,
-    borderRadius: radii.card,
-    // Without a global CssBaseline reset, width: '100%' is content-box: the
-    // padding and border would add ~50px and overlap the neighbouring column.
-    boxSizing: 'border-box' as const,
-    px: 3,
-    py: 4,
-    mt: 3,
-    width: '100%',
-    minHeight: '96px',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-  }),
-  communityCardText: {
-    fontFamily: fonts.body,
-    fontSize: '0.95rem',
-    color: colors.textSecondary,
-    textAlign: 'center',
-  },
-
   // Meet the Team!
   teamTabsWrapper: {
     width: '100%',
@@ -161,8 +127,7 @@ export const homeStyles = () => ({
     width: '100%',
   },
   teamCard: {
-    backgroundColor: colors.surface,
-    border: `1px solid ${colors.border}`,
+    ...glowCard(),
     borderRadius: radii.card,
     // Same content-box trap as communityCard: without border-box, height 100%
     // plus padding and border overflows the grid cell and collides with the dots.

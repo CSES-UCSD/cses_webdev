@@ -1,10 +1,12 @@
 import { useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Box, Button, Container, Grid } from '@mui/material';
-import { motion } from 'framer-motion';
+import { Box, Container, Grid } from '@mui/material';
 import { homeStyles } from './styles';
 import { colors } from '../../theme';
 import SegmentedTabs from '../common/SegmentedTabs';
+import HeroIntro from './HeroIntro';
+import { ScrollRise, ScrollWords } from './ScrollReveal';
+import CommunityFlipCard from './CommunityFlipCard';
 import { TEAM_MEMBERS } from './teamData';
 import DevLogo from '../../images/ourCommunitiesImages/DevLogo.png';
 import InnovateLogo from '../../images/ourCommunitiesImages/InnovateLogo.png';
@@ -63,56 +65,32 @@ const Home = () => {
 
   return (
     <Box sx={styles.pageWrapper}>
-      {/* Hero */}
-      <Box sx={styles.hero}>
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-        >
-          <Box component="h1" sx={{ ...styles.heroTitle, m: 0 }}>
-            CSE Society
-          </Box>
-          <Box sx={styles.heroSubtitle}>at UC San Diego</Box>
-          <Box sx={styles.heroTagline}>
-            Empowering students through technology, innovation, and community
-          </Box>
-          <Box sx={styles.heroButtons}>
-            <Button sx={styles.primaryButton} onClick={() => navigate('/membership')}>
-              Join us&nbsp;&nbsp;→
-            </Button>
-            <Button sx={styles.secondaryButton} onClick={() => navigate('/events')}>
-              Explore Events →
-            </Button>
-          </Box>
-        </motion.div>
-      </Box>
+      <HeroIntro />
 
       <Container maxWidth="xl" sx={styles.container}>
         {/* What is CSES? */}
         <Box sx={styles.sectionWrapper}>
-          <Box component="h2" sx={{ ...styles.sectionTitle, m: 0 }}>
-            What is CSES?
+          <ScrollRise>
+            <Box component="h2" sx={{ ...styles.sectionTitle, m: 0 }}>
+              What is CSES?
+            </Box>
+          </ScrollRise>
+          <Box sx={styles.aboutParagraph}>
+            <ScrollWords text={WHAT_IS_CSES_COPY} />
           </Box>
-          <Box sx={styles.aboutParagraph}>{WHAT_IS_CSES_COPY}</Box>
         </Box>
 
         {/* Communities */}
         <Box sx={styles.sectionWrapper}>
           <Grid container spacing={4} justifyContent="center">
-            {COMMUNITIES.map((community) => (
+            {COMMUNITIES.map((community, i) => (
               <Grid item xs={12} sm={4} key={community.name}>
-                <Box sx={styles.communityColumn} onClick={() => navigate(community.path)}>
-                  <Box
-                    component="img"
-                    src={community.logo}
-                    alt={`CSE Society ${community.name}`}
-                    sx={styles.communityLogo}
+                <ScrollRise startVh={0.92 - i * 0.07}>
+                  <CommunityFlipCard
+                    community={community}
+                    onVisit={() => navigate(community.path)}
                   />
-                  <Box sx={styles.communityCard(community.accent)}>
-                    <Box sx={styles.communityCardText}>{community.description}</Box>
-                  </Box>
-                </Box>
+                </ScrollRise>
               </Grid>
             ))}
           </Grid>
@@ -133,7 +111,7 @@ const Home = () => {
             <Grid container spacing={3} justifyContent="center" sx={styles.teamGrid}>
               {visibleMembers.map((member) => (
                 <Grid item xs={12} sm={6} md={3} key={`${member.community}-${member.name}`}>
-                  <Box sx={styles.teamCard}>
+                  <Box className="glow-card" sx={styles.teamCard}>
                     <Box
                       component="img"
                       src={member.photo}

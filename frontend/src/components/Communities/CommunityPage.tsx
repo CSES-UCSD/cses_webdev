@@ -90,7 +90,7 @@ const CommunityPage = ({ community: communityKey }: CommunityPageProps) => {
         {community.projects.length > 0 ? (
           <Box sx={styles.projectsList}>
             {community.projects.map((project) => (
-              <Box key={project.name} sx={styles.projectCard}>
+              <Box key={project.name} className="glow-card" sx={styles.projectCard}>
                 <Box>
                   <Box sx={styles.projectName}>{project.name}</Box>
                   <Box sx={styles.projectDescription}>{project.description}</Box>

@@ -21,6 +21,7 @@ import { navBarStyles } from './styles';
 import { AuthContext } from '../../context/AuthContext';
 import ProfileDropdown from './ProfileDropdown';
 import { User } from '../../utils/types';
+import { APPLY_URL } from '../../constants';
 import axios from 'axios';
 
 const COMMUNITY_ITEMS = [
@@ -28,7 +29,6 @@ const COMMUNITY_ITEMS = [
   { text: 'Innovate', link: '/innovatecommunity' },
   { text: 'Dev', link: '/devcommunity' },
 ];
-
 
 const NavBar = () => {
   const location = useLocation();
@@ -130,14 +130,7 @@ const NavBar = () => {
               ))}
             </Menu>
 
-            <Button
-              component={Link}
-              to="/join-us"
-              sx={{
-                ...styles.button,
-                ...(location.pathname === '/join-us' ? styles.buttonActive : {}),
-              }}
-            >
+            <Button href={APPLY_URL} target="_blank" rel="noopener noreferrer" sx={styles.button}>
               Join us
             </Button>
           </Box>
@@ -201,7 +194,10 @@ const NavBar = () => {
             button
             key="Join us"
             sx={styles.listitem}
-            onClick={() => clickItem('/join-us')}
+            onClick={() => {
+              setIsDrawerOpen(false);
+              window.open(APPLY_URL, '_blank', 'noopener,noreferrer');
+            }}
           >
             <ListItemText
               primary={

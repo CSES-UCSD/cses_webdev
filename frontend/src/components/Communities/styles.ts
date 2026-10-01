@@ -1,9 +1,10 @@
-import { colors, fonts, radii } from '../../theme';
+import { colors, fonts, radii, glowCard } from '../../theme';
 
 export const communityStyles = () => ({
   pageWrapper: {
     position: 'relative' as const,
-    backgroundColor: colors.background,
+    // Transparent so the cursor spotlight behind the page shows through; html paints the same color.
+    backgroundColor: 'transparent',
     minHeight: '100vh',
     // Clips the oversized backdrop rather than letting it scroll the page.
     overflow: 'hidden' as const,
@@ -140,8 +141,7 @@ export const communityStyles = () => ({
   },
   projectCard: {
     boxSizing: 'border-box' as const,
-    backgroundColor: colors.surface,
-    border: `1px solid ${colors.border}`,
+    ...glowCard(),
     borderRadius: radii.card,
     p: { xs: 2.5, md: 3 },
     display: 'flex',
