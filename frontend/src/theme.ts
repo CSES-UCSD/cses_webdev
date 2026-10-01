@@ -34,7 +34,7 @@ export const radii = {
 //   3. a brighter glow that only shows in that ring, lighting up the border
 //   4. the resting border color
 // The glow reaches past the card's edge, so neighbouring cards share one spotlight.
-const GLOW_SIZE = '260px';
+const GLOW_SIZE = '380px';
 const glowGradient = (alpha: string) =>
   `radial-gradient(circle at var(--glow-x, -999px) var(--glow-y, -999px), rgba(243, 244, 246, ${alpha}), transparent ${GLOW_SIZE})`;
 

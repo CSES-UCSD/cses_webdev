@@ -45,21 +45,25 @@ const useScrollProgress = (ref: RefObject<HTMLElement>, startVh: number, rangeVh
 // Rises into place and fades in.
 // `startVh` is how far up the screen (as a fraction of its height) the top has to reach
 // before it starts; lower values start later, so siblings can be staggered.
+// `fullHeight` makes it fill its parent, for cards that stretch to match their row.
 export const ScrollRise = ({
   children,
   startVh = 0.92,
+  fullHeight = false,
 }: {
   children: ReactNode;
   startVh?: number;
+  fullHeight?: boolean;
 }) => {
   const ref = useRef<HTMLDivElement>(null);
   const reduceMotion = useReducedMotion();
   const progress = useScrollProgress(ref, startVh, 0.22);
   const opacity = useTransform(progress, [0, 1], [0, 1]);
   const y = useTransform(progress, [0, 1], [48, 0]);
+  const size = { width: '100%', ...(fullHeight && { height: '100%' }) };
 
   return (
-    <motion.div ref={ref} style={reduceMotion ? undefined : { opacity, y, width: '100%' }}>
+    <motion.div ref={ref} style={reduceMotion ? size : { opacity, y, ...size }}>
       {children}
     </motion.div>
   );

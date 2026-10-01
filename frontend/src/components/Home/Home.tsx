@@ -7,6 +7,7 @@ import SegmentedTabs from '../common/SegmentedTabs';
 import HeroIntro from './HeroIntro';
 import { ScrollRise, ScrollWords } from './ScrollReveal';
 import CommunityFlipCard from './CommunityFlipCard';
+import TeamMemberCard from './TeamMemberCard';
 import { TEAM_MEMBERS } from './teamData';
 import DevLogo from '../../images/ourCommunitiesImages/DevLogo.png';
 import InnovateLogo from '../../images/ourCommunitiesImages/InnovateLogo.png';
@@ -98,29 +99,24 @@ const Home = () => {
 
         {/* Meet the Team! */}
         <Box sx={styles.sectionWrapper}>
-          <Box component="h2" sx={{ ...styles.sectionTitle, m: 0 }}>
-            Meet the Team!
-          </Box>
-          <Box sx={styles.sectionSubtitle}>The people who make CSE Society possible</Box>
+          <ScrollRise>
+            <Box component="h2" sx={{ ...styles.sectionTitle, m: 0 }}>
+              Meet the Team!
+            </Box>
+            <Box sx={styles.sectionSubtitle}>The people who make CSE Society possible</Box>
+          </ScrollRise>
 
-          <Box sx={styles.teamTabsWrapper}>
-            <SegmentedTabs options={TEAM_TABS} value={teamTab} onChange={handleTeamTabChange} />
-          </Box>
+          <ScrollRise startVh={0.88}>
+            <Box sx={styles.teamTabsWrapper}>
+              <SegmentedTabs options={TEAM_TABS} value={teamTab} onChange={handleTeamTabChange} />
+            </Box>
+          </ScrollRise>
 
           {visibleMembers.length > 0 ? (
             <Grid container spacing={3} justifyContent="center" sx={styles.teamGrid}>
-              {visibleMembers.map((member) => (
+              {visibleMembers.map((member, i) => (
                 <Grid item xs={12} sm={6} md={3} key={`${member.community}-${member.name}`}>
-                  <Box className="glow-card" sx={styles.teamCard}>
-                    <Box
-                      component="img"
-                      src={member.photo}
-                      alt={member.name}
-                      sx={styles.teamPhoto}
-                    />
-                    <Box sx={styles.teamName}>{member.name}</Box>
-                    <Box sx={styles.teamRole}>{member.role}</Box>
-                  </Box>
+                  <TeamMemberCard member={member} index={i} />
                 </Grid>
               ))}
             </Grid>

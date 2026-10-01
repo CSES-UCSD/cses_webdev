@@ -120,6 +120,7 @@ export const homeStyles = () => ({
   teamTabsWrapper: {
     width: '100%',
     maxWidth: '800px',
+    mx: 'auto',
     mt: 5,
   },
   teamGrid: {
@@ -138,12 +139,31 @@ export const homeStyles = () => ({
     alignItems: 'center',
     textAlign: 'center',
     height: '100%',
+    transition: 'transform 0.35s cubic-bezier(0.16, 1, 0.3, 1)',
+    '&:hover': { transform: 'translateY(-6px)' },
+    // The photo ring glows and swells while the card is hovered.
+    '&:hover .team-ring': {
+      boxShadow: `0 0 30px ${colors.purple}aa, 0 0 16px ${colors.mint}66`,
+      transform: 'scale(1.05)',
+    },
+  },
+  // Gradient ring in the theme colors around each photo.
+  teamPhotoRing: {
+    display: 'inline-flex',
+    p: '3px',
+    borderRadius: '50%',
+    background: `linear-gradient(135deg, ${colors.purple}, ${colors.lightBlue}, ${colors.mint})`,
+    boxShadow: `0 0 18px ${colors.purple}55`,
+    transition: 'box-shadow 0.35s ease, transform 0.35s cubic-bezier(0.16, 1, 0.3, 1)',
   },
   teamPhoto: {
-    width: '96px',
-    height: '96px',
+    display: 'block',
+    width: '104px',
+    height: '104px',
     borderRadius: '50%',
     objectFit: 'cover' as const,
+    // A dark gap between the photo and the ring, so the ring reads as a separate band.
+    border: `3px solid ${colors.surface}`,
   },
   teamName: {
     fontFamily: fonts.body,
@@ -155,7 +175,7 @@ export const homeStyles = () => ({
   teamRole: {
     fontFamily: fonts.body,
     fontSize: '0.85rem',
-    color: colors.textSecondary,
+    color: colors.lightBlue,
     mt: 0.5,
   },
   dotsWrapper: {
@@ -166,16 +186,20 @@ export const homeStyles = () => ({
   dot: {
     width: '10px',
     height: '10px',
-    borderRadius: '50%',
+    borderRadius: '5px',
     backgroundColor: 'rgba(255, 255, 255, 0.25)',
     cursor: 'pointer',
+    transition: 'width 0.35s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.3s ease',
+    '&:hover': { backgroundColor: 'rgba(255, 255, 255, 0.45)' },
   },
+  // The current page stretches into a gradient pill.
   dotActive: {
-    width: '10px',
+    width: '28px',
     height: '10px',
-    borderRadius: '50%',
-    backgroundColor: colors.purpleBright,
+    borderRadius: '5px',
+    background: `linear-gradient(90deg, ${colors.purple}, ${colors.lightBlue})`,
     cursor: 'pointer',
+    transition: 'width 0.35s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.3s ease',
   },
   emptyText: {
     fontFamily: fonts.body,
