@@ -14,8 +14,7 @@ import LovableLogo from '../../images/sponsors/Lovable_Logo.png';
 import OSPOLogo from '../../images/sponsors/OSPO_Logo.png';
 import PersonaLogo from '../../images/sponsors/Persona_Logo.png';
 import RobloxLogo from '../../images/sponsors/Roblox_Logo.png';
-
-const APPLY_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSe86wrK3vNWN0YJABpyJDQfJnWYqw0x7HxtQhxq9Lis-hm6FQ/viewform';
+import { APPLY_URL } from '../../constants';
 
 const STATS = [
   { number: '455+', label: 'members' },

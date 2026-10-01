@@ -116,43 +116,6 @@ export const homeStyles = () => ({
     mt: 4,
   },
 
-  // Communities
-  communityColumn: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    textDecoration: 'none',
-    cursor: 'pointer',
-    transition: 'transform 0.2s ease',
-    '&:hover': { transform: 'translateY(-4px)' },
-  },
-  communityLogo: {
-    width: '100%',
-    maxWidth: '220px',
-    height: 'auto',
-  },
-  communityCard: (accent: string) => ({
-    ...glowCard(`${accent}55`),
-    borderRadius: radii.card,
-    // Without a global CssBaseline reset, width: '100%' is content-box: the
-    // padding and border would add ~50px and overlap the neighbouring column.
-    boxSizing: 'border-box' as const,
-    px: 3,
-    py: 4,
-    mt: 3,
-    width: '100%',
-    minHeight: '96px',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-  }),
-  communityCardText: {
-    fontFamily: fonts.body,
-    fontSize: '0.95rem',
-    color: colors.textSecondary,
-    textAlign: 'center',
-  },
-
   // Meet the Team!
   teamTabsWrapper: {
     width: '100%',

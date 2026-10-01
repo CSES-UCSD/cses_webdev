@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Box, Button } from '@mui/material';
 import { motion, useReducedMotion, useTransform, useViewportScroll } from 'framer-motion';
 import { homeStyles } from './styles';
+import { APPLY_URL } from '../../constants';
 
 const TITLE = 'CSE Society';
 // Close to GSAP's expo.out: a fast start with a long, soft landing.
@@ -140,7 +141,12 @@ const HeroIntro = () => {
             }
           >
             <Box sx={styles.heroButtons}>
-              <Button sx={styles.primaryButton} onClick={() => navigate('/membership')}>
+              <Button
+                href={APPLY_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                sx={styles.primaryButton}
+              >
                 Join us&nbsp;&nbsp;→
               </Button>
               <Button sx={styles.secondaryButton} onClick={() => navigate('/events')}>
