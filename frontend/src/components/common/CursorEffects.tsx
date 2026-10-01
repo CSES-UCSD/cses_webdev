@@ -8,7 +8,7 @@ import React, { useEffect, useRef } from 'react';
 //     position relative to itself, so cards light up under the pointer
 // Touch devices get none of this: there is no hovering pointer to follow.
 const DOT_SIZE = 14;
-const SPOTLIGHT_SIZE = 900;
+const SPOTLIGHT_SIZE = 1400;
 // Each trailing spotlight replays the pointer's path `delay` frames late, so the
 // chain follows the exact line the cursor drew instead of cutting corners.
 const TRAIL = [
@@ -83,7 +83,7 @@ const CursorEffects = () => {
       x = e.clientX;
       y = e.clientY;
       hovering = e.target instanceof Element && !!e.target.closest(INTERACTIVE);
-      root.style.setProperty('--glow-opacity', '28%');
+      root.style.setProperty('--glow-opacity', '20%');
       dot.style.opacity = '1';
       spotlight.style.opacity = '1';
       trail.forEach((el) => (el!.style.opacity = '1'));

@@ -75,7 +75,7 @@ code {
 .cursor-spotlight {
   z-index: -1;
   /* A dim, cool lavender rather than near-white, to sit with the theme's purple and blue. */
-  background: radial-gradient(circle, rgba(185, 190, 235, 0.1) 0%, rgba(185, 190, 235, 0.04) 35%, rgba(185, 190, 235, 0) 70%);
+  background: radial-gradient(circle, rgba(185, 190, 235, 0.07) 0%, rgba(185, 190, 235, 0.03) 35%, rgba(185, 190, 235, 0) 70%);
   transition: opacity 0.3s ease;
 }
 
