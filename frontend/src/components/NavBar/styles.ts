@@ -26,18 +26,6 @@ export const navBarStyles = () => ({
     backgroundColor: colors.purpleBright,
     '&:hover': { backgroundColor: colors.purpleBright },
   },
-  menu: {
-    '& .MuiPaper-root': {
-      backgroundColor: colors.surface,
-      border: `1px solid ${colors.border}`,
-      color: colors.textPrimary,
-    },
-  },
-  menuItem: {
-    fontFamily: fonts.body,
-    fontSize: '0.95rem',
-    '&:hover': { backgroundColor: 'rgba(114, 93, 240, 0.15)' },
-  },
   drawerList: {
     background: colors.background,
   },
