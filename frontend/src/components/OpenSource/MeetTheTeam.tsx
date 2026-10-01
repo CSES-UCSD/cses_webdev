@@ -6,7 +6,7 @@ import { buttonStyles } from '../Button/styles';
 import { tempStyles } from './styles';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 
-import Maanasa from '../../images/meettheteamImages/maanasa prasad.png';
+import Maanasa from '../../images/meettheteamImages/maanasa prasad.jpg';
 import Aditi_Bansal from '../../images/opensourceteam/Aditi Bansal.jpg';
 import Alexis_Vega from '../../images/opensourceteam/Alexis Vega.jpg';
 import Anika_Dontu from '../../images/opensourceteam/Anika Dontu.jpg';
@@ -24,7 +24,7 @@ import Ulises_Salinas from '../../images/opensourceteam/Ulises Salinas.jpg';
 import Vedant_Vardhaan from '../../images/opensourceteam/Vedant Vardhaan.jpeg';
 import Victoria_Tran from '../../images/opensourceteam/Victoria Tran.jpeg';
 import Vinod_Vairavaraj from '../../images/opensourceteam/Vinod Vairavaraj.jpeg';
-import William_Widjaja from '../../images/opensourceteam/William Widjaja.png';
+import William_Widjaja from '../../images/opensourceteam/William Widjaja.jpg';
 import Yashil_Vora from '../../images/opensourceteam/Yashil Vora.jpg';
 import Yixuan_Li from '../../images/opensourceteam/Yixuan Li.jpg';
 import Yash_Ravipati from '../../images/meettheteamImages/Yash_Ravipati.jpg'

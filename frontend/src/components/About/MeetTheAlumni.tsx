@@ -5,10 +5,10 @@ import EmailIcon from "@mui/icons-material/Email";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import { gradientImgWrapper, gradientImg } from "./styles";
-import Rahul from '../../images/meettheteamImages/rahul.png';
+import Rahul from '../../images/meettheteamImages/rahul.jpg';
 import Varun_Parekh from '../../images/meettheteamImages/Varun_Parekh.jpg';
 import Josue from '../../images/meettheteamImages/josue martinez.jpeg';
-import Maanasa from '../../images/meettheteamImages/maanasa prasad.png';
+import Maanasa from '../../images/meettheteamImages/maanasa prasad.jpg';
 
 type Member = {
   name: string;
