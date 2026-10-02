@@ -9,7 +9,7 @@ import { colors, fonts } from '../../theme';
 
 const links = [
   { logo: InstagramIcon, link: 'https://www.instagram.com/cses_at_ucsd/', label: 'Instagram' },
-  { logo: DiscordIcon, link: 'https://discord.gg/UkdACyy2h8', label: 'Discord' },
+  // { logo: DiscordIcon, link: 'https://discord.gg/UkdACyy2h8', label: 'Discord' },
   { logo: FacebookIcon, link: 'https://www.facebook.com/csesucsd', label: 'Facebook' },
   { logo: LinkedInIcon, link: 'https://www.linkedin.com/in/csesucsd/', label: 'LinkedIn' },
 ];
