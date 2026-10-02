@@ -99,8 +99,13 @@ export const homeStyles = () => ({
     mx: 'auto',
     mt: 5,
   },
+  // The gap under the tabs lives on this wrapper, not on the grid itself: MUI gives a grid
+  // container a negative top margin (to line up its columns) that overrides any margin set on it.
+  teamGridWrapper: {
+    width: '100%',
+    mt: { xs: 3.5, md: 5 },
+  },
   teamGrid: {
-    mt: 4,
     width: '100%',
   },
   teamCard: {
