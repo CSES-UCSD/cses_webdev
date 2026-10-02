@@ -23,12 +23,12 @@ export const homeStyles = () => ({
     // hero's content; when the hero is pinned (HeroIntro) it becomes sticky instead.
     position: 'relative' as const,
     isolation: 'isolate' as const,
-    // Phones only: artwork (chain, lightbulb, gear) behind the hero. It's sized by width, so
+    // Artwork (chain, lightbulb, gear) behind the hero. It's sized by width, so
     // nothing is clipped at the sides, and fades into the page colour at the bottom, so there
     // is no seam where it ends. It stays with the hero while that is pinned, then leaves with it.
     '&::before': {
       content: '""',
-      display: { xs: 'block', sm: 'none' },
+      display: 'block',
       position: 'absolute' as const,
       top: 0,
       left: 0,
@@ -37,8 +37,11 @@ export const homeStyles = () => ({
       backgroundImage: `url(${mobileBackground})`,
       backgroundSize: '100% 100%',
       backgroundRepeat: 'no-repeat',
+      // Fades to transparent (not a solid colour) so it blends into the page glow with no seam.
+      WebkitMaskImage: 'linear-gradient(to bottom, #000 80%, transparent 100%)',
+      maskImage: 'linear-gradient(to bottom, #000 80%, transparent 100%)',
       pointerEvents: 'none' as const,
-      zIndex: -1,
+      zIndex: -999,
     },
     width: '100%',
     minHeight: { xs: '70vh', md: '85vh' },
