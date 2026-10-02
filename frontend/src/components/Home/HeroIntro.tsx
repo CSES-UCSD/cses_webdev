@@ -1,7 +1,13 @@
 import { useEffect, useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Box } from '@mui/material';
-import { motion, useReducedMotion, useTransform, useViewportScroll } from 'framer-motion';
+import { Box, useMediaQuery } from '@mui/material';
+import {
+  motion,
+  useMotionValue,
+  useReducedMotion,
+  useTransform,
+  useViewportScroll,
+} from 'framer-motion';
 import { homeStyles } from './styles';
 import GlassButton from '../common/GlassButton';
 import { colors } from '../../theme';
@@ -29,6 +35,9 @@ const BUTTONS_IN: [number, number] = [140, 260];
 // with the hero scrolling away and the next section arriving.
 const HERO_OUT: [number, number] = [400, 620];
 const BUTTONS_CLICKABLE: [number, number] = [200, 500]; // while they're visible enough to be clicked
+// Phones and tablets: once the tagline and buttons have been revealed they stay, even if
+// you scroll back up (only the hero as a whole still fades with scroll).
+const PHONE_QUERY = '(max-width: 899px), (pointer: coarse)';
 
 // Each letter starts scattered off in a random spot, spun, shrunk and invisible,
 // then flies into place when the page loads.
@@ -46,25 +55,33 @@ const HeroIntro = () => {
   const reduceMotion = useReducedMotion();
   const pinned = !reduceMotion;
   const { scrollY } = useViewportScroll();
+  const isPhone = useMediaQuery(PHONE_QUERY);
 
-  const taglineOpacity = useTransform(scrollY, TAGLINE_IN, [0, 1]);
-  const taglineY = useTransform(scrollY, TAGLINE_IN, [20, 0]);
-  const buttonsOpacity = useTransform(scrollY, BUTTONS_IN, [0, 1]);
-  const buttonsY = useTransform(scrollY, BUTTONS_IN, [20, 0]);
-  const buttonsScale = useTransform(scrollY, BUTTONS_IN, [0.92, 1]);
+  // How far the tagline and buttons have been revealed, as a scroll position. It follows
+  // the scroll position, except on phones where it only ever moves forward.
+  const reveal = useMotionValue(0);
+  const taglineOpacity = useTransform(reveal, TAGLINE_IN, [0, 1]);
+  const taglineY = useTransform(reveal, TAGLINE_IN, [20, 0]);
+  const buttonsOpacity = useTransform(reveal, BUTTONS_IN, [0, 1]);
+  const buttonsY = useTransform(reveal, BUTTONS_IN, [20, 0]);
+  const buttonsScale = useTransform(reveal, BUTTONS_IN, [0.92, 1]);
   const heroOpacity = useTransform(scrollY, HERO_OUT, [1, 0]);
   const heroY = useTransform(scrollY, [HOLD, PIN_DISTANCE], [0, HOLD - PIN_DISTANCE], {
     ease: (t: number) => t,
   });
 
-  // Invisible buttons shouldn't catch clicks.
+  // Invisible buttons shouldn't catch clicks: they work while revealed and while the hero
+  // hasn't faded away.
   const [buttonsClickable, setButtonsClickable] = useState(false);
   useEffect(() => {
-    const update = (y: number) =>
-      setButtonsClickable(y > BUTTONS_CLICKABLE[0] && y < BUTTONS_CLICKABLE[1]);
+    reveal.set(window.scrollY);
+    const update = (y: number) => {
+      reveal.set(isPhone ? Math.max(reveal.get(), y) : y);
+      setButtonsClickable(reveal.get() > BUTTONS_CLICKABLE[0] && y < BUTTONS_CLICKABLE[1]);
+    };
     update(window.scrollY);
     return scrollY.onChange(update);
-  }, [scrollY]);
+  }, [isPhone, reveal, scrollY]);
 
   const letters = useMemo(() => {
     const scattered = scatter();
