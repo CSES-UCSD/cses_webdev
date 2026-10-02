@@ -51,34 +51,10 @@ export const homeStyles = () => ({
   },
   heroButtons: {
     display: 'flex',
-    gap: 2,
+    gap: 3,
     mt: 5,
     flexWrap: 'wrap',
     justifyContent: 'center',
-  },
-  primaryButton: {
-    fontFamily: fonts.body,
-    fontSize: '0.95rem',
-    fontWeight: 500,
-    textTransform: 'none',
-    color: colors.textPrimary,
-    backgroundColor: colors.purpleButton,
-    borderRadius: '8px',
-    px: 3,
-    py: 1.2,
-    '&:hover': { backgroundColor: colors.purpleBright },
-  },
-  secondaryButton: {
-    fontFamily: fonts.body,
-    fontSize: '0.95rem',
-    fontWeight: 500,
-    textTransform: 'none',
-    color: colors.textPrimary,
-    border: `1px solid ${colors.purple}`,
-    borderRadius: '8px',
-    px: 3,
-    py: 1.2,
-    '&:hover': { borderColor: colors.purpleBright, backgroundColor: 'rgba(114, 93, 240, 0.1)' },
   },
 
   // Shared section pieces
@@ -123,8 +99,13 @@ export const homeStyles = () => ({
     mx: 'auto',
     mt: 5,
   },
+  // The gap under the tabs lives on this wrapper, not on the grid itself: MUI gives a grid
+  // container a negative top margin (to line up its columns) that overrides any margin set on it.
+  teamGridWrapper: {
+    width: '100%',
+    mt: { xs: 3.5, md: 5 },
+  },
   teamGrid: {
-    mt: 4,
     width: '100%',
   },
   teamCard: {

@@ -1,7 +1,8 @@
-import { Box, Button, Container } from '@mui/material';
+import { Box, Container } from '@mui/material';
 import { keyframes } from '@mui/system';
 import { motion, useReducedMotion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
+import GlassButton from '../common/GlassButton';
 import TypeWriter from '../common/TypeWriter';
 import { ScrollRise } from '../Home/ScrollReveal';
 import { COMMUNITIES, getCommunity } from './communityData';
@@ -64,12 +65,14 @@ const CommunityPage = ({ community: communityKey }: CommunityPageProps) => {
         <Box sx={styles.pills}>
           {COMMUNITIES.map((option, i) => (
             <motion.div key={option.key} {...enter(0.12 + i * 0.07, { y: 16 })}>
-              <Button
+              <GlassButton
+                tint={option.accent}
+                active={option.key === community.key}
+                current={option.key === community.key}
                 onClick={() => navigate(option.path)}
-                sx={styles.pill(option.accent, option.key === community.key)}
               >
                 {option.name}
-              </Button>
+              </GlassButton>
             </motion.div>
           ))}
         </Box>

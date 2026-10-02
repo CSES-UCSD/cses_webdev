@@ -29,7 +29,13 @@ const CursorEffects = () => {
     const dot = dotRef.current;
     const spotlight = spotlightRef.current;
     const trail = trailRefs.current;
-    if (!dot || !spotlight || trail.some((el) => !el) || !window.matchMedia('(pointer: fine)').matches) return;
+    if (
+      !dot ||
+      !spotlight ||
+      trail.some((el) => !el) ||
+      !window.matchMedia('(pointer: fine)').matches
+    )
+      return;
     const root = document.documentElement;
     root.classList.add('cursor-effects-active');
     let frame = 0;
@@ -66,7 +72,8 @@ const CursorEffects = () => {
         pos.x += (target.x - pos.x) * TRAIL_SMOOTHING;
         pos.y += (target.y - pos.y) * TRAIL_SMOOTHING;
         if (Math.hypot(x - pos.x, y - pos.y) > 0.5) settled = false;
-        trail[i]!.style.transform = `translate3d(${pos.x - spot.size / 2}px, ${pos.y - spot.size / 2}px, 0)`;
+        trail[i]!.style.transform =
+          `translate3d(${pos.x - spot.size / 2}px, ${pos.y - spot.size / 2}px, 0)`;
       });
       // Stop once the whole chain has caught up; the next move restarts it.
       if (settled) {
@@ -79,11 +86,13 @@ const CursorEffects = () => {
 
     const onMove = (e: PointerEvent) => {
       // Start the colored spotlights on the pointer rather than sweeping in from off-screen.
-      if (x === -9999) trailPos.forEach((pos) => Object.assign(pos, { x: e.clientX, y: e.clientY }));
+      if (x === -9999)
+        trailPos.forEach((pos) => Object.assign(pos, { x: e.clientX, y: e.clientY }));
       x = e.clientX;
       y = e.clientY;
       hovering = e.target instanceof Element && !!e.target.closest(INTERACTIVE);
-      root.style.setProperty('--glow-opacity', '20%');
+      root.style.setProperty('--glow-alpha', '0.2');
+      root.style.setProperty('--glow-alpha-edge', '0.6');
       dot.style.opacity = '1';
       spotlight.style.opacity = '1';
       trail.forEach((el) => (el!.style.opacity = '1'));
@@ -91,7 +100,8 @@ const CursorEffects = () => {
       if (!trailFrame) trailFrame = requestAnimationFrame(moveTrail);
     };
     const onLeave = () => {
-      root.style.setProperty('--glow-opacity', '0%');
+      root.style.setProperty('--glow-alpha', '0');
+      root.style.setProperty('--glow-alpha-edge', '0');
       dot.style.opacity = '0';
       spotlight.style.opacity = '0';
       trail.forEach((el) => (el!.style.opacity = '0'));
@@ -107,7 +117,8 @@ const CursorEffects = () => {
       window.removeEventListener('scroll', schedule);
       root.removeEventListener('pointerleave', onLeave);
       root.classList.remove('cursor-effects-active');
-      root.style.removeProperty('--glow-opacity');
+      root.style.removeProperty('--glow-alpha');
+      root.style.removeProperty('--glow-alpha-edge');
     };
   }, []);
 
@@ -127,8 +138,18 @@ const CursorEffects = () => {
           }}
         />
       ))}
-      <div ref={spotlightRef} aria-hidden="true" className="cursor-spotlight" style={{ width: SPOTLIGHT_SIZE, height: SPOTLIGHT_SIZE }} />
-      <div ref={dotRef} aria-hidden="true" className="cursor-dot" style={{ width: DOT_SIZE, height: DOT_SIZE }} />
+      <div
+        ref={spotlightRef}
+        aria-hidden="true"
+        className="cursor-spotlight"
+        style={{ width: SPOTLIGHT_SIZE, height: SPOTLIGHT_SIZE }}
+      />
+      <div
+        ref={dotRef}
+        aria-hidden="true"
+        className="cursor-dot"
+        style={{ width: DOT_SIZE, height: DOT_SIZE }}
+      />
     </>
   );
 };

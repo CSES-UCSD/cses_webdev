@@ -34,6 +34,10 @@ export const radii = {
 //   3. a brighter glow that only shows in that ring, lighting up the border
 //   4. the resting border color
 // The glow reaches past the card's edge, so neighbouring cards share one spotlight.
+// The glow strengths (--glow-alpha, --glow-alpha-edge) are plain numbers with a fallback of 0.
+// Devices with no mouse never set them, and without a fallback (or in browsers that can't
+// handle percentages/calc() inside a colour) the whole background, and so the card's outline,
+// would be thrown away.
 const GLOW_SIZE = '380px';
 const glowGradient = (alpha: string) =>
   `radial-gradient(circle at var(--glow-x, -999px) var(--glow-y, -999px), rgba(243, 244, 246, ${alpha}), transparent ${GLOW_SIZE})`;
@@ -41,9 +45,9 @@ const glowGradient = (alpha: string) =>
 export const glowCard = (borderColor: string = colors.border) => ({
   border: '1px solid transparent',
   background: [
-    `${glowGradient('var(--glow-opacity)')} padding-box`,
+    `${glowGradient('var(--glow-alpha, 0)')} padding-box`,
     `linear-gradient(${colors.surface}, ${colors.surface}) padding-box`,
-    `${glowGradient('calc(3 * var(--glow-opacity))')} border-box`,
+    `${glowGradient('var(--glow-alpha-edge, 0)')} border-box`,
     `linear-gradient(${borderColor}, ${borderColor}) border-box`,
   ].join(', '),
 });

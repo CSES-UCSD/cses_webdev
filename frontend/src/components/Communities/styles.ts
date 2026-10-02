@@ -47,26 +47,12 @@ export const communityStyles = () => ({
   // Community switcher
   pills: {
     display: 'flex',
-    gap: 2,
+    // Wider than the pills' own spacing, since the glass buttons' shadows spill past their edges.
+    gap: 3,
     flexWrap: 'wrap' as const,
     justifyContent: 'center',
     mt: 4,
   },
-  pill: (accent: string, active: boolean) => ({
-    fontFamily: fonts.body,
-    fontSize: { xs: '0.85rem', md: '0.95rem' },
-    fontWeight: 500,
-    textTransform: 'none',
-    borderRadius: '8px',
-    px: 3,
-    py: 1,
-    color: active ? colors.background : colors.textPrimary,
-    backgroundColor: active ? accent : colors.surface,
-    border: `1px solid ${accent}`,
-    '&:hover': {
-      backgroundColor: active ? accent : `${accent}22`,
-    },
-  }),
 
   // Community showcase
   showcase: {
