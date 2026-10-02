@@ -1,4 +1,5 @@
 import { colors, fonts, radii, glowCard } from '../../theme';
+import mobileBackground from '../../images/home-mobile-bg.svg';
 
 export const homeStyles = () => ({
   pageWrapper: {
@@ -18,6 +19,27 @@ export const homeStyles = () => ({
 
   // Hero
   hero: {
+    // Positioned (and its own stacking context) so the phone artwork below sits behind the
+    // hero's content; when the hero is pinned (HeroIntro) it becomes sticky instead.
+    position: 'relative' as const,
+    isolation: 'isolate' as const,
+    // Phones only: artwork (chain, lightbulb, gear) behind the hero. It's sized by width, so
+    // nothing is clipped at the sides, and fades into the page colour at the bottom, so there
+    // is no seam where it ends. It stays with the hero while that is pinned, then leaves with it.
+    '&::before': {
+      content: '""',
+      display: { xs: 'block', sm: 'none' },
+      position: 'absolute' as const,
+      top: 0,
+      left: 0,
+      width: '100%',
+      aspectRatio: '1109 / 1300',
+      backgroundImage: `url(${mobileBackground})`,
+      backgroundSize: '100% 100%',
+      backgroundRepeat: 'no-repeat',
+      pointerEvents: 'none' as const,
+      zIndex: -1,
+    },
     width: '100%',
     minHeight: { xs: '70vh', md: '85vh' },
     display: 'flex',
