@@ -113,9 +113,14 @@ const Home = () => {
           </ScrollRise>
 
           {visibleMembers.length > 0 ? (
-            <Grid container spacing={3} justifyContent="center" sx={styles.teamGrid}>
+            <Grid
+              container
+              spacing={{ xs: 1.5, md: 3 }}
+              justifyContent="center"
+              sx={styles.teamGrid}
+            >
               {visibleMembers.map((member, i) => (
-                <Grid item xs={12} sm={6} md={3} key={`${member.community}-${member.name}`}>
+                <Grid item xs={6} md={3} key={`${member.community}-${member.name}`}>
                   <TeamMemberCard member={member} index={i} />
                 </Grid>
               ))}
