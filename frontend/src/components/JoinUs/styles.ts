@@ -29,28 +29,31 @@ export const joinUsStyles = () => ({
     px: { xs: 3, md: 6 },
   },
 
-  // Decorative artwork. Hidden on small screens, where it would crowd the copy.
+  // Decorative artwork behind the copy. Phones get the layout from the mobile mockup
+  // (BackgroundOption2.png): sizes in vw, tops in px from the page top, lined up with the
+  // subtext (chain, lightbulb) and the stats (gear). Hidden between md and lg, where the
+  // desktop placement doesn't fit yet.
   decor: {
-    display: { xs: 'none', lg: 'block' },
+    display: { xs: 'block', md: 'none', lg: 'block' },
     position: 'absolute' as const,
     pointerEvents: 'none' as const,
     zIndex: 0,
     userSelect: 'none' as const,
   },
   decorChain: {
-    top: '11%',
-    left: '3%',
-    width: 'clamp(180px, 19vw, 340px)',
+    top: { xs: '180px', lg: '11%' },
+    left: { xs: '5.6vw', lg: '3%' },
+    width: { xs: 'clamp(110px, 36vw, 200px)', lg: 'clamp(180px, 19vw, 340px)' },
   },
   decorLightbulb: {
-    top: '7%',
-    right: '4%',
-    width: 'clamp(120px, 12vw, 220px)',
+    top: { xs: '144px', lg: '7%' },
+    right: { xs: '4.8vw', lg: '4%' },
+    width: { xs: 'clamp(105px, 34vw, 190px)', lg: 'clamp(120px, 12vw, 220px)' },
   },
   decorGear: {
-    top: '30%',
-    left: '-2%',
-    width: 'clamp(220px, 22vw, 400px)',
+    top: { xs: '415px', lg: '30%' },
+    left: { xs: '1.4vw', lg: '-2%' },
+    width: { xs: 'clamp(120px, 39.6vw, 220px)', lg: 'clamp(220px, 22vw, 400px)' },
   },
 
   // Hero
