@@ -133,7 +133,7 @@ export const homeStyles = () => ({
     // Same content-box trap as communityCard: without border-box, height 100%
     // plus padding and border overflows the grid cell and collides with the dots.
     boxSizing: 'border-box' as const,
-    p: 2.5,
+    p: { xs: 1.5, md: 2.5 },
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
@@ -158,8 +158,9 @@ export const homeStyles = () => ({
   },
   teamPhoto: {
     display: 'block',
-    width: '104px',
-    height: '104px',
+    // Smaller on phones, where two cards share a row.
+    width: { xs: '80px', md: '104px' },
+    height: { xs: '80px', md: '104px' },
     borderRadius: '50%',
     objectFit: 'cover' as const,
     // A dark gap between the photo and the ring, so the ring reads as a separate band.
@@ -168,13 +169,13 @@ export const homeStyles = () => ({
   teamName: {
     fontFamily: fonts.body,
     fontWeight: 600,
-    fontSize: '1rem',
+    fontSize: { xs: '0.9rem', md: '1rem' },
     color: colors.textPrimary,
-    mt: 2,
+    mt: { xs: 1.5, md: 2 },
   },
   teamRole: {
     fontFamily: fonts.body,
-    fontSize: '0.85rem',
+    fontSize: { xs: '0.75rem', md: '0.85rem' },
     color: colors.lightBlue,
     mt: 0.5,
   },
