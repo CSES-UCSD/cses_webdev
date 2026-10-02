@@ -28,15 +28,22 @@ code {
 }
 
 /* Cursor glow for cards (theme.ts glowCard, components/common/CursorEffects). Registering
-   the opacity lets it fade in and out instead of switching abruptly. */
-@property --glow-opacity {
-  syntax: '<percentage>';
+   the strengths lets them fade in and out instead of switching abruptly; browsers without
+   @property just switch, and the cards' own fallback of 0 still applies. */
+@property --glow-alpha {
+  syntax: '<number>';
   inherits: true;
-  initial-value: 0%;
+  initial-value: 0;
+}
+
+@property --glow-alpha-edge {
+  syntax: '<number>';
+  inherits: true;
+  initial-value: 0;
 }
 
 :root {
-  transition: --glow-opacity 0.3s ease;
+  transition: --glow-alpha 0.3s ease, --glow-alpha-edge 0.3s ease;
 }
 
 /* Cursor effects (components/common/CursorEffects.tsx). The colored dot replaces
