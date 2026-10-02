@@ -1,7 +1,8 @@
 import { useState } from 'react';
-import { Box, Button } from '@mui/material';
+import { Box } from '@mui/material';
 import { motion, useReducedMotion } from 'framer-motion';
 import { colors, fonts, glowCard, radii } from '../../theme';
+import GlassButton from '../common/GlassButton';
 
 type Community = {
   name: string;
@@ -113,25 +114,20 @@ const CommunityFlipCard = ({
           >
             {description}
           </Box>
-          <Button
-            tabIndex={flipped ? 0 : -1}
-            onClick={(e) => {
-              e.stopPropagation();
-              onVisit();
-            }}
-            sx={{
-              mt: 2.5,
-              fontFamily: fonts.body,
-              textTransform: 'none',
-              color: accent,
-              border: `1px solid ${accent}`,
-              borderRadius: radii.card,
-              px: 2.5,
-              '&:hover': { backgroundColor: `${accent}22` },
-            }}
-          >
-            Learn more →
-          </Button>
+          <Box sx={{ mt: 2.5 }}>
+            <GlassButton
+              tint={accent}
+              active
+              tabIndex={flipped ? 0 : -1}
+              onClick={(e) => {
+                // Don't let the click also flip the card back.
+                e.stopPropagation();
+                onVisit();
+              }}
+            >
+              Learn more →
+            </GlassButton>
+          </Box>
         </Box>
       </motion.div>
     </Box>

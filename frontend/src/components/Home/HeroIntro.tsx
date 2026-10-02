@@ -1,8 +1,10 @@
 import { useEffect, useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Box, Button } from '@mui/material';
+import { Box } from '@mui/material';
 import { motion, useReducedMotion, useTransform, useViewportScroll } from 'framer-motion';
 import { homeStyles } from './styles';
+import GlassButton from '../common/GlassButton';
+import { colors } from '../../theme';
 import { APPLY_URL } from '../../constants';
 
 const TITLE = 'CSE Society';
@@ -141,17 +143,18 @@ const HeroIntro = () => {
             }
           >
             <Box sx={styles.heroButtons}>
-              <Button
+              <GlassButton
+                tint={colors.purpleButton}
+                active
                 href={APPLY_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                sx={styles.primaryButton}
               >
                 Join us&nbsp;&nbsp;→
-              </Button>
-              <Button sx={styles.secondaryButton} onClick={() => navigate('/events')}>
+              </GlassButton>
+              <GlassButton tint="#B9BEEB" onClick={() => navigate('/events')}>
                 Explore Events →
-              </Button>
+              </GlassButton>
             </Box>
           </motion.div>
         </motion.div>

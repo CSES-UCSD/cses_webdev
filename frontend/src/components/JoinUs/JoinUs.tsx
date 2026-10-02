@@ -1,5 +1,6 @@
-import { Box, Button, Container, Grid, useMediaQuery } from '@mui/material';
+import { Box, Container, Grid, useMediaQuery } from '@mui/material';
 import { joinUsStyles } from './styles';
+import { colors } from '../../theme';
 import chainGraphic from '../../images/joinus/chain.png';
 import lightbulbGraphic from '../../images/joinus/lightbulb.png';
 import gearGraphic from '../../images/joinus/gear.png';
@@ -15,6 +16,7 @@ import OSPOLogo from '../../images/sponsors/OSPO_Logo.png';
 import PersonaLogo from '../../images/sponsors/Persona_Logo.png';
 import RobloxLogo from '../../images/sponsors/Roblox_Logo.png';
 import { APPLY_URL } from '../../constants';
+import GlassButton from '../common/GlassButton';
 
 const STATS = [
   { number: '455+', label: 'members' },
@@ -85,9 +87,11 @@ const JoinUs = () => {
           Join us.
         </Box>
         <Box sx={styles.subtext}>Interested in joining our initiative? Apply below!</Box>
-        <Button href={APPLY_URL} sx={styles.applyButton}>
-          Apply
-        </Button>
+        <Box sx={{ mt: 4 }}>
+          <GlassButton tint={colors.purpleButton} active size="lg" href={APPLY_URL}>
+            Apply
+          </GlassButton>
+        </Box>
 
         <Box sx={styles.tagline}>We are UCSD&apos;s largest computing organization</Box>
 
